@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Maynghien.Common",
+    "\\QuanLyNhanSuBackEnd",
+    "\\QuanLyNhanSuBackEnd.Common",
+    "\\QuanLyNhanSuBackEnd.DAL\\Models",
+    "\\QuanLyNhanSuBackEnd.DAL\\Models\\Context",
+    "\\QuanLyNhanSuBackEnd.DAL\\Models\\Entity"
+  ],
+  "SelectedNode": "\\QuanLyNhanSuBackEnd\\Program.cs",
+  "PreviewInSolutionExplorer": false
+}

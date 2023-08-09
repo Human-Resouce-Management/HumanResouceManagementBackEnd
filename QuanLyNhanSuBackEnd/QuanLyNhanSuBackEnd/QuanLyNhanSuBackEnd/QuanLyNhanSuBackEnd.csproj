@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="StartUp\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Maynghien.Common\Maynghien.Common.csproj" />
+    <ProjectReference Include="..\QuanLyNhanSuBackEnd.Common\QuanLyNhanSuBackEnd.Common.csproj" />
+    <ProjectReference Include="..\QuanLyNhanSuBackEnd.Model\QuanLyNhanSuBackEnd.Model.csproj" />
+    <ProjectReference Include="..\QuanLyNhanSuBackEnd.Service\QuanLyNhanSuBackEnd.Service.csproj" />
+    <ProjectReference Include="..\QuanLyNhanSuBackEnd.TransferCronjob\QuanLyNhanSuBackEnd.TransferCronjob.csproj" />
+  </ItemGroup>
+
+</Project>
