@@ -10,7 +10,6 @@
     <Folder Include="Migrations\" />
     <Folder Include="Implementation\" />
     <Folder Include="Contract\" />
-    <Folder Include="Models\Entity\" />
   </ItemGroup>
 
   <ItemGroup>
