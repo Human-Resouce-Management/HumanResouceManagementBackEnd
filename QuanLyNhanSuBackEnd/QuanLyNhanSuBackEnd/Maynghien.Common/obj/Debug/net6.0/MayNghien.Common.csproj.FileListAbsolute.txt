@@ -22,3 +22,15 @@ D:\GitHub\WarehouseManagement\WarehouseManagementBackEnd\Maynghien.Common\obj\De
 D:\GitHub\WarehouseManagement\WarehouseManagementBackEnd\Maynghien.Common\obj\Debug\net6.0\refint\Maynghien.Common.dll
 D:\GitHub\WarehouseManagement\WarehouseManagementBackEnd\Maynghien.Common\obj\Debug\net6.0\Maynghien.Common.pdb
 D:\GitHub\WarehouseManagement\WarehouseManagementBackEnd\Maynghien.Common\obj\Debug\net6.0\ref\Maynghien.Common.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\bin\Debug\net6.0\Maynghien.Common.deps.json
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\bin\Debug\net6.0\Maynghien.Common.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\bin\Debug\net6.0\Maynghien.Common.pdb
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\obj\Debug\net6.0\Maynghien.Common.csproj.AssemblyReference.cache
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\obj\Debug\net6.0\Maynghien.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\obj\Debug\net6.0\Maynghien.Common.AssemblyInfoInputs.cache
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\obj\Debug\net6.0\Maynghien.Common.AssemblyInfo.cs
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\obj\Debug\net6.0\Maynghien.Common.csproj.CoreCompileInputs.cache
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\obj\Debug\net6.0\Maynghien.Common.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\obj\Debug\net6.0\refint\Maynghien.Common.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\obj\Debug\net6.0\Maynghien.Common.pdb
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Maynghien.Common\obj\Debug\net6.0\ref\Maynghien.Common.dll

@@ -1,0 +1,17 @@
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\bin\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.deps.json
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\bin\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.runtimeconfig.json
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\bin\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\bin\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.pdb
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\bin\Debug\net6.0\Maynghien.Common.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\bin\Debug\net6.0\Maynghien.Common.pdb
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.csproj.AssemblyReference.cache
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.AssemblyInfoInputs.cache
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.AssemblyInfo.cs
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.csproj.CoreCompileInputs.cache
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.csproj.CopyComplete
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\refint\QuanLyNhanSuBackEnd.DAL.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.pdb
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.genruntimeconfig.cache
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.DAL\obj\Debug\net6.0\ref\QuanLyNhanSuBackEnd.DAL.dll

@@ -1,0 +1,12 @@
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Service.deps.json
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Service.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Service.pdb
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Service.csproj.AssemblyReference.cache
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Service.AssemblyInfoInputs.cache
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Service.AssemblyInfo.cs
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Service.csproj.CoreCompileInputs.cache
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Service.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\refint\QuanLyNhanSuBackEnd.Service.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Service.pdb
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\ref\QuanLyNhanSuBackEnd.Service.dll
