@@ -10,7 +10,7 @@ namespace QuanLyNhanSuBackEnd.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(AuthenticationSchemes = "Bearer")]
-    public class AccountController
+    public class AccountController : Controller
     {
        ILoginService _iloginService;
 
@@ -28,9 +28,5 @@ namespace QuanLyNhanSuBackEnd.Controllers
             return Ok(result);
         }
 
-        private IActionResult Ok(AppResponse<string> result)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
