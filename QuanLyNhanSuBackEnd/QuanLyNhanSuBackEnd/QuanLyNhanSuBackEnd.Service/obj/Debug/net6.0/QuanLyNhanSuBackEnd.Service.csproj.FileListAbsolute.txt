@@ -10,3 +10,10 @@ D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Q
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\refint\QuanLyNhanSuBackEnd.Service.dll
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Service.pdb
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\ref\QuanLyNhanSuBackEnd.Service.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\bin\Debug\net6.0\Maynghien.Common.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\bin\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Model.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\bin\Debug\net6.0\Maynghien.Common.pdb
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Model.pdb
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\bin\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.pdb
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Service\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Service.csproj.CopyComplete

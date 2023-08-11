@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyNhanSuBackEnd", "QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.csproj", "{F4E45FDC-A5F9-430B-BEBB-16E634B17BA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLyNhanSuBackEnd.API", "QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.API.csproj", "{F4E45FDC-A5F9-430B-BEBB-16E634B17BA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyNhanSuBackEnd.DAL", "QuanLyNhanSuBackEnd.DAL\QuanLyNhanSuBackEnd.DAL.csproj", "{A3C28654-D11F-47AF-807F-2869B6295142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLyNhanSuBackEnd.DAL", "QuanLyNhanSuBackEnd.DAL\QuanLyNhanSuBackEnd.DAL.csproj", "{A3C28654-D11F-47AF-807F-2869B6295142}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyNhanSuBackEnd.Model", "QuanLyNhanSuBackEnd.Model\QuanLyNhanSuBackEnd.Model.csproj", "{04E021F2-61DC-4B4C-B88F-17BE66F898B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLyNhanSuBackEnd.Model", "QuanLyNhanSuBackEnd.Model\QuanLyNhanSuBackEnd.Model.csproj", "{04E021F2-61DC-4B4C-B88F-17BE66F898B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyNhanSuBackEnd.Service", "QuanLyNhanSuBackEnd.Service\QuanLyNhanSuBackEnd.Service.csproj", "{58335D9B-B581-4CF9-9D7B-321F04301CD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLyNhanSuBackEnd.Service", "QuanLyNhanSuBackEnd.Service\QuanLyNhanSuBackEnd.Service.csproj", "{58335D9B-B581-4CF9-9D7B-321F04301CD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyNhanSuBackEnd.Common", "QuanLyNhanSuBackEnd.Common\QuanLyNhanSuBackEnd.Common.csproj", "{4971C374-5CFF-4F69-A4FC-1E8B9EF87DCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLyNhanSuBackEnd.Common", "QuanLyNhanSuBackEnd.Common\QuanLyNhanSuBackEnd.Common.csproj", "{4971C374-5CFF-4F69-A4FC-1E8B9EF87DCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyNhanSuBackEnd.TransferCronjob", "QuanLyNhanSuBackEnd.TransferCronjob\QuanLyNhanSuBackEnd.TransferCronjob.csproj", "{3D872304-C70A-4DE4-AB68-8648C283464C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLyNhanSuBackEnd.TransferCronjob", "QuanLyNhanSuBackEnd.TransferCronjob\QuanLyNhanSuBackEnd.TransferCronjob.csproj", "{3D872304-C70A-4DE4-AB68-8648C283464C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maynghien.Common", "Maynghien.Common\Maynghien.Common.csproj", "{2D0B6DF6-6AC3-4B73-AF4A-CF93BD43382D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maynghien.Common", "Maynghien.Common\Maynghien.Common.csproj", "{2D0B6DF6-6AC3-4B73-AF4A-CF93BD43382D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

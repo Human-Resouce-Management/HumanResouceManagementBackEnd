@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "wj/ioQUfi2dzt3Y0I/v5DL2+Lpta9iqYfGchV3cSPl8=",
-  "Source": "QuanLyNhanSuBackEnd",
-  "BasePath": "_content/QuanLyNhanSuBackEnd",
+  "Hash": "kM782QHGmeu5wY4whlXVL+FakvEdCBaYM6YV/LFBOdM=",
+  "Source": "QuanLyNhanSuBackEnd.API",
+  "BasePath": "_content/QuanLyNhanSuBackEnd.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
