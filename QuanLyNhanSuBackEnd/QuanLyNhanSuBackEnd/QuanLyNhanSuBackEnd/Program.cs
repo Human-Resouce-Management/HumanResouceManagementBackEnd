@@ -30,7 +30,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-
+    
 builder.Services.AddCors(options =>
 {
     // this defines a CORS policy called "default"
