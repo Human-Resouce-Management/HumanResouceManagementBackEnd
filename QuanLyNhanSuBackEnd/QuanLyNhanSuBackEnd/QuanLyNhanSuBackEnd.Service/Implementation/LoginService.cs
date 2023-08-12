@@ -16,17 +16,16 @@ using static QuanLyNhanSuBackEnd.Service.Implementation.LoginService;
 
 namespace QuanLyNhanSuBackEnd.Service.Implementation
 {
-    public class LoginService
-    {
+   
 
-        public class AuthService : ILoginService
+        public class LoginService: ILoginService
         {
             private IConfiguration _config;
             private readonly UserManager<IdentityUser> _userManager;
             private readonly RoleManager<IdentityRole> _roleManager;
             //private readonly IAccountInfoRepository _accountInfoRepository;
 
-            public AuthService(IConfiguration config, UserManager<IdentityUser> userManager,
+            public LoginService(IConfiguration config, UserManager<IdentityUser> userManager,
                 RoleManager<IdentityRole> roleManager)
             {
                 _config = config;
@@ -153,4 +152,4 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
     }
-}
+
