@@ -29,7 +29,6 @@
     <ProjectReference Include="..\QuanLyNhanSuBackEnd.Common\QuanLyNhanSuBackEnd.Common.csproj" />
     <ProjectReference Include="..\QuanLyNhanSuBackEnd.Model\QuanLyNhanSuBackEnd.Model.csproj" />
     <ProjectReference Include="..\QuanLyNhanSuBackEnd.Service\QuanLyNhanSuBackEnd.Service.csproj" />
-    <ProjectReference Include="..\QuanLyNhanSuBackEnd.TransferCronjob\QuanLyNhanSuBackEnd.TransferCronjob.csproj" />
   </ItemGroup>
 
 </Project>

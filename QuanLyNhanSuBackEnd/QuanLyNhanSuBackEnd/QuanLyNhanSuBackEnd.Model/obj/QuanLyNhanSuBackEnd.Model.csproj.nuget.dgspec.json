@@ -190,6 +190,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
+                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj"
+              },
               "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj": {
                 "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj"
               }

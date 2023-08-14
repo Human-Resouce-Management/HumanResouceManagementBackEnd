@@ -89,12 +89,10 @@ D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Q
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.dll
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Model.dll
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Service.dll
-D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\QuanLyNhanSuBackEnd.TransferCronjob.dll
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\Maynghien.Common.pdb
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Common.pdb
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Model.pdb
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Service.pdb
-D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\QuanLyNhanSuBackEnd.TransferCronjob.pdb
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.pdb
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\obj\Debug\net6.0\QuanLyNhanSuBackEnd.API.csproj.AssemblyReference.cache
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\obj\Debug\net6.0\QuanLyNhanSuBackEnd.API.GeneratedMSBuildEditorConfig.editorconfig

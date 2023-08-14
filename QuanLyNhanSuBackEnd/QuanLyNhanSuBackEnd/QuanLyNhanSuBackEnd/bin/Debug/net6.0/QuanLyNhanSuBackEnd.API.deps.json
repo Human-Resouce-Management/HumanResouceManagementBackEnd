@@ -20,7 +20,6 @@
           "QuanLyNhanSuBackEnd.Common": "1.0.0",
           "QuanLyNhanSuBackEnd.Model": "1.0.0",
           "QuanLyNhanSuBackEnd.Service": "1.0.0",
-          "QuanLyNhanSuBackEnd.TransferCronjob": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {
@@ -1015,6 +1014,7 @@
       },
       "QuanLyNhanSuBackEnd.Model/1.0.0": {
         "dependencies": {
+          "Maynghien.Common": "1.0.0",
           "QuanLyNhanSuBackEnd.DAL": "1.0.0"
         },
         "runtime": {
@@ -1029,11 +1029,6 @@
         },
         "runtime": {
           "QuanLyNhanSuBackEnd.Service.dll": {}
-        }
-      },
-      "QuanLyNhanSuBackEnd.TransferCronjob/1.0.0": {
-        "runtime": {
-          "QuanLyNhanSuBackEnd.TransferCronjob.dll": {}
         }
       }
     }
@@ -1716,11 +1711,6 @@
       "sha512": ""
     },
     "QuanLyNhanSuBackEnd.Service/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "QuanLyNhanSuBackEnd.TransferCronjob/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

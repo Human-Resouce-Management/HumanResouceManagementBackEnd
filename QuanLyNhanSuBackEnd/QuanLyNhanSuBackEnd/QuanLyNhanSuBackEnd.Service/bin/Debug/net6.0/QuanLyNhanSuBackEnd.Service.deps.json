@@ -833,6 +833,7 @@
       },
       "QuanLyNhanSuBackEnd.Model/1.0.0": {
         "dependencies": {
+          "Maynghien.Common": "1.0.0",
           "QuanLyNhanSuBackEnd.DAL": "1.0.0"
         },
         "runtime": {

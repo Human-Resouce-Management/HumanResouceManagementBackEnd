@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MayNghien.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhanSuBackEnd.Model.Dto
 {
-    public class UserModel
+    public class UserModel : BaseDto
     {
         public string? UserName { get; set; }
         public string? Password { get; set; }

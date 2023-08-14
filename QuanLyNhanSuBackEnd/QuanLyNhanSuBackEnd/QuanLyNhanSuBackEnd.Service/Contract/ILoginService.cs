@@ -12,5 +12,6 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
     {
         Task<AppResponse<string>> AuthenticateUser(UserModel user);
         Task<AppResponse<string>> CreateUser(UserModel user);
+
     }
 }

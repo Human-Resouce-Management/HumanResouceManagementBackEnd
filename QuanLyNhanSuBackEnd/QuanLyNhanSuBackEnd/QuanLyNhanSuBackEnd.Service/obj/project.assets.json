@@ -1288,6 +1288,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Maynghien.Common": "1.0.0",
           "QuanLyNhanSuBackEnd.DAL": "1.0.0"
         },
         "compile": {

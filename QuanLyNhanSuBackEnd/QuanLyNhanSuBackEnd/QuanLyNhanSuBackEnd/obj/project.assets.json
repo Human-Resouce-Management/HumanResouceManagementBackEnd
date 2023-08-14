@@ -1634,6 +1634,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Maynghien.Common": "1.0.0",
           "QuanLyNhanSuBackEnd.DAL": "1.0.0"
         },
         "compile": {
@@ -1656,16 +1657,6 @@
         },
         "runtime": {
           "bin/placeholder/QuanLyNhanSuBackEnd.Service.dll": {}
-        }
-      },
-      "QuanLyNhanSuBackEnd.TransferCronjob/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/QuanLyNhanSuBackEnd.TransferCronjob.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/QuanLyNhanSuBackEnd.TransferCronjob.dll": {}
         }
       }
     }
@@ -4178,11 +4169,6 @@
       "type": "project",
       "path": "../QuanLyNhanSuBackEnd.Service/QuanLyNhanSuBackEnd.Service.csproj",
       "msbuildProject": "../QuanLyNhanSuBackEnd.Service/QuanLyNhanSuBackEnd.Service.csproj"
-    },
-    "QuanLyNhanSuBackEnd.TransferCronjob/1.0.0": {
-      "type": "project",
-      "path": "../QuanLyNhanSuBackEnd.TransferCronjob/QuanLyNhanSuBackEnd.TransferCronjob.csproj",
-      "msbuildProject": "../QuanLyNhanSuBackEnd.TransferCronjob/QuanLyNhanSuBackEnd.TransferCronjob.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4199,7 +4185,6 @@
       "QuanLyNhanSuBackEnd.Common >= 1.0.0",
       "QuanLyNhanSuBackEnd.Model >= 1.0.0",
       "QuanLyNhanSuBackEnd.Service >= 1.0.0",
-      "QuanLyNhanSuBackEnd.TransferCronjob >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -4246,9 +4231,6 @@
             },
             "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj": {
               "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj"
-            },
-            "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.TransferCronjob\\QuanLyNhanSuBackEnd.TransferCronjob.csproj": {
-              "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.TransferCronjob\\QuanLyNhanSuBackEnd.TransferCronjob.csproj"
             }
           }
         }
