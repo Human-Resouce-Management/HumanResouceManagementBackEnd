@@ -16,10 +16,14 @@ namespace QuanLyNhanSuBackEnd.API.StartUp
             builder.Services.AddScoped<ILoginService, LoginService>();
             builder.Services.AddScoped<IQuanLyNhanSuService, QuanLyNhanSuService>();
             builder.Services.AddScoped(typeof(IQuanLyNhanSuRespository), typeof(QuanLyNhanSuRespository));
+            builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+            builder.Services.AddScoped(typeof(IUserManagementRespository), typeof(UserManagementRespository));
             #endregion Service Mapping
             #region Repository Mapping
             builder.Services.AddScoped<QuanLyNhanSuService, QuanLyNhanSuService>();
+            builder.Services.AddScoped<UserManagementService, UserManagementService>();
             #endregion Repository Mapping
         }
+
     }
 }

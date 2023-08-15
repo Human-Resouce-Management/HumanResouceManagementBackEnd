@@ -14,11 +14,19 @@ namespace QuanLyNhanSuBackEnd.Service.Mapper
         public MappingProfile()
         {
             CreateMap();
+            CreateMap2();
         }
 
         public void CreateMap()
         {
             CreateMap<TuyenDung,QuanLyNhanSuBackEndDto>().ReverseMap();
+           
+
+        }
+        public void CreateMap2()
+        {
+            
+            CreateMap<NhanVien, UserManagementDto>().ReverseMap();
         }
     }
 }
