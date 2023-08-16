@@ -10,9 +10,7 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
 {
     public interface IUserManagementService
     {
-        AppResponse<List<UserManagementDto>> GetAllNhanVien();
-        AppResponse<UserManagementDto> CreatNhanVien(UserManagementDto request);
-        AppResponse<UserManagementDto> EditNhanVien(UserManagementDto request);
-        AppResponse<string> DeleteNhanVien(Guid Id);
+        AppResponse<List<UserModel>> GetAllUser();
+        Task<AppResponse<string>>ResetPassWordUser(Guid Id);
     }
 }

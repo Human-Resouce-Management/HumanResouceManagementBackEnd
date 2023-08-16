@@ -1,5 +1,7 @@
-﻿using QuanLyNhanSuBackEnd.DAL.Contract;
+﻿using Microsoft.AspNetCore.Identity;
+using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Implementation;
+using QuanLyNhanSuBackEnd.Model.Dto;
 using QuanLyNhanSuBackEnd.Service.Contract;
 using QuanLyNhanSuBackEnd.Service.Implementation;
 using static QuanLyNhanSuBackEnd.Service.Implementation.LoginService;

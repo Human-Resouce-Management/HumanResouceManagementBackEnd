@@ -16,30 +16,15 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var result = _userManagementService.GetAllNhanVien();
+            var result = _userManagementService.GetAllUser();
             return Ok(result);
         }
-        [HttpPost]
-        public IActionResult CreateTuyenDung(UserManagementDto request)
+        [HttpPut]      
+        public IActionResult ChangePassWordUser(Guid Id)
         {
-            var result = _userManagementService.CreatNhanVien(request);
-            return Ok(result);
-        }
-        [HttpPut]
-        [Route("{id}")]
-        public IActionResult EditTuyenDung(UserManagementDto request)
-        {
-            var result = _userManagementService.EditNhanVien(request);
-            return Ok(result);
-        }
-        [HttpDelete]
-        public IActionResult DeleteNhanVien(Guid id)
-        {
-
-            var result = _userManagementService.DeleteNhanVien(id);
+            var result = _userManagementService.ResetPassWordUser(Id);
 
             return Ok(result);
-
         }
     }
 }
