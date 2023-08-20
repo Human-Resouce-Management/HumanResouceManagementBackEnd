@@ -3189,11 +3189,14 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "EFCore.BulkExtensions >= 6.7.12",
       "Maynghien.Common >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.20",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.20",
+      "Microsoft.EntityFrameworkCore.Relational >= 6.0.20",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.20",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.20"
+      "Microsoft.EntityFrameworkCore.Tools >= 6.0.20",
+      "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
@@ -3244,6 +3247,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "EFCore.BulkExtensions": {
+            "target": "Package",
+            "version": "[6.7.12, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[6.0.20, )"
@@ -3251,6 +3258,10 @@
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[6.0.20, )"
+          },
+          "Microsoft.EntityFrameworkCore.Relational": {
             "target": "Package",
             "version": "[6.0.20, )"
           },
@@ -3263,6 +3274,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[6.0.20, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
           }
         },
         "imports": [

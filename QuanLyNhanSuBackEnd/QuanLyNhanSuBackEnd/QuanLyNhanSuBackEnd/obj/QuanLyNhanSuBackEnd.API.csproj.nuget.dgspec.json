@@ -180,6 +180,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "EFCore.BulkExtensions": {
+              "target": "Package",
+              "version": "[6.7.12, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.20, )"
@@ -187,6 +191,10 @@
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.20, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
               "version": "[6.0.20, )"
             },
@@ -199,6 +207,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.20, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
@@ -251,9 +263,6 @@
             "projectReferences": {
               "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
                 "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj"
-              },
-              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj": {
-                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj"
               }
             }
           }
@@ -318,6 +327,12 @@
               "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
                 "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj"
               },
+              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj": {
+                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj"
+              },
+              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj": {
+                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj"
+              },
               "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj": {
                 "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj"
               }
@@ -337,6 +352,14 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[12.0.1, )"
+            },
+            "Intercom.Dotnet.Client": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "LinqKit": {
+              "target": "Package",
+              "version": "[1.2.4, )"
             }
           },
           "imports": [
@@ -390,8 +413,8 @@
               "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
                 "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj"
               },
-              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj": {
-                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj"
+              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj": {
+                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj"
               },
               "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj": {
                 "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj"
@@ -447,6 +470,10 @@
             "Microsoft.Identity.Web": {
               "target": "Package",
               "version": "[1.16.0, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.17.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

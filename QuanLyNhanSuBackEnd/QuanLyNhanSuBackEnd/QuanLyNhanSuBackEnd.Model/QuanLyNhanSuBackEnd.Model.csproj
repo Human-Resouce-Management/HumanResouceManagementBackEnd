@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Maynghien.Common\Maynghien.Common.csproj" />
-    <ProjectReference Include="..\QuanLyNhanSuBackEnd.DAL\QuanLyNhanSuBackEnd.DAL.csproj" />
   </ItemGroup>
 
 </Project>

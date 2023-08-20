@@ -1,14 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "OZ27e0nnhDtn4Ja7XGfZHuXk2CKfFe8ZAoB5XqXwdCPyqsLTDt4S+WL+panb9VY5jszAKlLZGLwYFAjCZRJSuw==",
+  "dgSpecHash": "yQJmMDUlgZnh21c6j/7uuG0V/I8XtwiGJrrsLVm7MeJPwKay2B+5O1wy5t2BimzmUmF7vl0LJfoUoBYjy2qlsA==",
   "success": true,
   "projectFilePath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\84856\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\dotmorten.microsoft.sqlserver.types\\1.4.0\\dotmorten.microsoft.sqlserver.types.1.4.0.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\efcore.bulkextensions\\6.7.12\\efcore.bulkextensions.6.7.12.nupkg.sha512",
+    "C:\\Users\\84856\\.nuget\\packages\\entityframework\\6.3.0\\entityframework.6.3.0.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\entityframeworkcore.sqlserver.hierarchyid\\3.0.1\\entityframeworkcore.sqlserver.hierarchyid.3.0.1.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\entityframeworkcore.sqlserver.hierarchyid.abstractions\\3.0.1\\entityframeworkcore.sqlserver.hierarchyid.abstractions.3.0.1.nupkg.sha512",
+    "C:\\Users\\84856\\.nuget\\packages\\intercom.dotnet.client\\2.1.1\\intercom.dotnet.client.2.1.1.nupkg.sha512",
+    "C:\\Users\\84856\\.nuget\\packages\\linqkit\\1.2.4\\linqkit.1.2.4.nupkg.sha512",
+    "C:\\Users\\84856\\.nuget\\packages\\linqkit.core\\1.2.4\\linqkit.core.1.2.4.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.19\\microsoft.aspnetcore.cryptography.internal.6.0.19.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.19\\microsoft.aspnetcore.cryptography.keyderivation.6.0.19.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.19\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.19.nupkg.sha512",
@@ -52,13 +56,16 @@
     "C:\\Users\\84856\\.nuget\\packages\\npgsql\\6.0.8\\npgsql.6.0.8.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\6.0.8\\npgsql.entityframeworkcore.postgresql.6.0.8.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.2\\pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
+    "C:\\Users\\84856\\.nuget\\packages\\restsharp\\106.5.4\\restsharp.106.5.4.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\sqlitepclraw.core\\2.1.2\\sqlitepclraw.core.2.1.2.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\84856\\.nuget\\packages\\system.codedom\\4.6.0\\system.codedom.4.6.0.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
+    "C:\\Users\\84856\\.nuget\\packages\\system.componentmodel.annotations\\4.6.0\\system.componentmodel.annotations.4.6.0.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
@@ -77,5 +84,16 @@
     "C:\\Users\\84856\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
     "C:\\Users\\84856\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Intercom.Dotnet.Client 2.1.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Intercom.Dotnet.Client",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

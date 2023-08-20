@@ -8,10 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="Intercom.Dotnet.Client" Version="2.1.1" />
+    <PackageReference Include="LinqKit" Version="1.2.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Maynghien.Common\Maynghien.Common.csproj" />
+    <ProjectReference Include="..\QuanLyNhanSuBackEnd.Common\QuanLyNhanSuBackEnd.Common.csproj" />
+    <ProjectReference Include="..\QuanLyNhanSuBackEnd.DAL\QuanLyNhanSuBackEnd.DAL.csproj" />
     <ProjectReference Include="..\QuanLyNhanSuBackEnd.Model\QuanLyNhanSuBackEnd.Model.csproj" />
   </ItemGroup>
 

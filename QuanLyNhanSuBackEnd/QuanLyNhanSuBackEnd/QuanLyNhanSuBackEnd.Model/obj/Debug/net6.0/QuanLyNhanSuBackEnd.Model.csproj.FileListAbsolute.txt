@@ -2,8 +2,6 @@ D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Q
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Model\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Model.dll
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Model\bin\Debug\net6.0\QuanLyNhanSuBackEnd.Model.pdb
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Model\bin\Debug\net6.0\Maynghien.Common.dll
-D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Model\bin\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.dll
-D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Model\bin\Debug\net6.0\QuanLyNhanSuBackEnd.DAL.pdb
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Model\bin\Debug\net6.0\Maynghien.Common.pdb
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Model\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Model.csproj.AssemblyReference.cache
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd.Model\obj\Debug\net6.0\QuanLyNhanSuBackEnd.Model.GeneratedMSBuildEditorConfig.editorconfig

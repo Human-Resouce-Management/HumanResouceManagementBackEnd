@@ -8,11 +8,14 @@
     ".NETCoreApp,Version=v6.0": {
       "QuanLyNhanSuBackEnd.DAL/1.0.0": {
         "dependencies": {
+          "EFCore.BulkExtensions": "6.7.12",
           "Maynghien.Common": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.20",
           "Microsoft.EntityFrameworkCore.Design": "6.0.20",
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.20",
-          "Microsoft.EntityFrameworkCore.Tools": "6.0.20"
+          "Microsoft.EntityFrameworkCore.Tools": "6.0.20",
+          "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "QuanLyNhanSuBackEnd.DAL.dll": {}
