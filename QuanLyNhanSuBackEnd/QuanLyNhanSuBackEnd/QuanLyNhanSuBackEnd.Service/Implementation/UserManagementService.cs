@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LinqKit;
+using MayNghien.Common.Helpers;
 using MayNghien.Models.Request.Base;
 using MayNghien.Models.Response.Base;
 using Microsoft.AspNetCore.Identity;
@@ -56,7 +57,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                              Email = user.Email,
                              LockoutEnabled = user.LockoutEnabled,
                          }).ToList();
-            result.IsSuccess = true;
+            
+                result.IsSuccess = true;
             result.Data = query;
             return result;
             }catch (Exception ex)
@@ -68,16 +70,16 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
            
            
         }
-        public async Task<AppResponse<string>>ResetPassWordUser(string Id)
+        public async Task<AppResponse<string>>ResetPassWordUser(Guid Id)
         {
             var result = new AppResponse<string>();
             try
             {
-                var user = _context.Users.FirstOrDefault(m=> m.Id == Id.ToString());
+                var user = _userRepository.FindUser(Id.ToString());
                 await _userManager.RemovePasswordAsync(user);
-                await _userManager.AddPasswordAsync(user, "Baodepzaiddd");
+                await _userManager.AddPasswordAsync(user, "sairoi");
                 result.IsSuccess = true;
-                result.Data = "Baodepzaiddd";
+                result.Data = "sairoi";
                 return result;
             }
             catch(Exception ex) 
@@ -156,9 +158,16 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             try
             {
                 var identityUser = await _userManager.FindByIdAsync(model.Id);
+               
                 if (identityUser != null)
                 {
-                    //identityUser.PhoneNumber=model.
+                    
+                    model.Id = identityUser.Id;
+                    model.UserName= identityUser.UserName ;
+                    model.Email= identityUser.Email ;
+                    model.LockoutEnabled  =  identityUser.LockoutEnabled ;
+                  
+                    
                 }
                 return result.BuildResult("ok");
             }
@@ -223,9 +232,45 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
-        public Task<AppResponse<SearchUserResponse>> Search(SearchRequest request)
+        public async Task<AppResponse<SearchUserResponse>> Search(SearchRequest request)
         {
-            throw new NotImplementedException();
+            var result = new AppResponse<SearchUserResponse>();
+            try
+            {
+                var query = BuildFilterExpression(request.Filters);
+                var numOfRecords = _userRepository.CountRecordsByPredicate(query);
+
+                var users = _userRepository.FindByPredicate(query);
+                int pageIndex = request.PageSize ?? 1;
+                int pageSize = request.PageSize ?? 1;
+                int startIndex = (pageIndex - 1) * (int)pageSize;
+                var UserList = users.Skip(startIndex).Take(pageSize).ToList();
+                var dtoList = _mapper.Map<List<UserModel>>(UserList);
+                if (dtoList != null && dtoList.Count > 0)
+                {
+                    for (int i = 0; i < UserList.Count; i++)
+                    {
+                        var dtouser = dtoList[i];
+                        var identityUser = UserList[i];
+                        dtouser.Role = (await _userManager.GetRolesAsync(identityUser)).First();
+                    }
+                }
+                var searchUserResult = new SearchUserResponse
+                {
+                    TotalRows = numOfRecords,
+                    TotalPages = SearchHelper.CalculateNumOfPages(numOfRecords, pageSize),
+                    CurrentPage = pageIndex,
+                    Data = dtoList,
+                };
+
+                return result.BuildResult(searchUserResult);
+
+            }
+            catch (Exception ex)
+            {
+
+                return result.BuildError(ex.ToString());
+            }
         }
     }
 }

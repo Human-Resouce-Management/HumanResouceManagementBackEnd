@@ -33,5 +33,10 @@ namespace QuanLyNhanSuBackEnd.DAL.Implementation
         {
             return _context.Users.Where(predicate).AsQueryable();
         }
+
+        public IdentityUser FindUser(string? Id)
+        {
+            return _context.Users.FirstOrDefault(m => m.Id == Id);
+        }
     }
 }

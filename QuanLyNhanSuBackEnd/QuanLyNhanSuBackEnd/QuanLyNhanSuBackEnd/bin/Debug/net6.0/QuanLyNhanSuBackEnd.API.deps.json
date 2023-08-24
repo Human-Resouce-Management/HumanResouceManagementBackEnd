@@ -18,7 +18,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "6.0.20",
           "Microsoft.Identity.Web": "1.16.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.0",
-          "QuanLyNhanSuBackEnd.DAL": "1.0.0",
+          "QuanLyNhanSuBackEnd.Common": "1.0.0",
           "QuanLyNhanSuBackEnd.Model": "1.0.0",
           "QuanLyNhanSuBackEnd.Service": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"

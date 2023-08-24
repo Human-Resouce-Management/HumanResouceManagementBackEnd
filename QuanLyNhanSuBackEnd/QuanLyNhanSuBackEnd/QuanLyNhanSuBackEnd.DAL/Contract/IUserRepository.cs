@@ -10,8 +10,10 @@ namespace QuanLyNhanSuBackEnd.DAL.Contract
 {
     public interface IUserRepository
     {
-        int CountRecordsByPredicate(Expression<Func<IdentityUser, bool>> predicate);
-        IQueryable<IdentityUser> FindByPredicate(Expression<Func<IdentityUser, bool>> predicate);
-        IdentityUser? FindById(string id);
+       public int CountRecordsByPredicate(Expression<Func<IdentityUser, bool>> predicate);
+       public IQueryable<IdentityUser> FindByPredicate(Expression<Func<IdentityUser, bool>> predicate);
+       public IdentityUser? FindById(string id);
+        public IdentityUser? FindUser(string Id);
+        
     }
 }

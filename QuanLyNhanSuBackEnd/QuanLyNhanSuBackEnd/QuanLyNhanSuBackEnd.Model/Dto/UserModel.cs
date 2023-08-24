@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhanSuBackEnd.Model.Dto
 {
-    public class UserModel : BaseDto
+    public class UserModel 
     {
-        public string? Id { get; set; }
+        public string Id { get; set; }
         public string? UserName { get; set; }
         public string? Password { get; set; }
         public string? Email { get; set; }

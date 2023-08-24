@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Maynghien.Common\Maynghien.Common.csproj" />
-    <ProjectReference Include="..\QuanLyNhanSuBackEnd.DAL\QuanLyNhanSuBackEnd.DAL.csproj" />
+    <ProjectReference Include="..\QuanLyNhanSuBackEnd.Common\QuanLyNhanSuBackEnd.Common.csproj" />
     <ProjectReference Include="..\QuanLyNhanSuBackEnd.Model\QuanLyNhanSuBackEnd.Model.csproj" />
     <ProjectReference Include="..\QuanLyNhanSuBackEnd.Service\QuanLyNhanSuBackEnd.Service.csproj" />
   </ItemGroup>

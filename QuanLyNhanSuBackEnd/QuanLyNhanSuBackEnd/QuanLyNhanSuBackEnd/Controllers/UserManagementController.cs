@@ -13,7 +13,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 
     public class UserManagementController:Controller
     {
-        private readonly IUserManagementService _userManagementService;
+        IUserManagementService _userManagementService;
         public UserManagementController(IUserManagementService userManagementService)
         {
             _userManagementService = userManagementService;
@@ -26,7 +26,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         }
         [HttpPut]
         [Route("{Id}")]
-        public async Task< IActionResult> RestPassWordUser(string Id)
+        public async Task< IActionResult> RestPassWordUser(Guid Id)
         {
             var result = await _userManagementService.ResetPassWordUser(Id);
 
@@ -61,14 +61,14 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 
             return Ok(result);
         }
-        [HttpPut]
-        [Route("{id}")]
-        public async Task<IActionResult> EditUser([FromBody] UserModel request)
-        {
-            var result = await _userManagementService.EditUser(request);
+        //[HttpPut]
+        //[Route("{id}")]
+        //public async Task<IActionResult> EditUser([FromBody] UserModel request)
+        //{
+        //    var result = await _userManagementService.EditUser(request);
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
 
     }
 }

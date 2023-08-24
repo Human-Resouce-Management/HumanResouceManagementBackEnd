@@ -12,12 +12,12 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
 {
     public interface IUserManagementService
     {
-        AppResponse<List<UserModel>> GetAllUser();
-        Task<AppResponse<string>>ResetPassWordUser(string Id);
-        Task<AppResponse<string>> CreateUser(UserModel model);
-        Task<AppResponse<string>> DeleteUser(string id);
-        Task<AppResponse<string>> EditUser(UserModel model);
-        Task<AppResponse<SearchUserResponse>> Search(SearchRequest request);
-        Task<AppResponse<UserModel>> GetUser(string id);
+     public   AppResponse<List<UserModel>> GetAllUser();
+      public  Task<AppResponse<string>>ResetPassWordUser(Guid Id);
+        public Task<AppResponse<string>> CreateUser(UserModel model);
+        public Task<AppResponse<string>> DeleteUser(string id);
+        public Task<AppResponse<string>> EditUser(UserModel model);
+        public Task<AppResponse<SearchUserResponse>> Search(SearchRequest request);
+        public Task<AppResponse<UserModel>> GetUser(string id);
     }
 }
