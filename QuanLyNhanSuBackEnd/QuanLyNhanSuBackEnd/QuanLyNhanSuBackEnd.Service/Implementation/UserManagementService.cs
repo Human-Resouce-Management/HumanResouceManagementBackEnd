@@ -70,7 +70,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
            
            
         }
-        public async Task<AppResponse<string>>ResetPassWordUser(Guid Id)
+        public async Task<AppResponse<string>>ResetPassWordUser(string Id)
         {
             var result = new AppResponse<string>();
             try

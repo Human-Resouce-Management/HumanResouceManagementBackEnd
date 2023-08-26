@@ -13,7 +13,7 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
     public interface IUserManagementService
     {
      public   AppResponse<List<UserModel>> GetAllUser();
-      public  Task<AppResponse<string>>ResetPassWordUser(Guid Id);
+      public  Task<AppResponse<string>>ResetPassWordUser(string Id);
         public Task<AppResponse<string>> CreateUser(UserModel model);
         public Task<AppResponse<string>> DeleteUser(string id);
         public Task<AppResponse<string>> EditUser(UserModel model);

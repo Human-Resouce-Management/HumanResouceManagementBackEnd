@@ -9,7 +9,6 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "Bearer")]
     public class AccountController : Controller
     {
        ILoginService _iloginService;
@@ -19,7 +18,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             _iloginService = iloginService;
         }
 
-        [AllowAnonymous]
+        
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserModel login)
         {
@@ -27,7 +26,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 
             return Ok(result);
         }
-        [AllowAnonymous]
+      
         [HttpPost("register")]
         public async Task<IActionResult> Regisger(UserModel login)
         {

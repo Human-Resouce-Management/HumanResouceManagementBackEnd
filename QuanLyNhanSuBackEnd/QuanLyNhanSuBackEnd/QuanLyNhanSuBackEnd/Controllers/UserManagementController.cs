@@ -26,7 +26,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         }
         [HttpPut]
         [Route("{Id}")]
-        public async Task< IActionResult> RestPassWordUser(Guid Id)
+        public async Task< IActionResult> RestPassWordUser(string Id)
         {
             var result = await _userManagementService.ResetPassWordUser(Id);
 
