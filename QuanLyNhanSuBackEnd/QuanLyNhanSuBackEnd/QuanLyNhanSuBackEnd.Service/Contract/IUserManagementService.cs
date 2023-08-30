@@ -1,5 +1,6 @@
 ﻿using MayNghien.Models.Request.Base;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Identity;
 using QuanLyNhanSuBackEnd.Model.Dto;
 using QuanLyNhanSuBackEnd.Model.Response.User;
 using System;
@@ -12,12 +13,13 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
 {
     public interface IUserManagementService
     {
-     public   AppResponse<List<UserModel>> GetAllUser();
-      public  Task<AppResponse<string>>ResetPassWordUser(string Id);
+        public AppResponse<List<IdentityUser>> GetAllUser();
+       public  Task<AppResponse<string>>ResetPassWordUser(string Id);
         public Task<AppResponse<string>> CreateUser(UserModel model);
         public Task<AppResponse<string>> DeleteUser(string id);
         public Task<AppResponse<string>> EditUser(UserModel model);
         public Task<AppResponse<SearchUserResponse>> Search(SearchRequest request);
         public Task<AppResponse<UserModel>> GetUser(string id);
+       
     }
 }

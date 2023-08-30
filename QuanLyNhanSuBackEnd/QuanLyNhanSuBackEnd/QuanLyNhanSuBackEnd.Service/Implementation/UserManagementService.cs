@@ -39,36 +39,50 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             _userRepository = userRepository;
         }
 
-        public AppResponse<List<UserModel>> GetAllUser()
+        public AppResponse<List<IdentityUser>> GetAllUser()
         {
-            var result = new AppResponse<List<UserModel>>();
+            //var result = new AppResponse<List<UserModel>>();
+            //try
+            //{
+
+            //var query = (from user in _context.Users
+            //             join userRole in _context.UserRoles on user.Id equals userRole.UserId
+            //             join role in _context.Roles on userRole.RoleId equals role.Id
+            //             select new UserModel
+            //             {
+            //                 //Id = user.Id,
+            //                 UserName = user.UserName,
+            //                 Password = user.PasswordHash,
+            //                 Role = role.Name,
+            //                 Email = user.Email,
+            //                 //LockoutEnabled = user.LockoutEnabled,
+            //             }).ToList();
+
+            //    result.IsSuccess = true;
+            //result.Data = query;
+            //return result;
+            //}catch (Exception ex)
+            //{
+            //    result.IsSuccess = false;
+            //    result.Message = ex.Message + " " + ex.StackTrace;
+            //    return result;
+            //}
+
+            var result = new AppResponse<List<IdentityUser>>();
             try
             {
- 
-            var query = (from user in _context.Users
-                         join userRole in _context.UserRoles on user.Id equals userRole.UserId
-                         join role in _context.Roles on userRole.RoleId equals role.Id
-                         select new UserModel
-                         {
-                             //Id = user.Id,
-                             UserName = user.UserName,
-                             Password = user.PasswordHash,
-                             Role = role.Name,
-                             Email = user.Email,
-                             //LockoutEnabled = user.LockoutEnabled,
-                         }).ToList();
-            
+                var list = _userRepository.GetAll();
+
                 result.IsSuccess = true;
-            result.Data = query;
-            return result;
-            }catch (Exception ex)
+                result.Data = list;
+                return result;
+            }
+            catch (Exception ex)
             {
                 result.IsSuccess = false;
                 result.Message = ex.Message + " " + ex.StackTrace;
                 return result;
             }
-           
-           
         }
         public async Task<AppResponse<string>>ResetPassWordUser(string Id)
         {

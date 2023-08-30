@@ -14,6 +14,6 @@ namespace QuanLyNhanSuBackEnd.DAL.Contract
        public IQueryable<IdentityUser> FindByPredicate(Expression<Func<IdentityUser, bool>> predicate);
        public IdentityUser? FindById(string id);
         public IdentityUser? FindUser(string Id);
-        
+        public List<IdentityUser> GetAll();
     }
 }

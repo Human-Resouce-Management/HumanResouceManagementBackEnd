@@ -18,6 +18,10 @@ namespace QuanLyNhanSuBackEnd.DAL.Implementation
         {
             _context = context;
         }
+        public List<IdentityUser> GetAll()
+        {
+            return _context.Users.ToList();
+        }
 
         public int CountRecordsByPredicate(Expression<Func<IdentityUser, bool>> predicate)
         {
