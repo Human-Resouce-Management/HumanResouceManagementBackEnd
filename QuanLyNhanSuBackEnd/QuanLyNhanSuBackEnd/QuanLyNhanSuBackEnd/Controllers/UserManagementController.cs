@@ -18,7 +18,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         {
             _userManagementService = userManagementService;
         }
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
             var result = _userManagementService.GetAllUser();

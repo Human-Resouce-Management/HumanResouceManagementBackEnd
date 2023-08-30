@@ -50,12 +50,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                          join role in _context.Roles on userRole.RoleId equals role.Id
                          select new UserModel
                          {
-                             Id = user.Id,
+                             //Id = user.Id,
                              UserName = user.UserName,
                              Password = user.PasswordHash,
                              Role = role.Name,
                              Email = user.Email,
-                             LockoutEnabled = user.LockoutEnabled,
+                             //LockoutEnabled = user.LockoutEnabled,
                          }).ToList();
             
                 result.IsSuccess = true;
@@ -151,21 +151,21 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
         public async Task<AppResponse<string>> EditUser(UserModel model)
         {
             var result = new AppResponse<string>();
-            if (model.Id == null)
+            if (model.Email == null)
             {
                 return result.BuildError(ERR_MSG_EmailIsNullOrEmpty);
             }
             try
             {
-                var identityUser = await _userManager.FindByIdAsync(model.Id);
+                var identityUser = await _userManager.FindByIdAsync(model.Email);
                
                 if (identityUser != null)
                 {
                     
-                    model.Id = identityUser.Id;
+                    //model.Id = identityUser.Id;
                     model.UserName= identityUser.UserName ;
                     model.Email= identityUser.Email ;
-                    model.LockoutEnabled  =  identityUser.LockoutEnabled ;
+                    //model.LockoutEnabled  =  identityUser.LockoutEnabled ;
                   
                     
                 }
