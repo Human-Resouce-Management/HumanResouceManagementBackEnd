@@ -192,7 +192,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
-        public async Task<AppResponse<UserModel>> GetUser(string id)
+        public async Task<AppResponse<UserModel>> GetUser(string Id)
         {
             var result = new AppResponse<UserModel>();
             try
@@ -200,7 +200,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 List<Filter> Filters = new List<Filter>();
                 var query = BuildFilterExpression(Filters);
 
-                var identityUser = _userRepository.FindById(id);
+                //var identityUser = _userRepository.FindById(id);
+                var identityUser = _userRepository.FindById(Id);
 
                 if (identityUser == null)
                 {

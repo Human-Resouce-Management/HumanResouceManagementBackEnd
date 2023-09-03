@@ -46,7 +46,8 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 
             return Ok(result);
         }
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("{id}")]
         public async Task<IActionResult> GetUser(string id)
         {
             var result = await _userManagementService.GetUser(id);

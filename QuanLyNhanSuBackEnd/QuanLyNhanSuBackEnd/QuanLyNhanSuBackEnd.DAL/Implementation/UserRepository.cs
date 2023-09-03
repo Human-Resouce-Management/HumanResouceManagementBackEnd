@@ -42,5 +42,12 @@ namespace QuanLyNhanSuBackEnd.DAL.Implementation
         {
             return _context.Users.FirstOrDefault(m => m.Id == Id);
         }
+        public IdentityUser? FindByEmail(string? email)
+        {
+            
+            IdentityUser user = _context.Users.Where(n => n.Email == email).FirstOrDefault();
+
+            return user;
+        }
     }
 }

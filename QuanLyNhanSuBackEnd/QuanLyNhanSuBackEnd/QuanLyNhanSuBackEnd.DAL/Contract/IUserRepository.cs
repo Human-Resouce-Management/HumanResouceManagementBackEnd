@@ -15,5 +15,6 @@ namespace QuanLyNhanSuBackEnd.DAL.Contract
        public IdentityUser? FindById(string id);
         public IdentityUser? FindUser(string Id);
         public List<IdentityUser> GetAll();
+        public IdentityUser? FindByEmail(string? email);
     }
 }
