@@ -26,7 +26,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         }
         [HttpPut]
         [Route("{Id}")]
-        public async Task< IActionResult> RestPassWordUser(string Id)
+        public async Task<IActionResult> RestPassWordUser(string Id)
         {
             var result = await _userManagementService.ResetPassWordUser(Id);
 
@@ -46,14 +46,14 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 
             return Ok(result);
         }
-        [HttpGet]
-        [Route("{id}")]
-        public async Task<IActionResult> GetUser(string id)
-        {
-            var result = await _userManagementService.GetUser(id);
+        //[HttpGet]
+        //[Route("{id}")]
+        //public async Task<IActionResult> GetUser(string id)
+        //{
+        //    var result = await _userManagementService.GetUser(id);
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
         [HttpPost]
         [Route("search")]
         public async Task<IActionResult> SearchUser([FromBody] SearchRequest request)
@@ -70,6 +70,20 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 
         //    return Ok(result);
         //}
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetUserIdentity(string id)
+        {
+            var result = await _userManagementService.GetUserIdentity(id);
 
+            return Ok(result);
+        }
+        //[HttpPut]
+        //[Route("{id}")]
+        //public async Task<IActionResult> Xacthucs(string? id)
+        //{
+        //    var resut = await _userManagementService.XacThuc(id);
+        //    return Ok(resut);
+        //}
     }
 }

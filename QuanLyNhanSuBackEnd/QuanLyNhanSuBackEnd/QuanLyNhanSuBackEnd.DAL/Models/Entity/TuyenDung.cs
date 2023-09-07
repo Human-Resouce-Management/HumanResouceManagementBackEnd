@@ -5,18 +5,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using BudgetManBackEnd.DAL.Models.Entity;
 
 namespace QuanLyNhanSuBackEnd.DAL.Models.Entity
 {
-    public class TuyenDung :BaseEntity
+    public class TuyenDung :BaseAccountEntity
     {
-        public string? Ten;
+        public string? Ten { get; set; } 
 
-        public string? LienHe;
+        public string? LienHe { get; set; }
 
-        public string? ViTriUngTuyen;
+        public string? ViTriUngTuyen { get; set; }
 
-        public bool? KetQua;
+        public bool? KetQua { get; set; }
 
     }
 }

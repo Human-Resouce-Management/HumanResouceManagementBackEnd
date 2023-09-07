@@ -632,10 +632,22 @@ namespace QuanLyNhanSuBackEnd.DAL.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<bool?>("KetQua")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LienHe")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Modifiedby")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ten")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ViTriUngTuyen")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using Intercom.Data;
 using LinqKit;
 using MayNghien.Common.Helpers;
 using MayNghien.Models.Request.Base;
 using MayNghien.Models.Response.Base;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Storage;
 using QuanLyNhanSuBackEnd.Common.Enum;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Models.Context;
@@ -91,9 +93,9 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             {
                 var user = _userRepository.FindUser(Id.ToString());
                 await _userManager.RemovePasswordAsync(user);
-                await _userManager.AddPasswordAsync(user, "sairoi");
+                await _userManager.AddPasswordAsync(user, "dungroi");
                 result.IsSuccess = true;
-                result.Data = "sairoi";
+                result.Data = "dungroi";
                 return result;
             }
             catch(Exception ex) 
@@ -217,6 +219,62 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             {
 
                 return result.BuildError(ex.ToString());
+            }
+        }
+
+
+        // Get identityuser
+        public async Task<AppResponse<IdentityUser>> GetUserIdentity(string Id)
+        {
+            var result = new AppResponse<IdentityUser>();
+            try
+            {
+                List<Filter> Filters = new List<Filter>();
+                var query = BuildFilterExpression(Filters);
+
+                //var identityUser = _userRepository.FindById(id);
+                var identityUser = _userRepository.FindById(Id);
+
+                if (identityUser == null)
+                {
+                    return result.BuildError("User not found");
+                }
+                var dtouser = _mapper.Map<IdentityUser>(identityUser);
+
+
+                return result.BuildResult(dtouser);
+            }
+            catch (Exception ex)
+            {
+
+                return result.BuildError(ex.ToString());
+            }
+        }
+
+        public async Task<AppResponse<IdentityUser>> XacThuc(string? Id)
+        {
+            var result = new AppResponse<IdentityUser>();
+            IdentityUser user = _userRepository.FindById(Id);
+            try
+            {
+               
+                if (user == null)
+                {
+                    return result.BuildError("Người dùng không tìm thấy");
+                }
+                user.EmailConfirmed = true;
+                return result.BuildResult(user);
+            }
+            catch (Exception ex)
+            {
+                if (user == null)
+                {
+                    return result.BuildError("Người dùng không tìm thấy");
+                }
+                else
+                {
+                    return result.BuildError(ex.ToString());
+                }
             }
         }
 

@@ -6,6 +6,7 @@ using QuanLyNhanSuBackEnd.Model.Dto;
 using QuanLyNhanSuBackEnd.Service.Contract;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -138,10 +139,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     }
                     var newIdentityUser = new IdentityUser { Email = user.Email, UserName = user.Email };
                     var createResult = await _userManager.CreateAsync(newIdentityUser);
-                    await _userManager.AddPasswordAsync(newIdentityUser, user.Password);
+                    await _userManager.AddPasswordAsync(newIdentityUser, user.Password);             
+                newIdentityUser = await _userManager.FindByEmailAsync(user.Email);
 
-                    newIdentityUser = await _userManager.FindByEmailAsync(user.Email);
-
+                IdentityRole role = new IdentityRole { Name = user.Role };
+                await _roleManager.CreateAsync(role);
+                await _userManager.AddToRoleAsync(newIdentityUser, user.Role);
                     return result.BuildResult(INFO_MSG_UserCreated);
                 }
                 catch (Exception ex)

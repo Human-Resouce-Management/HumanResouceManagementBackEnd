@@ -20,6 +20,7 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
         public Task<AppResponse<string>> EditUser(UserModel model);
         public Task<AppResponse<SearchUserResponse>> Search(SearchRequest request);
         public Task<AppResponse<UserModel>> GetUser(string email);
-       
+        public Task<AppResponse<IdentityUser>> GetUserIdentity(string Id);
+        public  Task<AppResponse<IdentityUser>> XacThuc(string? Id);
     }
 }
