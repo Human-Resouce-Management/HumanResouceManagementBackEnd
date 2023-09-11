@@ -10,9 +10,9 @@ namespace QuanLyNhanSuBackEnd.DAL.Models.Entity
 {
     public class PhuCap :BaseEntity
     {
-        public bool? ThuongCoDinh;
+        public bool? ThuongCoDinh { get; set; }
 
-        public double? SoTien;
+        public double? SoTien { get; set; }
         [ForeignKey("NhanVien")]
         public Guid NhanVienId { get; set; }
         [ForeignKey("NhanVienId")]

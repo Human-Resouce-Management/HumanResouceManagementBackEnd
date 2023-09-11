@@ -29,7 +29,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             try
             {
                 var tuyendung = new TuyenDung();
-                tuyendung = _mapper.Map<TuyenDung>(tuyendung);
+                tuyendung = _mapper.Map<TuyenDung>(request);
                 tuyendung.Id = Guid.NewGuid();
                 _QuanLyNhanSuBackEndRepository.Add(tuyendung);
 
@@ -72,36 +72,24 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
         
 
-        public AppResponse<QuanLyNhanSuBackEndDto> EditTuyenDung(QuanLyNhanSuBackEndDto? request)
+        public AppResponse<QuanLyNhanSuBackEndDto> EditTuyenDung(QuanLyNhanSuBackEndDto tuyendung)
         {
             var result = new AppResponse<QuanLyNhanSuBackEndDto>();
             try
             {
-                var tuyendung = new TuyenDung();
-                if (request.Id == null)
-                {
-                    result.IsSuccess = false;
-                    result.Message = "Id cannot be null";
-                    return result;
-                }
-                tuyendung = _QuanLyNhanSuBackEndRepository.Get(request.Id.Value);
-                tuyendung.Ten = request.Ten;
-                tuyendung.LienHe = request.LienHe;
-                tuyendung.ViTriUngTuyen = request.ViTriUngTuyen;
-                tuyendung.KetQua = request.KetQua;
-                //budgetcat.Id = Guid.NewGuid();
-                _QuanLyNhanSuBackEndRepository.Edit(tuyendung);
+                var request = new TuyenDung();
+                request = _mapper.Map<TuyenDung>(tuyendung);
+                _QuanLyNhanSuBackEndRepository.Edit(request);
 
                 result.IsSuccess = true;
-                result.Data = request;
+                result.Data = tuyendung;
                 return result;
             }
             catch (Exception ex)
             {
                 result.IsSuccess = false;
-                result.Message = ex.Message + ":" + ex.StackTrace;
+                result.Message = ex.Message + " " + ex.StackTrace;
                 return result;
-
             }
         }
 
@@ -114,6 +102,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var query = _QuanLyNhanSuBackEndRepository.GetAll();
                 var list = query.Select(m => new QuanLyNhanSuBackEndDto
                 {
+                    Id =  m.Id,
                     Ten = m.Ten,
                     LienHe = m.LienHe,
                     ViTriUngTuyen = m.ViTriUngTuyen,

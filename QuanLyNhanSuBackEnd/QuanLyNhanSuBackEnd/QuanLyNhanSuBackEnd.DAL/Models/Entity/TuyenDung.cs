@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
-using BudgetManBackEnd.DAL.Models.Entity;
 
 namespace QuanLyNhanSuBackEnd.DAL.Models.Entity
 {
-    public class TuyenDung :BaseAccountEntity
+    public class TuyenDung :BaseEntity
     {
         public string? Ten { get; set; } 
 

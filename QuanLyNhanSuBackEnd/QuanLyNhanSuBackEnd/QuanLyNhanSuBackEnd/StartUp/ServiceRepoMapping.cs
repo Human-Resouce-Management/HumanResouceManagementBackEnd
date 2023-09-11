@@ -20,11 +20,47 @@ namespace QuanLyNhanSuBackEnd.API.StartUp
             builder.Services.AddScoped(typeof(IQuanLyNhanSuRespository), typeof(QuanLyNhanSuRespository));
             builder.Services.AddScoped<IUserManagementService, UserManagementService>();
             builder.Services.AddScoped<IUserRepository,UserRepository>();
+            builder.Services.AddScoped<ITangCaService, TangCaService>();
+            builder.Services.AddScoped(typeof(ITangCaRespository), typeof(TangCaRespository));
 
+            builder.Services.AddScoped<IChucVuService, ChucVuService>();
+            builder.Services.AddScoped(typeof(IChucVuRespository), typeof(ChucVuRespository));
+
+            builder.Services.AddScoped<IBoPhanService, BoPhanService>();
+            builder.Services.AddScoped(typeof(IBoPhanRespository), typeof(BoPhanRespository));
+
+            builder.Services.AddScoped<INhanVienService, NhanVienService>();
+            builder.Services.AddScoped(typeof(INhanVienRespository), typeof(NhanVienRespository));
+
+            builder.Services.AddScoped<IThoiViecService, ThoiViecService>();
+            builder.Services.AddScoped(typeof(IThoiViecRespository), typeof(ThoiViecRespository));
+
+            builder.Services.AddScoped<INghiPhepService, NghiPhepService>();
+            builder.Services.AddScoped(typeof(INghiPhepRespository), typeof(NghiPhepRespository));
+
+            builder.Services.AddScoped<INhanVienTangCaService, NhanVienTangCaService>();
+            builder.Services.AddScoped(typeof(INhanVienTangCaRespository), typeof(NhanVienTangCaRespository));
+
+            builder.Services.AddScoped<ITangLuongService, TangLuongService>();
+            builder.Services.AddScoped(typeof(ITangLuongRespository), typeof(TangLuongRespository));
+
+            builder.Services.AddScoped<IPhuCapService, PhuCapService>();
+            builder.Services.AddScoped(typeof(IPhuCapRespository), typeof(PhuCapRespository));
+
+            builder.Services.AddScoped<ITinhLuongService, TinhLuongService>();
+            builder.Services.AddScoped(typeof(ITinhLuongRespository), typeof(TinhLuongRespository));
             #endregion Service Mapping
             #region Repository Mapping
             builder.Services.AddScoped<IQuanLyNhanSuService, QuanLyNhanSuService>();
-           
+            builder.Services.AddScoped<ITangCaService, TangCaService>();
+            builder.Services.AddScoped<IChucVuService, ChucVuService>();
+            builder.Services.AddScoped<IBoPhanService, BoPhanService>();
+            builder.Services.AddScoped<INhanVienService, NhanVienService>();
+            builder.Services.AddScoped<IThoiViecService, ThoiViecService>();
+            builder.Services.AddScoped<INghiPhepService, NghiPhepService>();
+            builder.Services.AddScoped<ITangLuongService, TangLuongService>();
+            builder.Services.AddScoped<IPhuCapService, PhuCapService>();
+            builder.Services.AddScoped<ITinhLuongService, TinhLuongService>();
             #endregion Repository Mapping
         }
 

@@ -13,9 +13,9 @@ namespace QuanLyNhanSuBackEnd.DAL.Models.Entity
         public string? TenBoPhan { get; set; }
         public string? QuanLy { get; set; }
 
-        [ForeignKey("BoPhan")]
-        public Guid? BoPhanChuQuanId { get; set; }
-        [ForeignKey("BoPhanChuQuanId")]
-        public BoPhan? BoPhanChuQuan { get;set; } 
+        //[ForeignKey("BoPhan")]
+        //public Guid? BoPhanChuQuanId { get; set; }
+        //[ForeignKey("BoPhanChuQuanId")]
+        //public BoPhan? BoPhanChuQuan { get;set; } 
     }
 }

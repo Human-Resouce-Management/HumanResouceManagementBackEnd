@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhanSuBackEnd.Model.Dto
 {
-    public class QuanLyNhanSuBackEndDto : BaseDto
+    public class QuanLyNhanSuBackEndDto 
     {
+        public Guid? Id { get; set; }
         public string? Ten { get; set; }
         public string? LienHe{ get; set; }
         public string? ViTriUngTuyen { get; set; }

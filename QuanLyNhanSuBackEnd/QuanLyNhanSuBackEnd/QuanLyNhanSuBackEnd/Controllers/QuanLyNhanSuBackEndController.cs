@@ -21,7 +21,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
                 return Ok(result);
             }
             [HttpGet]
-            [Route("{Id}")]
+            [Route("{id}")]
             public IActionResult GetTuyenDung(Guid id)
             {
                 var result = _warehouseService.GetTuyenDungId(id);
@@ -34,7 +34,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
                 return Ok(result);
             }
             [HttpPut]
-            [Route("{id}")]
+            [Route("{Id}")]
             public IActionResult EditTuyenDung(QuanLyNhanSuBackEndDto request)
             {
                 var result = _warehouseService.EditTuyenDung(request);
