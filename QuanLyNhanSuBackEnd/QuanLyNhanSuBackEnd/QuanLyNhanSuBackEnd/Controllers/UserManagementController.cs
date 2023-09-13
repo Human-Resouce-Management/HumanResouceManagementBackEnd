@@ -40,9 +40,10 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpDelete]
-        public async Task<IActionResult> DeleteUser([FromBody] string id)
+        [Route("{Id}")]
+        public async Task<IActionResult> DeleteUser( string Id)
         {
-            var result = await _userManagementService.DeleteUser(id);
+            var result = await _userManagementService.DeleteUser(Id);
 
             return Ok(result);
         }

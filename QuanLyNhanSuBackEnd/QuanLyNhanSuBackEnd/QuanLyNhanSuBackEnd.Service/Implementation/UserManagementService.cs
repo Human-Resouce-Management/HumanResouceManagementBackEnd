@@ -152,6 +152,13 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                        
                       var user = _context.Users.FirstOrDefault(x => x.Id == id);
                         _context.Users.Remove(user);    
+                        //_userManager.DeleteAsync(user);
+                    }
+                    else
+                    {
+                        var user = _context.Users.FirstOrDefault(x => x.Id == id);
+                         await _userManager.DeleteAsync(user);
+
                     }
 
                 }
