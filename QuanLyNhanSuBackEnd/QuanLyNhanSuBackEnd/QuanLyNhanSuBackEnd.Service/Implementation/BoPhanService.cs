@@ -1,8 +1,14 @@
 ﻿using AutoMapper;
+using LinqKit;
+using MayNghien.Common.Helpers;
+using MayNghien.Models.Request.Base;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Identity;
 using QuanLyNhanSuBackEnd.DAL.Contract;
+using QuanLyNhanSuBackEnd.DAL.Implementation;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
 using QuanLyNhanSuBackEnd.Model.Dto;
+using QuanLyNhanSuBackEnd.Model.Response.User;
 using QuanLyNhanSuBackEnd.Service.Contract;
 using System;
 using System.Collections.Generic;
@@ -142,6 +148,74 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
                 }
             }
+        private ExpressionStarter<BoPhan> BuildFilterExpression(IList<Filter> Filters)
+        {
+            try
+            {
+                var predicate = PredicateBuilder.New<BoPhan>(true);
+
+                foreach (var filter in Filters)
+                {
+                    switch (filter.FieldName)
+                    {
+                        case "TenBoPhan":
+                            predicate = predicate.And(m => m.TenBoPhan.Equals(filter.Value));
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+                return predicate;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<AppResponse<SearchBoPhanRespository>> SearchBoPhan(SearchRequest request)
+        {
+
+            var result = new AppResponse<SearchBoPhanRespository>();
+            try
+            {
+                var query = BuildFilterExpression(request.Filters);
+                var numOfRecords = _BoPhanRepository.CountRecordsByPredicate(query);
+
+                var users = _BoPhanRepository.FindByPredicate(query);
+                int pageIndex = request.PageSize ?? 1;
+                int pageSize = request.PageSize ?? 1;
+                int startIndex = (pageIndex - 1) * (int)pageSize;
+                var UserList = users.Skip(startIndex).Take(pageSize).ToList();
+                var dtoList = _mapper.Map<List<BoPhanDto>>(UserList);
+                //if (dtoList != null && dtoList.Count > 0)
+                //{
+                //    for (int i = 0; i < UserList.Count; i++)
+                //    {
+                //        var dtouser = dtoList[i];
+                //        var identityUser = UserList[i];
+                //        dtouser.Role = (await _userManager.GetRolesAsync(identityUser)).First();
+                //    }
+                //}
+                var searchUserResult = new SearchBoPhanRespository
+                {
+                    TotalRows = numOfRecords,
+                    TotalPages = SearchHelper.CalculateNumOfPages(numOfRecords, pageSize),
+                    CurrentPage = pageIndex,
+                    Data = dtoList,
+                };
+
+                return result.BuildResult(searchUserResult);
+
+            }
+            catch (Exception ex)
+            {
+
+                return result.BuildError(ex.ToString());
+            }
+
+        }
 
         }
 

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MayNghien.Models.Request.Base;
+using Microsoft.AspNetCore.Mvc;
 using QuanLyNhanSuBackEnd.Model.Dto;
 using QuanLyNhanSuBackEnd.Service.Contract;
+using QuanLyNhanSuBackEnd.Service.Implementation;
 
 namespace QuanLyNhanSuBackEnd.API.Controllers
 {
@@ -47,6 +49,14 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 
             return Ok(result);
 
+        }
+        [HttpPost]
+        [Route("search")]
+        public async Task<IActionResult> SearchUser([FromBody] SearchRequest request)
+        {
+            var result = await _BoPhanService.SearchBoPhan(request);
+
+            return Ok(result);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MayNghien.Common.Helpers
 {
-    public static class SearchHelper
+    public  class SearchHelper
     {
         public static int CalculateNumOfPages(int numOfItems, int? pageSize)
         {

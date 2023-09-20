@@ -57,7 +57,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         //}
         [HttpPost]
         [Route("search")]
-        public async Task<IActionResult> SearchUser([FromBody] SearchRequest request)
+        public async Task<IActionResult> Search([FromBody] SearchRequest request)
         {
             var result = await _userManagementService.Search(request);
 

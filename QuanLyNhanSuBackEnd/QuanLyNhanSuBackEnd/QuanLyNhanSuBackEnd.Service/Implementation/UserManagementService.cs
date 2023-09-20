@@ -285,6 +285,51 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
+     
+
+        public async Task<AppResponse<SearchUserResponse>> Search(SearchRequest request)
+        {
+            var result = new AppResponse<SearchUserResponse>();
+            try
+            {
+                var query = BuildFilterExpression(request.Filters);
+                var numOfRecords = _userRepository.CountRecordsByPredicate(query);
+
+                var users = _userRepository.FindByPredicate(query);
+                int pageIndex = request.PageIndex ?? 1;
+                int pageSize = request.PageSize ?? 1;
+                int startIndex = (pageIndex - 1) * (int)pageSize;
+                var UserList = users.Skip(startIndex).Take(pageSize).ToList();
+                var dtoList = _mapper.Map<List<UserModel>>(UserList);
+                //if (dtoList != null && dtoList.Count > 0)
+                //{
+                //    for (int i = 0; i < UserList.Count; i++)
+                //    {
+                //        var dtouser = dtoList[i];
+                //        var identityUser = UserList[i];
+                //        dtouser.Role = (await _userManager.GetRolesAsync(identityUser)).First();
+                //    }
+                //}
+                var searchUserResult = new SearchUserResponse
+                {
+                    TotalRows = numOfRecords,
+                    TotalPages = SearchHelper.CalculateNumOfPages(numOfRecords, pageSize),
+                    CurrentPage = pageIndex,
+                    Data = dtoList,
+                };
+
+                result.Data = searchUserResult;
+                result.IsSuccess = true;
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+
+                return result.BuildError(ex.ToString());
+            }
+        }
         private ExpressionStarter<IdentityUser> BuildFilterExpression(IList<Filter> Filters)
         {
             try
@@ -309,47 +354,6 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             {
 
                 throw;
-            }
-        }
-
-        public async Task<AppResponse<SearchUserResponse>> Search(SearchRequest request)
-        {
-            var result = new AppResponse<SearchUserResponse>();
-            try
-            {
-                var query = BuildFilterExpression(request.Filters);
-                var numOfRecords = _userRepository.CountRecordsByPredicate(query);
-
-                var users = _userRepository.FindByPredicate(query);
-                int pageIndex = request.PageSize ?? 1;
-                int pageSize = request.PageSize ?? 1;
-                int startIndex = (pageIndex - 1) * (int)pageSize;
-                var UserList = users.Skip(startIndex).Take(pageSize).ToList();
-                var dtoList = _mapper.Map<List<UserModel>>(UserList);
-                if (dtoList != null && dtoList.Count > 0)
-                {
-                    for (int i = 0; i < UserList.Count; i++)
-                    {
-                        var dtouser = dtoList[i];
-                        var identityUser = UserList[i];
-                        dtouser.Role = (await _userManager.GetRolesAsync(identityUser)).First();
-                    }
-                }
-                var searchUserResult = new SearchUserResponse
-                {
-                    TotalRows = numOfRecords,
-                    TotalPages = SearchHelper.CalculateNumOfPages(numOfRecords, pageSize),
-                    CurrentPage = pageIndex,
-                    Data = dtoList,
-                };
-
-                return result.BuildResult(searchUserResult);
-
-            }
-            catch (Exception ex)
-            {
-
-                return result.BuildError(ex.ToString());
             }
         }
     }
