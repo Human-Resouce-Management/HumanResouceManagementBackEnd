@@ -149,10 +149,18 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var query = _NhanVienRepository.FindBy(x => x.Id == Id)
                     .Include(x => x.ChucVu)
                     .Include(x => x.BoPhan);
-                var tuyendung = query.First();
-                var data = _mapper.Map<NhanVienDto>(tuyendung);
-                data.TenChucVu = tuyendung.ChucVu.TenChucVu;
-                data.TenBoPhan = tuyendung.BoPhan.TenBoPhan;
+                var data = query.Select(x=> new NhanVienDto
+                {
+                    BoPhanId = x.BoPhanId,
+                    CapBat = x.CapBat,
+                    ChucVuId =x.ChucVuId,
+                    HeSo = x.HeSo,
+                    Id = x.Id,
+                    MucLuong = x.MucLuong,
+                    Ten = x.Ten,
+                    TenBoPhan = x.BoPhan.TenBoPhan,
+                    TenChucVu = x.ChucVu.TenChucVu
+                }).First();
                 result.IsSuccess = true;
                 result.Data = data;
                 return result;

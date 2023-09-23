@@ -147,7 +147,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<TangLuongDto>();
             try
             {
-                var query = _TangLuongRepository.FindBy(x=>x.Id == Id);
+                var query = _TangLuongRepository.FindBy(x=>x.Id == Id)
+                    .Include(x=>x.NhanVien);
                 var data = query.Select(x => new TangLuongDto
                 {
                     HeSoCu = x.HeSoCu,
