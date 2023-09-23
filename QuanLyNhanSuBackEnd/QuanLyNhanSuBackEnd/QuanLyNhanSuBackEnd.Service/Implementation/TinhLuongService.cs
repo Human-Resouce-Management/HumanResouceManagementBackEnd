@@ -136,7 +136,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<TinhLuongDto>();
             try
             {
-                var tuyendung = _ThoiViecRepository.FindBy(x=>x.Id == Id);
+                var tuyendung = _ThoiViecRepository.FindBy(x=>x.Id == Id).Include(x=>x.NhanVien);
                 var data = tuyendung.Select(x => new TinhLuongDto
                 {
                     CacKhoangThem = x.CacKhoangThem,

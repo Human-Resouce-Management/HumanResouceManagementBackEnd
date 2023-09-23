@@ -119,7 +119,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     Ten = m.NhanVien.Ten,
                     NgayNghi = m.NgayNghi,
                     DaThoiViec = m.DaThoiViec,
-                   
+                    NhanVienId = m.NhanVienId,
                 }).ToList();
                 result.IsSuccess = true;
                 result.Data = list;

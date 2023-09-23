@@ -130,7 +130,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<PhuCapDto>();
             try
             {
-                var query = _PhuCapRepository.FindBy(x=>x.Id == Id);
+                var query = _PhuCapRepository.FindBy(x => x.Id == Id).Include(x => x.NhanVien);
                 var data = query.Select(x=> new PhuCapDto
                 {
                     Id=x.Id,
