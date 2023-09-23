@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using MayNghien.Common.Helpers;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Http;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
 using QuanLyNhanSuBackEnd.Model.Dto;
@@ -16,11 +18,13 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
     {
         private readonly ITangCaRespository _TangCaRepository;
         private readonly IMapper _mapper;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        public TangCaService(ITangCaRespository TangCaRepository, IMapper mapper)
+        public TangCaService(ITangCaRespository TangCaRepository, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _TangCaRepository = TangCaRepository;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public AppResponse<TangCaDto> CreateTangCa(TangCaDto request)
@@ -28,9 +32,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<TangCaDto>();
             try
             {
+                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                if (UserName == null)
+                {
+                    return result.BuildError("Cannot find Account by this user");
+                }
                 var tangCa = new TangCa();
                 tangCa = _mapper.Map<TangCa>(request);
                 tangCa.Id = Guid.NewGuid();
+                tangCa.CreatedBy = UserName;
                 _TangCaRepository.Add(tangCa);
 
                 request.Id = tangCa.Id;

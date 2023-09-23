@@ -9,7 +9,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    //[Authorize(AuthenticationSchemes = "Bearer")]
     public class AccountController : Controller
     {
        ILoginService _iloginService;

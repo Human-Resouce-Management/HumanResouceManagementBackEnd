@@ -7,7 +7,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    //[Authorize(AuthenticationSchemes = "Bearer")]
     public class NghiPhepController : Controller
     {
         private readonly INghiPhepService _NghiPhepService;

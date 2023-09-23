@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using MayNghien.Common.Helpers;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Http;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
 using QuanLyNhanSuBackEnd.Model.Dto;
@@ -16,11 +18,13 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
     {
         private readonly IChucVuRespository _ChucVuRespository;
         private readonly IMapper _mapper;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        public ChucVuService(IChucVuRespository ChucVuRespository, IMapper mapper)
+        public ChucVuService(IChucVuRespository ChucVuRespository, IMapper mapper,  IHttpContextAccessor httpContextAccessor)
         {
             _ChucVuRespository = ChucVuRespository;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public AppResponse<ChucVuDto> CreateChucVu(ChucVuDto request)
@@ -28,9 +32,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<ChucVuDto>();
             try
             {
+                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                if (UserName == null)
+                {
+                    return result.BuildError("Cannot find Account by this user");
+                }
                 var chucVu = new ChucVu();
                 chucVu = _mapper.Map<ChucVu>(request);
                 chucVu.Id = Guid.NewGuid();
+                chucVu.CreatedBy = UserName;
                 _ChucVuRespository.Add(chucVu);
 
                 request.Id = chucVu.Id;

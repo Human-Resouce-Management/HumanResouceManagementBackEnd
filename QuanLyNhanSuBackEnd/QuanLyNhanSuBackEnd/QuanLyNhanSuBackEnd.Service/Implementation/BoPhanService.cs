@@ -3,6 +3,7 @@ using LinqKit;
 using MayNghien.Common.Helpers;
 using MayNghien.Models.Request.Base;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Implementation;
@@ -23,11 +24,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
         {
             private readonly IBoPhanRespository _BoPhanRepository;
             private readonly IMapper _mapper;
-
-            public BoPhanService(IBoPhanRespository BoPhanRepository, IMapper mapper)
+            private IHttpContextAccessor _httpContextAccessor;
+        public BoPhanService(IBoPhanRespository BoPhanRepository, IMapper mapper, IHttpContextAccessor httpContextAccessor)
             {
                  _BoPhanRepository = BoPhanRepository;
                 _mapper = mapper;
+                 _httpContextAccessor = httpContextAccessor;
             }
 
             public AppResponse<BoPhanDto> CreateBoPhan(BoPhanDto request)
@@ -35,11 +37,17 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var result = new AppResponse<BoPhanDto>();
                 try
                 {
-                    var tuyendung = new BoPhan();
+                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                if (UserName == null)
+                {
+                    return result.BuildError("Cannot find Account by this user");
+                }
+                var tuyendung = new BoPhan();
                     tuyendung = _mapper.Map<BoPhan>(request);
                     tuyendung.Id = Guid.NewGuid();
-           
-                   _BoPhanRepository.Add(tuyendung);
+                    tuyendung.CreatedBy = UserName;
+
+                _BoPhanRepository.Add(tuyendung);
      
                     request.Id = tuyendung.Id;
                     result.IsSuccess = true;
@@ -184,7 +192,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var numOfRecords = _BoPhanRepository.CountRecordsByPredicate(query);
 
                 var users = _BoPhanRepository.FindByPredicate(query);
-                int pageIndex = request.PageSize ?? 1;
+                int pageIndex = request.PageIndex ?? 1;
                 int pageSize = request.PageSize ?? 1;
                 int startIndex = (pageIndex - 1) * (int)pageSize;
                 var UserList = users.Skip(startIndex).Take(pageSize).ToList();

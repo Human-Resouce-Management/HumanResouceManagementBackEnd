@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using MayNghien.Common.Helpers;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Http;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
 using QuanLyNhanSuBackEnd.Model.Dto;
@@ -17,11 +19,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
     {
         private readonly IPhuCapRespository _PhuCapRepository;
         private readonly IMapper _mapper;
-
-        public PhuCapService(IPhuCapRespository PhuCapRepository, IMapper mapper)
+        private IHttpContextAccessor _httpContextAccessor;
+        public PhuCapService(IPhuCapRespository PhuCapRepository, IMapper mapper,  IHttpContextAccessor httpContextAccessor)
         {
             _PhuCapRepository = PhuCapRepository;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public AppResponse<PhuCapDto> CreatePhuCap(PhuCapDto request)
@@ -29,9 +32,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<PhuCapDto>();
             try
             {
+                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                if (UserName == null)
+                {
+                    return result.BuildError("Cannot find Account by this user");
+                }
                 var phuCap = new PhuCap();
                 phuCap = _mapper.Map<PhuCap>(request);
                 phuCap.Id = Guid.NewGuid();
+                phuCap.CreatedBy = UserName;
                 _PhuCapRepository.Add(phuCap);
 
                 request.Id = phuCap.Id;

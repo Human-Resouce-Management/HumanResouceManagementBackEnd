@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using MayNghien.Common.Helpers;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Http;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Implementation;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
@@ -18,11 +20,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
     {
         private readonly INghiPhepRespository _NghiPhepRepository;
         private readonly IMapper _mapper;
-
-        public NghiPhepService(INghiPhepRespository NghiPhepRespository, IMapper mapper)
+        private IHttpContextAccessor _httpContextAccessor;
+        public NghiPhepService(INghiPhepRespository NghiPhepRespository, IMapper mapper,  IHttpContextAccessor httpContextAccessor)
         {
             _NghiPhepRepository = NghiPhepRespository;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public AppResponse<NghiPhepDto> CreateNghiPhep(NghiPhepDto request)
@@ -30,10 +33,16 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<NghiPhepDto>();
             try
             {
+                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                if (UserName == null)
+                {
+                    return result.BuildError("Cannot find Account by this user");
+                }
                 var nghiPhep = _mapper.Map<NghiPhep>(request);
                 nghiPhep.Id = Guid.NewGuid();
                 // tuyendung.BoPhanId = Guid.NewGuid();
                 //tuyendung.ChucVuId = Guid.NewGuid();
+                nghiPhep.CreatedBy = UserName;
                 _NghiPhepRepository.Add(nghiPhep);
                 //request.ChucVuId = tuyendung.ChucVuId;
                 //request.BoPhanId = tuyendung.BoPhanId;

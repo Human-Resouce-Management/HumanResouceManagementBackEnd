@@ -122,3 +122,5 @@ D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\Q
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\System.CodeDom.dll
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\Intercom.dll
 D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\RestSharp.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
+D:\Doan2\HumanResouceManagementBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\QuanLyNhanSuBackEnd\bin\Debug\net6.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll

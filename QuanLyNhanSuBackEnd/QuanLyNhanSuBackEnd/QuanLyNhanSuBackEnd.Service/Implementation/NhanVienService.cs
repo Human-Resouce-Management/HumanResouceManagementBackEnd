@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using MayNghien.Common.Helpers;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Http;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Implementation;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
@@ -18,11 +20,13 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
     {
         private readonly INhanVienRespository _NhanVienRepository;
         private readonly IMapper _mapper;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        public NhanVienService(INhanVienRespository NhanVienRespository, IMapper mapper)
+        public NhanVienService(INhanVienRespository NhanVienRespository, IMapper mapper,     IHttpContextAccessor httpContextAccessor)
         {
             _NhanVienRepository = NhanVienRespository;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public AppResponse<NhanVienDto> CreateNhanVien(NhanVienDto request)
@@ -30,8 +34,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<NhanVienDto>();
             try
             {
+                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                if (UserName == null)
+                {
+                    return result.BuildError("Cannot find Account by this user");
+                }
                 var tuyendung = _mapper.Map<NhanVien>(request);
                 tuyendung.Id = Guid.NewGuid();
+
+                tuyendung.CreatedBy = UserName;
                 _NhanVienRepository.Add(tuyendung);
 
                 request.Id = tuyendung.Id;

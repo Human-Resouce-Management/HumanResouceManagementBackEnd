@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using MayNghien.Common.Helpers;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Http;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
 using QuanLyNhanSuBackEnd.Model.Dto;
@@ -18,11 +20,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
     {
             private readonly INhanVienTangCaRespository _NhanVienTangCaRepository;
             private readonly IMapper _mapper;
-
-            public NhanVienTangCaService(INhanVienTangCaRespository NhanVienTangCaRepository, IMapper mapper)
+            private IHttpContextAccessor _httpContextAccessor;
+        public NhanVienTangCaService(INhanVienTangCaRespository NhanVienTangCaRepository, IMapper mapper,   IHttpContextAccessor httpContextAccessor)
             {
             _NhanVienTangCaRepository = NhanVienTangCaRepository;
                 _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
             }
 
             public AppResponse<NhanVienTangCaDto> CreateNhanVienTangCa(NhanVienTangCaDto request)
@@ -30,11 +33,17 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var result = new AppResponse<NhanVienTangCaDto>();
                 try
                 {
-                    var nhanVienTangCa = new NhanVienTangCa();
+                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                if (UserName == null)
+                {
+                    return result.BuildError("Cannot find Account by this user");
+                }
+                var nhanVienTangCa = new NhanVienTangCa();
                     nhanVienTangCa = _mapper.Map<NhanVienTangCa>(request);
                     nhanVienTangCa.Id = Guid.NewGuid();
-           
-                   _NhanVienTangCaRepository.Add(nhanVienTangCa);
+                     nhanVienTangCa.CreatedBy = UserName;
+
+                _NhanVienTangCaRepository.Add(nhanVienTangCa);
      
                     request.Id = nhanVienTangCa.Id;
                     result.IsSuccess = true;

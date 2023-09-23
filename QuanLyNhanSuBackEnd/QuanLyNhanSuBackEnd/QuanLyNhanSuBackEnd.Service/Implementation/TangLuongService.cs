@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using MayNghien.Common.Helpers;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Http;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Implementation;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
@@ -18,11 +20,13 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
     {
         private readonly ITangLuongRespository _TangLuongRepository;
         private readonly IMapper _mapper;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        public TangLuongService(ITangLuongRespository TangLuongRespository, IMapper mapper)
+        public TangLuongService(ITangLuongRespository TangLuongRespository, IMapper mapper ,  IHttpContextAccessor httpContextAccessor)
         {
             _TangLuongRepository = TangLuongRespository;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public AppResponse<TangLuongDto> CreateTangLuong(TangLuongDto request)
@@ -30,10 +34,16 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<TangLuongDto>();
             try
             {
+                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                if (UserName == null)
+                {
+                    return result.BuildError("Cannot find Account by this user");
+                }
                 var tangLuong = _mapper.Map<TangLuong>(request);
                 tangLuong.Id = Guid.NewGuid();
                 // tuyendung.BoPhanId = Guid.NewGuid();
                 //tuyendung.ChucVuId = Guid.NewGuid();
+                tangLuong.CreatedBy = UserName;
                 _TangLuongRepository.Add(tangLuong);
                 //request.ChucVuId = tuyendung.ChucVuId;
                 //request.BoPhanId = tuyendung.BoPhanId;
