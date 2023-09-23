@@ -20,7 +20,7 @@ namespace QuanLyNhanSuBackEnd.Service.Mapper
 
         public void CreateMap()
         {
-            CreateMap<TuyenDung,QuanLyNhanSuBackEndDto>().ReverseMap();
+            CreateMap<TuyenDung,TuyenDungDto>().ReverseMap();
             CreateMap<IdentityUser, UserModel>().ReverseMap();
             CreateMap<TangCa, TangCaDto>().ReverseMap();
             CreateMap<ChucVu, ChucVuDto>().ReverseMap();

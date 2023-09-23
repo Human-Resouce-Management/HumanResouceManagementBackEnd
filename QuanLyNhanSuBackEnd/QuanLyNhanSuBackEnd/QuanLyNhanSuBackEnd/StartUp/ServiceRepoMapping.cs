@@ -16,8 +16,8 @@ namespace QuanLyNhanSuBackEnd.API.StartUp
         {
             #region Service Mapping
             builder.Services.AddScoped<ILoginService, LoginService>();
-            builder.Services.AddScoped<IQuanLyNhanSuService, QuanLyNhanSuService>();
-            builder.Services.AddScoped(typeof(IQuanLyNhanSuRespository), typeof(QuanLyNhanSuRespository));
+            builder.Services.AddScoped<ITuyenDungService, TuyenDungService>();
+            builder.Services.AddScoped(typeof(ITuyenDungRespository), typeof(TuyenDungRespository));
             builder.Services.AddScoped<IUserManagementService, UserManagementService>();
             builder.Services.AddScoped<IUserRepository,UserRepository>();
             builder.Services.AddScoped<ITangCaService, TangCaService>();
@@ -51,7 +51,7 @@ namespace QuanLyNhanSuBackEnd.API.StartUp
             builder.Services.AddScoped(typeof(ITinhLuongRespository), typeof(TinhLuongRespository));
             #endregion Service Mapping
             #region Repository Mapping
-            builder.Services.AddScoped<IQuanLyNhanSuService, QuanLyNhanSuService>();
+            builder.Services.AddScoped<ITuyenDungService, TuyenDungService>();
             builder.Services.AddScoped<ITangCaService, TangCaService>();
             builder.Services.AddScoped<IChucVuService, ChucVuService>();
             builder.Services.AddScoped<IBoPhanService, BoPhanService>();

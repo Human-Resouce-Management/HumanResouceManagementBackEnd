@@ -29,12 +29,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<PhuCapDto>();
             try
             {
-                var tuyendung = new PhuCap();
-                tuyendung = _mapper.Map<PhuCap>(request);
-                tuyendung.Id = Guid.NewGuid();
-                _PhuCapRepository.Add(tuyendung);
+                var phuCap = new PhuCap();
+                phuCap = _mapper.Map<PhuCap>(request);
+                phuCap.Id = Guid.NewGuid();
+                _PhuCapRepository.Add(phuCap);
 
-                request.Id = tuyendung.Id;
+                request.Id = phuCap.Id;
                 result.IsSuccess = true;
                 result.Data = request;
                 return result;
@@ -52,11 +52,11 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<string>();
             try
             {
-                var tuyendung = new PhuCap();
-                tuyendung = _PhuCapRepository.Get(Id);
-                tuyendung.IsDeleted = true;
+                var phuCap = new PhuCap();
+                phuCap = _PhuCapRepository.Get(Id);
+                phuCap.IsDeleted = true;
 
-                _PhuCapRepository.Edit(tuyendung);
+                _PhuCapRepository.Edit(phuCap);
 
                 result.IsSuccess = true;
                 result.Data = "Delete Sucessfuly";
@@ -73,17 +73,17 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
 
 
-        public AppResponse<PhuCapDto> EditPhuCap(PhuCapDto tuyendung)
+        public AppResponse<PhuCapDto> EditPhuCap(PhuCapDto request)
         {
             var result = new AppResponse<PhuCapDto>();
             try
             {
-                var request = new PhuCap();
-                request = _mapper.Map<PhuCap>(tuyendung);
-                _PhuCapRepository.Edit(request);
+                var phuCap = new PhuCap();
+                phuCap = _mapper.Map<PhuCap>(request);
+                _PhuCapRepository.Edit(phuCap);
 
                 result.IsSuccess = true;
-                result.Data = tuyendung;
+                result.Data = request;
                 return result;
             }
             catch (Exception ex)
@@ -130,8 +130,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<PhuCapDto>();
             try
             {
-                var tuyendung = _PhuCapRepository.Get(Id);
-                var data = _mapper.Map<PhuCapDto>(tuyendung);
+                var query = _PhuCapRepository.FindBy(x=>x.Id == Id);
+                var data = query.Select(x=> new PhuCapDto
+                {
+                    Id=x.Id,
+                    NhanVienId=x.NhanVienId,
+                    SoTien =x.SoTien,
+                    ten = x.NhanVien.Ten,
+                    ThuongCoDinh = x.ThuongCoDinh
+                }).First();
                 result.IsSuccess = true;
                 result.Data = data;
                 return result;

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhanSuBackEnd.DAL.Implementation
 {
-    public class QuanLyNhanSuRespository : GenericRepository<TuyenDung, QuanLyNhanSuBDContext>, IQuanLyNhanSuRespository
+    public class TuyenDungRespository : GenericRepository<TuyenDung, QuanLyNhanSuBDContext>, ITuyenDungRespository
     {
-        public QuanLyNhanSuRespository(QuanLyNhanSuBDContext unitOfWork) : base(unitOfWork)
+        public TuyenDungRespository(QuanLyNhanSuBDContext unitOfWork) : base(unitOfWork)
         {
             _context = unitOfWork;
         }

@@ -28,12 +28,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<TangCaDto>();
             try
             {
-                var tuyendung = new TangCa();
-                tuyendung = _mapper.Map<TangCa>(request);
-                tuyendung.Id = Guid.NewGuid();
-                _TangCaRepository.Add(tuyendung);
+                var tangCa = new TangCa();
+                tangCa = _mapper.Map<TangCa>(request);
+                tangCa.Id = Guid.NewGuid();
+                _TangCaRepository.Add(tangCa);
 
-                request.Id = tuyendung.Id;
+                request.Id = tangCa.Id;
                 result.IsSuccess = true;
                 result.Data = request;
                 return result;
@@ -51,11 +51,11 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<string>();
             try
             {
-                var tuyendung = new TangCa();
-                tuyendung = _TangCaRepository.Get(Id);
-                tuyendung.IsDeleted = true;
+                var tangCa = new TangCa();
+                tangCa = _TangCaRepository.Get(Id);
+                tangCa.IsDeleted = true;
 
-                _TangCaRepository.Edit(tuyendung);
+                _TangCaRepository.Edit(tangCa);
 
                 result.IsSuccess = true;
                 result.Data = "Delete Sucessfuly";
@@ -72,17 +72,17 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
 
 
-        public AppResponse<TangCaDto> EditTangCa(TangCaDto tuyendung)
+        public AppResponse<TangCaDto> EditTangCa(TangCaDto request)
         {
             var result = new AppResponse<TangCaDto>();
             try
             {
-                var request = new TangCa();
-                request = _mapper.Map<TangCa>(tuyendung);
-                _TangCaRepository.Edit(request);
+                var tangCa = new TangCa();
+                tangCa = _mapper.Map<TangCa>(request);
+                _TangCaRepository.Edit(tangCa);
 
                 result.IsSuccess = true;
-                result.Data = tuyendung;
+                result.Data = request;
                 return result;
             }
             catch (Exception ex)

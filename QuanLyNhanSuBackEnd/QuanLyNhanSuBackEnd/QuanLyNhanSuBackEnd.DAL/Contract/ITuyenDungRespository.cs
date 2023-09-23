@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhanSuBackEnd.DAL.Contract
 {
-   public interface IQuanLyNhanSuRespository : IGenericRepository<TuyenDung, QuanLyNhanSuBDContext>
+   public interface ITuyenDungRespository : IGenericRepository<TuyenDung, QuanLyNhanSuBDContext>
     {
 
     }

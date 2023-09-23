@@ -132,9 +132,16 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<ThoiViecDto>();
             try
             {
-                var tuyendung = _ThoiViecRepository.Get(Id);
-                var data = _mapper.Map<ThoiViecDto>(tuyendung);       
-                data.Ten = tuyendung.NhanVien.Ten;
+                var tuyendung = _ThoiViecRepository.FindBy(x=>x.Id == Id)
+                    .Include(x=>x.NhanVien);
+                var data = tuyendung.Select(x=> new ThoiViecDto
+                {
+                    DaThoiViec = x.DaThoiViec,
+                    Id = Id,
+                    NgayNghi=x.NgayNghi,
+                    NhanVienId = x.NhanVienId,
+                    Ten = x.NhanVien.Ten
+                }).First();
                 result.IsSuccess = true;
                 result.Data = data;
                 return result;

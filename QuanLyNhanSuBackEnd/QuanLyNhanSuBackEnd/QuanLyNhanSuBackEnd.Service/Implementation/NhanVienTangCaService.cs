@@ -30,13 +30,13 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var result = new AppResponse<NhanVienTangCaDto>();
                 try
                 {
-                    var tuyendung = new NhanVienTangCa();
-                    tuyendung = _mapper.Map<NhanVienTangCa>(request);
-                    tuyendung.Id = Guid.NewGuid();
+                    var nhanVienTangCa = new NhanVienTangCa();
+                    nhanVienTangCa = _mapper.Map<NhanVienTangCa>(request);
+                    nhanVienTangCa.Id = Guid.NewGuid();
            
-                   _NhanVienTangCaRepository.Add(tuyendung);
+                   _NhanVienTangCaRepository.Add(nhanVienTangCa);
      
-                    request.Id = tuyendung.Id;
+                    request.Id = nhanVienTangCa.Id;
                     result.IsSuccess = true;
                     result.Data = request;
                     return result;
@@ -54,11 +54,11 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var result = new AppResponse<string>();
                 try
                 {
-                    var tuyendung = new NhanVienTangCa();
-                    tuyendung = _NhanVienTangCaRepository.Get(Id);
-                    tuyendung.IsDeleted = true;
+                    var nhanVienTangCa = new NhanVienTangCa();
+                    nhanVienTangCa = _NhanVienTangCaRepository.Get(Id);
+                    nhanVienTangCa.IsDeleted = true;
 
-                _NhanVienTangCaRepository.Edit(tuyendung);
+                _NhanVienTangCaRepository.Edit(nhanVienTangCa);
 
                     result.IsSuccess = true;
                     result.Data = "Delete Sucessfuly";
@@ -75,17 +75,17 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
 
 
-            public AppResponse<NhanVienTangCaDto> EditNhanVienTangCa(NhanVienTangCaDto tuyendung)
+            public AppResponse<NhanVienTangCaDto> EditNhanVienTangCa(NhanVienTangCaDto request)
             {
                 var result = new AppResponse<NhanVienTangCaDto>();
                 try
                 {
-                    var request = new NhanVienTangCa();
-                    request = _mapper.Map<NhanVienTangCa>(tuyendung);
-                _NhanVienTangCaRepository.Edit(request);
+                    var nhanVienTangCa = new NhanVienTangCa();
+                    nhanVienTangCa = _mapper.Map<NhanVienTangCa>(request);
+                _NhanVienTangCaRepository.Edit(nhanVienTangCa);
 
                     result.IsSuccess = true;
-                    result.Data = tuyendung;
+                    result.Data = request;
                     return result;
                 }
                 catch (Exception ex)
@@ -134,8 +134,14 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var result = new AppResponse<NhanVienTangCaDto>();
                 try
                 {
-                    var tuyendung = _NhanVienTangCaRepository.Get(Id);
-                    var data = _mapper.Map<NhanVienTangCaDto>(tuyendung);
+                    var query = _NhanVienTangCaRepository.FindBy(x => x.Id == Id).Include(x=>x.NhanVien);
+                    var data = query.Select(x => new NhanVienTangCaDto
+                    {
+                        Id = x.Id,
+                        NhanVienId = x.NhanVienId,
+                        TangCaId = x.TangCaId,
+                        Ten = x.NhanVien.Ten
+                    }).First();
                     result.IsSuccess = true;
                     result.Data = data;
                     return result;

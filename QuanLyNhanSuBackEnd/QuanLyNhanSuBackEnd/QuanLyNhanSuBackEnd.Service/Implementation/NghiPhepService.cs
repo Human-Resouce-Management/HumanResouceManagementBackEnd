@@ -30,14 +30,14 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<NghiPhepDto>();
             try
             {
-                var tuyendung = _mapper.Map<NghiPhep>(request);
-                tuyendung.Id = Guid.NewGuid();
+                var nghiPhep = _mapper.Map<NghiPhep>(request);
+                nghiPhep.Id = Guid.NewGuid();
                 // tuyendung.BoPhanId = Guid.NewGuid();
                 //tuyendung.ChucVuId = Guid.NewGuid();
-                _NghiPhepRepository.Add(tuyendung);
+                _NghiPhepRepository.Add(nghiPhep);
                 //request.ChucVuId = tuyendung.ChucVuId;
                 //request.BoPhanId = tuyendung.BoPhanId;
-                request.Id = tuyendung.Id;
+                request.Id = nghiPhep.Id;
                 result.IsSuccess = true;
                 result.Data = request;
                 return result;
@@ -55,11 +55,11 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<string>();
             try
             {
-                var tuyendung = new NghiPhep();
-                tuyendung = _NghiPhepRepository.Get(Id);
-                tuyendung.IsDeleted = true;
+                var nghiPhep = new NghiPhep();
+                nghiPhep = _NghiPhepRepository.Get(Id);
+                nghiPhep.IsDeleted = true;
 
-                _NghiPhepRepository.Edit(tuyendung);
+                _NghiPhepRepository.Edit(nghiPhep);
 
                 result.IsSuccess = true;
                 result.Data = "Delete Sucessfuly";
@@ -76,17 +76,17 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
 
 
-        public AppResponse<NghiPhepDto> EditNghiPhep(NghiPhepDto tuyendung)
+        public AppResponse<NghiPhepDto> EditNghiPhep(NghiPhepDto request)
         {
             var result = new AppResponse<NghiPhepDto>();
             try
             {
-                var request = new NghiPhep();
-                request = _mapper.Map<NghiPhep>(tuyendung);
-                _NghiPhepRepository.Edit(request);
+                var nghiPhep = new NghiPhep();
+                nghiPhep = _mapper.Map<NghiPhep>(request);
+                _NghiPhepRepository.Edit(nghiPhep);
 
                 result.IsSuccess = true;
-                result.Data = tuyendung;
+                result.Data = request;
                 return result;
             }
             catch (Exception ex)
@@ -137,9 +137,18 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<NghiPhepDto>();
             try
             {
-                var tuyendung = _NghiPhepRepository.Get(Id);
-                var data = _mapper.Map<NghiPhepDto>(tuyendung);
-                data.ten = tuyendung.NhanVien.Ten;
+                var query = _NghiPhepRepository.FindBy(x => x.Id == Id).Include(x=>x.NhanVien);
+                var data =  query.Select(x=>new NghiPhepDto
+                {
+                    Id = x.Id,
+                    NgayKetThuc = x.NgayKetThuc,
+                    NgayNghi = x.NgayNghi,
+                    NghiCoLuong = x.NghiCoLuong,
+                    NguoiXacNhanId =x.NguoiXacNhanId,
+                    NhanVienId = x.NhanVienId,
+                    SoGioNghi = x.SoGioNghi,
+                    ten = x.NhanVien.Ten
+                }).First();
                 result.IsSuccess = true;
                 result.Data = data;
                 return result;

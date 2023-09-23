@@ -32,11 +32,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             {
                 var tuyendung = _mapper.Map<NhanVien>(request);
                 tuyendung.Id = Guid.NewGuid();
-                // tuyendung.BoPhanId = Guid.NewGuid();
-                //tuyendung.ChucVuId = Guid.NewGuid();
                 _NhanVienRepository.Add(tuyendung);
-                //request.ChucVuId = tuyendung.ChucVuId;
-                //request.BoPhanId = tuyendung.BoPhanId;
+
                 request.Id = tuyendung.Id;
                 result.IsSuccess = true;
                 result.Data = request;
@@ -138,7 +135,10 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<NhanVienDto>();
             try
             {
-                var tuyendung = _NhanVienRepository.Get(Id);
+                var query = _NhanVienRepository.FindBy(x => x.Id == Id)
+                    .Include(x => x.ChucVu)
+                    .Include(x => x.BoPhan);
+                var tuyendung = query.First();
                 var data = _mapper.Map<NhanVienDto>(tuyendung);
                 data.TenChucVu = tuyendung.ChucVu.TenChucVu;
                 data.TenBoPhan = tuyendung.BoPhan.TenBoPhan;

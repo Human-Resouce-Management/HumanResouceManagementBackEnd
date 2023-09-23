@@ -14,30 +14,30 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhanSuBackEnd.Service.Implementation
 {
-    public class TinhLuongService : ITinhLuongService
+    public class TangLuongService : ITangLuongService
     {
-        private readonly ITinhLuongRespository _ThoiViecRepository;
+        private readonly ITangLuongRespository _TangLuongRepository;
         private readonly IMapper _mapper;
 
-        public TinhLuongService(ITinhLuongRespository ThoiViecRespository, IMapper mapper)
+        public TangLuongService(ITangLuongRespository TangLuongRespository, IMapper mapper)
         {
-            _ThoiViecRepository = ThoiViecRespository;
+            _TangLuongRepository = TangLuongRespository;
             _mapper = mapper;
         }
 
-        public AppResponse<TinhLuongDto> CreateTinhLuong(TinhLuongDto request)
+        public AppResponse<TangLuongDto> CreateTangLuong(TangLuongDto request)
         {
-            var result = new AppResponse<TinhLuongDto>();
+            var result = new AppResponse<TangLuongDto>();
             try
             {
-                var tuyendung = _mapper.Map<TinhLuong>(request);
-                tuyendung.Id = Guid.NewGuid();
+                var tangLuong = _mapper.Map<TangLuong>(request);
+                tangLuong.Id = Guid.NewGuid();
                 // tuyendung.BoPhanId = Guid.NewGuid();
                 //tuyendung.ChucVuId = Guid.NewGuid();
-                _ThoiViecRepository.Add(tuyendung);
+                _TangLuongRepository.Add(tangLuong);
                 //request.ChucVuId = tuyendung.ChucVuId;
                 //request.BoPhanId = tuyendung.BoPhanId;
-                request.Id = tuyendung.Id;
+                request.Id = tangLuong.Id;
                 result.IsSuccess = true;
                 result.Data = request;
                 return result;
@@ -50,16 +50,16 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
-        public AppResponse<string> DeleteTinhLuong(Guid Id)
+        public AppResponse<string> DeleteTangLuong(Guid Id)
         {
             var result = new AppResponse<string>();
             try
             {
-                var tuyendung = new TinhLuong();
-                tuyendung = _ThoiViecRepository.Get(Id);
-                tuyendung.IsDeleted = true;
+                var tangLuong = new TangLuong();
+                tangLuong = _TangLuongRepository.Get(Id);
+                tangLuong.IsDeleted = true;
 
-                _ThoiViecRepository.Edit(tuyendung);
+                _TangLuongRepository.Edit(tangLuong);
 
                 result.IsSuccess = true;
                 result.Data = "Delete Sucessfuly";
@@ -76,17 +76,17 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
 
 
-        public AppResponse<TinhLuongDto> EditTinhLuong(TinhLuongDto tuyendung)
+        public AppResponse<TangLuongDto> EditTangLuong(TangLuongDto request)
         {
-            var result = new AppResponse<TinhLuongDto>();
+            var result = new AppResponse<TangLuongDto>();
             try
             {
-                var request = new TinhLuong();
-                request = _mapper.Map<TinhLuong>(tuyendung);
-                _ThoiViecRepository.Edit(request);
+                var tangLuong = new TangLuong();
+                tangLuong = _mapper.Map<TangLuong>(tangLuong);
+                _TangLuongRepository.Edit(tangLuong);
 
                 result.IsSuccess = true;
-                result.Data = tuyendung;
+                result.Data = request;
                 return result;
             }
             catch (Exception ex)
@@ -97,25 +97,26 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
-        public AppResponse<List<TinhLuongDto>> GetAllTinhLuong()
+        public AppResponse<List<TangLuongDto>> GetAllTangLuong()
         {
-            var result = new AppResponse<List<TinhLuongDto>>();
+            var result = new AppResponse<List<TangLuongDto>>();
             //string userId = "";
             try
             {
-                var query = _ThoiViecRepository.GetAll()
-                   .Include(n=>n.NhanVien);
+                var query = _TangLuongRepository.GetAll()
+                   .Include(n => n.NhanVien);
 
-                var list = query.Select(m => new TinhLuongDto
+                var list = query.Select(m => new TangLuongDto
                 {
                     Id = m.Id,
-                    ten = m.NhanVien.Ten,
-                   SoLuong = m.SoLuong,
-                   MucLuong = m.MucLuong,
-                   CacKhoangThem = m.CacKhoangThem,
-                   CacKhoangTru = m.CacKhoangTru,
+                   ten = m.NhanVien.Ten,
                    NhanVienId = m.NhanVienId,
-                   
+                  NgayCapNhat = m.NgayCapNhat,
+                  SoTien = m.SoTien,
+                  HeSoCu = m.HeSoCu,
+                  HeSoMoi = m.HeSoMoi,
+                  NgayKetThuc = m.NgayKetThuc,
+
                 }).ToList();
                 result.IsSuccess = true;
                 result.Data = list;
@@ -131,20 +132,21 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
 
 
-        public AppResponse<TinhLuongDto> GetTinhLuongId(Guid Id)
+        public AppResponse<TangLuongDto> GetTangLuongId(Guid Id)
         {
-            var result = new AppResponse<TinhLuongDto>();
+            var result = new AppResponse<TangLuongDto>();
             try
             {
-                var tuyendung = _ThoiViecRepository.FindBy(x=>x.Id == Id);
-                var data = tuyendung.Select(x => new TinhLuongDto
+                var query = _TangLuongRepository.FindBy(x=>x.Id == Id);
+                var data = query.Select(x => new TangLuongDto
                 {
-                    CacKhoangThem = x.CacKhoangThem,
-                    CacKhoangTru =x.CacKhoangTru,
+                    HeSoCu = x.HeSoCu,
+                    HeSoMoi = x.HeSoMoi,
                     Id = Id,
-                    MucLuong = x.MucLuong,
-                    NhanVienId=x.NhanVienId,
-                    SoLuong = x.SoLuong,
+                    NgayCapNhat = x.NgayCapNhat,
+                    NgayKetThuc = x.NgayKetThuc,
+                    NhanVienId = x.NhanVienId,
+                    SoTien = x.SoTien,
                     ten = x.NhanVien.Ten
                 }).First();
                 result.IsSuccess = true;

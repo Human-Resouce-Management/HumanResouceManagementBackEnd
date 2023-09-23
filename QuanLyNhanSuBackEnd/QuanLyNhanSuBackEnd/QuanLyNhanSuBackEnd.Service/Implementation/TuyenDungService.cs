@@ -1,42 +1,38 @@
 ﻿using AutoMapper;
 using MayNghien.Models.Response.Base;
 using QuanLyNhanSuBackEnd.DAL.Contract;
-using QuanLyNhanSuBackEnd.DAL.Implementation;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
 using QuanLyNhanSuBackEnd.Model.Dto;
 using QuanLyNhanSuBackEnd.Service.Contract;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace QuanLyNhanSuBackEnd.Service.Implementation
 {
-    public class TangLuongService : ITangLuongService
+    public class TuyenDungService : ITuyenDungService
     {
-        private readonly ITangLuongRespository _TangLuongRepository;
+        private readonly ITuyenDungRespository _tuyenDungRepository;
         private readonly IMapper _mapper;
 
-        public TangLuongService(ITangLuongRespository TangLuongRespository, IMapper mapper)
+        public TuyenDungService(ITuyenDungRespository tuyenDungRepository, IMapper mapper)
         {
-            _TangLuongRepository = TangLuongRespository;
+            _tuyenDungRepository = tuyenDungRepository;
             _mapper = mapper;
         }
 
-        public AppResponse<TangLuongDto> CreateTangLuong(TangLuongDto request)
+        public AppResponse<TuyenDungDto> CreateTuyenDung(TuyenDungDto request)
         {
-            var result = new AppResponse<TangLuongDto>();
+            var result = new AppResponse<TuyenDungDto>();
             try
             {
-                var tuyendung = _mapper.Map<TangLuong>(request);
+                var tuyendung = new TuyenDung();
+                tuyendung = _mapper.Map<TuyenDung>(request);
                 tuyendung.Id = Guid.NewGuid();
-                // tuyendung.BoPhanId = Guid.NewGuid();
-                //tuyendung.ChucVuId = Guid.NewGuid();
-                _TangLuongRepository.Add(tuyendung);
-                //request.ChucVuId = tuyendung.ChucVuId;
-                //request.BoPhanId = tuyendung.BoPhanId;
+                _tuyenDungRepository.Add(tuyendung);
+
                 request.Id = tuyendung.Id;
                 result.IsSuccess = true;
                 result.Data = request;
@@ -50,16 +46,16 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
-        public AppResponse<string> DeleteTangLuong(Guid Id)
+        public AppResponse<string> DeleteTuyenDung(Guid Id)
         {
             var result = new AppResponse<string>();
             try
             {
-                var tuyendung = new TangLuong();
-                tuyendung = _TangLuongRepository.Get(Id);
+                var tuyendung= new TuyenDung();
+                tuyendung = _tuyenDungRepository.Get(Id);
                 tuyendung.IsDeleted = true;
 
-                _TangLuongRepository.Edit(tuyendung);
+                _tuyenDungRepository.Edit(tuyendung);
 
                 result.IsSuccess = true;
                 result.Data = "Delete Sucessfuly";
@@ -74,16 +70,16 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
+        
 
-
-        public AppResponse<TangLuongDto> EditTangLuong(TangLuongDto tuyendung)
+        public AppResponse<TuyenDungDto> EditTuyenDung(TuyenDungDto tuyendung)
         {
-            var result = new AppResponse<TangLuongDto>();
+            var result = new AppResponse<TuyenDungDto>();
             try
             {
-                var request = new TangLuong();
-                request = _mapper.Map<TangLuong>(tuyendung);
-                _TangLuongRepository.Edit(request);
+                var request = new TuyenDung();
+                request = _mapper.Map<TuyenDung>(tuyendung);
+                _tuyenDungRepository.Edit(request);
 
                 result.IsSuccess = true;
                 result.Data = tuyendung;
@@ -97,26 +93,20 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
-        public AppResponse<List<TangLuongDto>> GetAllTangLuong()
+        public AppResponse<List<TuyenDungDto>> GetAllTuyenDung()
         {
-            var result = new AppResponse<List<TangLuongDto>>();
+            var result = new AppResponse<List<TuyenDungDto>>();
             //string userId = "";
             try
             {
-                var query = _TangLuongRepository.GetAll()
-                   .Include(n => n.NhanVien);
-
-                var list = query.Select(m => new TangLuongDto
+                var query = _tuyenDungRepository.GetAll();
+                var list = query.Select(m => new TuyenDungDto
                 {
-                    Id = m.Id,
-                   ten = m.NhanVien.Ten,
-                   NhanVienId = m.NhanVienId,
-                  NgayCapNhat = m.NgayCapNhat,
-                  SoTien = m.SoTien,
-                  HeSoCu = m.HeSoCu,
-                  HeSoMoi = m.HeSoMoi,
-                  NgayKetThuc = m.NgayKetThuc,
-
+                    Id =  m.Id,
+                    Ten = m.Ten,
+                    LienHe = m.LienHe,
+                    ViTriUngTuyen = m.ViTriUngTuyen,
+                    KetQua = m.KetQua
                 }).ToList();
                 result.IsSuccess = true;
                 result.Data = list;
@@ -130,16 +120,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
+       
 
-
-        public AppResponse<TangLuongDto> GetTangLuongId(Guid Id)
+        public AppResponse<TuyenDungDto> GetTuyenDungId(Guid Id)
         {
-            var result = new AppResponse<TangLuongDto>();
+            var result = new AppResponse<TuyenDungDto>();
             try
             {
-                var tuyendung = _TangLuongRepository.Get(Id);
-                var data = _mapper.Map<TangLuongDto>(tuyendung);
-                data.ten = tuyendung.NhanVien.Ten;
+                var tuyendung = _tuyenDungRepository.Get(Id);
+                var data = _mapper.Map<TuyenDungDto>(tuyendung);
                 result.IsSuccess = true;
                 result.Data = data;
                 return result;
@@ -152,5 +141,6 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
             }
         }
+
     }
 }

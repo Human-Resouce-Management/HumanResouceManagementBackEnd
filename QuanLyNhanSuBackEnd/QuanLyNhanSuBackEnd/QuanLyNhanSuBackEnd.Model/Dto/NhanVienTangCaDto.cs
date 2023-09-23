@@ -14,7 +14,6 @@ namespace QuanLyNhanSuBackEnd.Model.Dto
       
         public Guid NhanVienId { get; set; }
         public string Ten { get; set; }
-        public int? SoGio { get; set; }
       
         public Guid TangCaId { get; set; }
     

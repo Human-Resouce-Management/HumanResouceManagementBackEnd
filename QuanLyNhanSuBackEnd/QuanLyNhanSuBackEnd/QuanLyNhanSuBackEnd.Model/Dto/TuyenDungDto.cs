@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhanSuBackEnd.Model.Dto
 {
-    public class QuanLyNhanSuBackEndDto 
+    public class TuyenDungDto 
     {
         public Guid? Id { get; set; }
         public string? Ten { get; set; }

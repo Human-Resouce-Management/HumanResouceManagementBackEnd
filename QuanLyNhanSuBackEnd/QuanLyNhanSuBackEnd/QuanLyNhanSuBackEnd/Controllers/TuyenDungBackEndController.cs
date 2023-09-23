@@ -7,10 +7,10 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
    
         [Route("api/[controller]")]
         [ApiController]
-        public class QuanLyNhanSuBackEndController : Controller
+        public class TuyenDungBackEndController : Controller
         {
-            private readonly IQuanLyNhanSuService _warehouseService;
-            public QuanLyNhanSuBackEndController(IQuanLyNhanSuService warehouseService)
+            private readonly ITuyenDungService _warehouseService;
+            public TuyenDungBackEndController(ITuyenDungService warehouseService)
             {
                 _warehouseService = warehouseService;
             }
@@ -28,14 +28,14 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
                 return Ok(result);
             }
             [HttpPost]
-            public IActionResult CreateTuyenDung(QuanLyNhanSuBackEndDto request)
+            public IActionResult CreateTuyenDung(TuyenDungDto request)
             {
                 var result = _warehouseService.CreateTuyenDung(request);
                 return Ok(result);
             }
             [HttpPut]
             [Route("{Id}")]
-            public IActionResult EditTuyenDung(QuanLyNhanSuBackEndDto request)
+            public IActionResult EditTuyenDung(TuyenDungDto request)
             {
                 var result = _warehouseService.EditTuyenDung(request);
                 return Ok(result);

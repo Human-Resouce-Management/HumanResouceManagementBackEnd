@@ -28,12 +28,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<ChucVuDto>();
             try
             {
-                var tuyendung = new ChucVu();
-                tuyendung = _mapper.Map<ChucVu>(request);
-                tuyendung.Id = Guid.NewGuid();
-                _ChucVuRespository.Add(tuyendung);
+                var chucVu = new ChucVu();
+                chucVu = _mapper.Map<ChucVu>(request);
+                chucVu.Id = Guid.NewGuid();
+                _ChucVuRespository.Add(chucVu);
 
-                request.Id = tuyendung.Id;
+                request.Id = chucVu.Id;
                 result.IsSuccess = true;
                 result.Data = request;
                 return result;
@@ -51,11 +51,11 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<string>();
             try
             {
-                var tuyendung = new ChucVu();
-                tuyendung = _ChucVuRespository.Get(Id);
-                tuyendung.IsDeleted = true;
+                var chucVu = new ChucVu();
+                chucVu = _ChucVuRespository.Get(Id);
+                chucVu.IsDeleted = true;
 
-                _ChucVuRespository.Edit(tuyendung);
+                _ChucVuRespository.Edit(chucVu);
 
                 result.IsSuccess = true;
                 result.Data = "Delete Sucessfuly";
@@ -72,17 +72,17 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
 
 
-        public AppResponse<ChucVuDto> EditChucVu(ChucVuDto tuyendung)
+        public AppResponse<ChucVuDto> EditChucVu(ChucVuDto request)
         {
             var result = new AppResponse<ChucVuDto>();
             try
             {
-                var request = new ChucVu();
-                request = _mapper.Map<ChucVu>(tuyendung);
-                _ChucVuRespository.Edit(request);
+                var chucVu = new ChucVu();
+                chucVu = _mapper.Map<ChucVu>(request);
+                _ChucVuRespository.Edit(chucVu);
 
                 result.IsSuccess = true;
-                result.Data = tuyendung;
+                result.Data = request;
                 return result;
             }
             catch (Exception ex)
@@ -124,8 +124,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<ChucVuDto>();
             try
             {
-                var tuyendung = _ChucVuRespository.Get(Id);
-                var data = _mapper.Map<ChucVuDto>(tuyendung);
+                var chucVu = _ChucVuRespository.Get(Id);
+                var data = _mapper.Map<ChucVuDto>(chucVu);
                 result.IsSuccess = true;
                 result.Data = data;
                 return result;
