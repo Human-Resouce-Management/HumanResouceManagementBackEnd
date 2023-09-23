@@ -12,7 +12,7 @@ namespace Maynghien.Common.Repository
         void ClearTracker();
         DbSet<T> GetSet();
         T? Get(Guid id);
-        void Add(T entity);
+        void Add(T entity/*, string createBy*/);
 
         void Delete(T entity);
 

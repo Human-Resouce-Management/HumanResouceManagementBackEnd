@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QuanLyNhanSuBackEnd.Model.Dto;
 using QuanLyNhanSuBackEnd.Service.Contract;
 
 namespace QuanLyNhanSuBackEnd.API.Controllers
 {
    
-        [Route("api/[controller]")]
-        [ApiController]
-        public class TuyenDungBackEndController : Controller
-        {
+    [Route("api/[controller]")]
+    [ApiController]
+    [Authorize(AuthenticationSchemes = "Bearer")]
+    public class TuyenDungBackEndController : Controller
+    {
             private readonly ITuyenDungService _warehouseService;
             public TuyenDungBackEndController(ITuyenDungService warehouseService)
             {
@@ -49,6 +51,6 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
                 return Ok(result);
 
             }
-        }
+     }
     
 }

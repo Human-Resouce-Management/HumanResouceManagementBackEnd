@@ -28,7 +28,7 @@ namespace QuanLyNhanSuBackEnd.DAL.Implementation
             return _context.Users.Where(predicate).Count();
         }
 
-        public IdentityUser? FindById(string id)
+        public IdentityUser FindById(string id)
         {
             return _context.Users.Where(m => m.Id == id).FirstOrDefault();
         }
@@ -42,7 +42,7 @@ namespace QuanLyNhanSuBackEnd.DAL.Implementation
         {
             return _context.Users.FirstOrDefault(m => m.Id == Id);
         }
-        public IdentityUser? FindByEmail(string? email)
+        public IdentityUser FindByEmail(string? email)
         {
             
             IdentityUser user = _context.Users.Where(n => n.Email == email).FirstOrDefault();

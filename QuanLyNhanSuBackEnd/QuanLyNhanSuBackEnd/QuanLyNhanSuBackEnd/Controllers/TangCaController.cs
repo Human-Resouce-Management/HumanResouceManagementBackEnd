@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QuanLyNhanSuBackEnd.Model.Dto;
 using QuanLyNhanSuBackEnd.Service.Contract;
 
@@ -7,6 +8,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
     
         [Route("api/[controller]")]
         [ApiController]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class TangCaController : Controller
     {
         private readonly ITangCaService _TangCaService;

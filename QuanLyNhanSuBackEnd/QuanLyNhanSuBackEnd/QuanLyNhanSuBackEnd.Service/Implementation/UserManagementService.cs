@@ -4,6 +4,7 @@ using LinqKit;
 using MayNghien.Common.Helpers;
 using MayNghien.Models.Request.Base;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Storage;
 using QuanLyNhanSuBackEnd.Common.Enum;
@@ -30,10 +31,11 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
         private QuanLyNhanSuBDContext _context;
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserManagementService( IMapper mapper,QuanLyNhanSuBDContext context , UserManager<IdentityUser>userManager, RoleManager<IdentityRole> roleManager , IUserRepository userRepository)
+        public UserManagementService( IMapper mapper,QuanLyNhanSuBDContext context , UserManager<IdentityUser>userManager, RoleManager<IdentityRole> roleManager , IUserRepository userRepository, IHttpContextAccessor httpContextAccessor)
         {
-           
+           _httpContextAccessor = httpContextAccessor;
             _mapper = mapper;
             _context = context;
             _userManager = userManager;

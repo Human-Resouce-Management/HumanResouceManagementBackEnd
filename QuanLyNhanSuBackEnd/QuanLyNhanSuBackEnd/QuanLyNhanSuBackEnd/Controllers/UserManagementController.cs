@@ -10,7 +10,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class UserManagementController:Controller
     {
         IUserManagementService _userManagementService;

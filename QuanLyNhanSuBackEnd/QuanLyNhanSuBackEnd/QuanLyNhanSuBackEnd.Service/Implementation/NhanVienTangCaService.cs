@@ -110,7 +110,6 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     {
                         Id = m.Id,
                         Ten = m.NhanVien.Ten,
-                        SoGio = m.TangCa.SoGio,
                         NhanVienId = m.NhanVienId,
                         TangCaId = m.TangCaId,
                       

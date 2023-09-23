@@ -33,7 +33,7 @@ namespace Maynghien.Common.Repository
         #endregion
 
         #region Method
-        public virtual void Add(TEntity item)
+        public virtual void Add(TEntity item/*, string createBy*/)
         {
             if (item != null)
             {

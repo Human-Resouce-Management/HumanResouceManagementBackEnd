@@ -12,9 +12,9 @@ namespace QuanLyNhanSuBackEnd.DAL.Contract
     {
        public int CountRecordsByPredicate(Expression<Func<IdentityUser, bool>> predicate);
        public IQueryable<IdentityUser> FindByPredicate(Expression<Func<IdentityUser, bool>> predicate);
-       public IdentityUser? FindById(string id);
-        public IdentityUser? FindUser(string Id);
+       public IdentityUser FindById(string id);
+        public IdentityUser FindUser(string Id);
         public List<IdentityUser> GetAll();
-        public IdentityUser? FindByEmail(string? email);
+        public IdentityUser FindByEmail(string? email);
     }
 }

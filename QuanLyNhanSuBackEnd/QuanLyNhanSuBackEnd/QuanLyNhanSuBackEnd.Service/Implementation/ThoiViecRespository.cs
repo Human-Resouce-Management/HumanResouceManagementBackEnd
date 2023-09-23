@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using MayNghien.Common.Helpers;
 using MayNghien.Models.Response.Base;
+using Microsoft.AspNetCore.Http;
 using QuanLyNhanSuBackEnd.DAL.Contract;
+using QuanLyNhanSuBackEnd.DAL.Implementation;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
 using QuanLyNhanSuBackEnd.Model.Dto;
 using QuanLyNhanSuBackEnd.Service.Contract;
@@ -17,11 +20,13 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
     {
         private readonly IThoiViecRespository _ThoiViecRepository;
         private readonly IMapper _mapper;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        public ThoiViecService(IThoiViecRespository ThoiViecRespository, IMapper mapper)
+        public ThoiViecService(IThoiViecRespository ThoiViecRespository, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _ThoiViecRepository = ThoiViecRespository;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public AppResponse<ThoiViecDto> CreateThoiViec(ThoiViecDto request)
@@ -29,13 +34,16 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<ThoiViecDto>();
             try
             {
+                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                if (UserName == null)
+                {
+                    return result.BuildError("Cannot find Account by this user");
+                }
+
                 var tuyendung = _mapper.Map<ThoiViec>(request);
                 tuyendung.Id = Guid.NewGuid();
-                // tuyendung.BoPhanId = Guid.NewGuid();
-                //tuyendung.ChucVuId = Guid.NewGuid();
+                tuyendung.CreatedBy = UserName;
                 _ThoiViecRepository.Add(tuyendung);
-                //request.ChucVuId = tuyendung.ChucVuId;
-                //request.BoPhanId = tuyendung.BoPhanId;
                 request.Id = tuyendung.Id;
                 result.IsSuccess = true;
                 result.Data = request;
