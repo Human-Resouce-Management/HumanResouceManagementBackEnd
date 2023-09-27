@@ -32,6 +32,7 @@ namespace QuanLyNhanSuBackEnd.Service.Mapper
             CreateMap<TangLuong, TangLuongDto>().ReverseMap();
             CreateMap<PhuCap, PhuCapDto>().ReverseMap();
             CreateMap<TinhLuong, TinhLuongDto>().ReverseMap();
+            CreateMap<ThoiViec, ThoiViecDto>();
         }
        
     }

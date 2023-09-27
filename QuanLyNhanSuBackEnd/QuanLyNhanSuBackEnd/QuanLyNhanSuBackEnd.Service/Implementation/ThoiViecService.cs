@@ -178,12 +178,14 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var query =  BuildFilterExpression(request.Filters) ;
                 var numOfRecords = _ThoiViecRepository.CountRecordsByPredicate(query);
 
-                var users =  _ThoiViecRepository.FindByPredicate(query).Include(m => m.NhanVien);
+                var users =  _ThoiViecRepository.FindByPredicate(query).Include(m => m.NhanVien).Select(x => x.NhanVien.Ten).First();
                 int pageIndex = request.PageIndex ?? 1;
                 int pageSize = request.PageSize ?? 1;
                 int startIndex = (pageIndex - 1) * (int)pageSize;
                 var UserList = users.Skip(startIndex).Take(pageSize).ToList() ;
                 var dtoList = _mapper.Map<List<ThoiViecDto>>(UserList);
+
+                
                 //if (dtoList != null && dtoList.Count > 0)
                 //{
                 //    for (int i = 0; i < UserList.Count; i++)
