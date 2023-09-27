@@ -107,6 +107,25 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 return result;
             }
         }
+        public async Task<AppResponse<string>>Password(UserModel user)
+        {
+            var result = new AppResponse<string>();
+            try
+            {
+                var userid =  _userRepository.FindById(user.Id.ToString());
+                await _userManager.RemovePasswordAsync(userid);
+                await _userManager.AddPasswordAsync(userid,user.Password);
+                result.IsSuccess = true;
+                result.Data = user.Password;
+                return result;
+            }
+            catch(Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Message = ex.Message + " " + ex.StackTrace;
+                return result;
+            }
+        }
         public async Task<AppResponse<string>> CreateUser(UserModel user)
         {
            
@@ -303,15 +322,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 int startIndex = (pageIndex - 1) * (int)pageSize;
                 var UserList = users.Skip(startIndex).Take(pageSize).ToList();
                 var dtoList = _mapper.Map<List<UserModel>>(UserList);
-                if (dtoList != null && dtoList.Count > 0)
-                {
-                    for (int i = 0; i < UserList.Count; i++)
-                    {
-                        var dtouser = dtoList[i];
-                        var identityUser = UserList[i];
-                        dtouser.Role = (await _userManager.GetRolesAsync(identityUser)).First();
-                    }
-                }
+                //if (dtoList != null && dtoList.Count > 0)
+                //{
+                //    for (int i = 0; i < UserList.Count; i++)
+                //    {
+                //        var dtouser = dtoList[i];
+                //        var identityUser = UserList[i];
+                //        dtouser.Role = (await _userManager.GetRolesAsync(identityUser)).First();
+                //    }
+                //}
                 var searchUserResult = new SearchUserResponse
                 {
                     TotalRows = numOfRecords,
@@ -343,7 +362,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     switch (filter.FieldName)
                     {
                         case "Email":
-                            predicate = predicate.And(m => m.Email.Equals(filter.Value));
+                            predicate = predicate.And(m => m.Email.Contains(filter.Value));
                             break;
 
                         default:

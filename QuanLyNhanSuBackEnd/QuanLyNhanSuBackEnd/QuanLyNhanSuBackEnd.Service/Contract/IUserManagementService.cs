@@ -15,6 +15,7 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
     {
        AppResponse<List<IdentityUser>> GetAllUser();
       Task<AppResponse<string>>ResetPassWordUser(string Id);
+        Task<AppResponse<string>> Password(UserModel user);
         Task<AppResponse<string>> CreateUser(UserModel model);
          Task<AppResponse<string>> DeleteUser(string id);
         //public Task<AppResponse<string>> EditUser(UserModel model);

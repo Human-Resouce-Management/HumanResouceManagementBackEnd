@@ -1,10 +1,14 @@
 ﻿using AutoMapper;
+using LinqKit;
 using MayNghien.Common.Helpers;
+using MayNghien.Models.Request.Base;
 using MayNghien.Models.Response.Base;
 using Microsoft.AspNetCore.Http;
 using QuanLyNhanSuBackEnd.DAL.Contract;
+using QuanLyNhanSuBackEnd.DAL.Implementation;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
 using QuanLyNhanSuBackEnd.Model.Dto;
+using QuanLyNhanSuBackEnd.Model.Response.User;
 using QuanLyNhanSuBackEnd.Service.Contract;
 using System;
 using System.Collections.Generic;
@@ -150,6 +154,77 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 result.Message = ex.Message + " " + ex.StackTrace;
                 return result;
 
+            }
+        }
+
+
+        public async Task<AppResponse<SearchTuyenDungRespository>> SearchTuyenDung(SearchRequest request)
+        {
+            var result = new AppResponse<SearchTuyenDungRespository>();
+            try
+            {
+                var query = BuildFilterExpression(request.Filters);
+                var numOfRecords = _tuyenDungRepository.CountRecordsByPredicate(query);
+
+                var users = _tuyenDungRepository.FindByPredicate(query);
+                int pageIndex = request.PageIndex ?? 1;
+                int pageSize = request.PageSize ?? 1;
+                int startIndex = (pageIndex - 1) * (int)pageSize;
+                var UserList = users.Skip(startIndex).Take(pageSize).ToList();
+                var dtoList = _mapper.Map<List<TuyenDungDto>>(UserList);
+                //if (dtoList != null && dtoList.Count > 0)
+                //{
+                //    for (int i = 0; i < UserList.Count; i++)
+                //    {
+                //        var dtouser = dtoList[i];
+                //        var identityUser = UserList[i];
+                //        dtouser.Role = (await _userManager.GetRolesAsync(identityUser)).First();
+                //    }
+                //}
+                var searchUserResult = new SearchTuyenDungRespository
+                {
+                    TotalRows = numOfRecords,
+                    TotalPages = SearchHelper.CalculateNumOfPages(numOfRecords, pageSize),
+                    CurrentPage = pageIndex,
+                    Data = dtoList,
+                };
+
+                result.Data = searchUserResult;
+                result.IsSuccess = true;
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+
+                return result.BuildError(ex.ToString());
+            }
+        }
+        private ExpressionStarter<TuyenDung> BuildFilterExpression(IList<Filter> Filters)
+        {
+            try
+            {
+                var predicate = PredicateBuilder.New<TuyenDung>(true);
+
+                foreach (var filter in Filters)
+                {
+                    switch (filter.FieldName)
+                    {
+                        case "TenChucVu":
+                            predicate = predicate.And(m => m.LienHe.Contains(filter.Value));
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+                return predicate;
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 

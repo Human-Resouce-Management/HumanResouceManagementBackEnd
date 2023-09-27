@@ -1,5 +1,7 @@
-﻿using MayNghien.Models.Response.Base;
+﻿using MayNghien.Models.Request.Base;
+using MayNghien.Models.Response.Base;
 using QuanLyNhanSuBackEnd.Model.Dto;
+using QuanLyNhanSuBackEnd.Model.Response.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +17,6 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
         AppResponse<TinhLuongDto> CreateTinhLuong(TinhLuongDto request);
         AppResponse<TinhLuongDto> EditTinhLuong(TinhLuongDto request);
         AppResponse<string> DeleteTinhLuong(Guid Id);
+        Task<AppResponse<SearchTinhLuongRespository>> SearchTinhLuong(SearchRequest request);
     }
 }

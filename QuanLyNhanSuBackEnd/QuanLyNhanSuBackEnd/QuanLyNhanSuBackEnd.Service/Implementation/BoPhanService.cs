@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace QuanLyNhanSuBackEnd.Service.Implementation
 {
    
@@ -93,8 +94,10 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var result = new AppResponse<BoPhanDto>();
                 try
                 {
-                    var request = new BoPhan();
+                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                var request = new BoPhan();
                     request = _mapper.Map<BoPhan>(tuyendung);
+                    request.CreatedBy = UserName;
                     _BoPhanRepository.Edit(request);
 
                     result.IsSuccess = true;
@@ -167,7 +170,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     switch (filter.FieldName)
                     {
                         case "TenBoPhan":
-                            predicate = predicate.And(m => m.TenBoPhan.Equals(filter.Value));
+                            predicate = predicate.And(m => m.TenBoPhan.Contains(filter.Value));
                             break;
 
                         default:
@@ -182,36 +185,87 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 throw;
             }
         }
+        public static int LevenshteinDistance(string str1, string str2)
+        {
+            // Tạo mảng hai chiều để lưu trữ khoảng cách giữa các ký tự
+            int[,] distance = new int[str1.Length + 1, str2.Length + 1];
+
+            // Khởi tạo khoảng cách
+            for (int i = 0; i <= str1.Length; i++)
+            {
+                distance[i, 0] = i;
+            }
+            for (int i = 0; i <= str2.Length; i++)
+            {
+                distance[0, i] = i;
+            }
+
+            // Tính khoảng cách Levenshtein
+            for (int i = 1; i <= str1.Length; i++)
+            {
+                for (int j = 1; j <= str2.Length; j++)
+                {
+                    if (str1[i - 1] == str2[j - 1])
+                    {
+                        distance[i, j] = distance[i - 1, j - 1];
+                    }
+                    else
+                    {
+                        distance[i, j] = Math.Min(distance[i - 1, j - 1] + 1, Math.Min(distance[i - 1, j] + 1, distance[i, j - 1] + 1));
+                    }
+                }
+            }
+
+            // Trả về khoảng cách
+            return distance[str1.Length, str2.Length];
+        }
+
         public async Task<AppResponse<SearchBoPhanRespository>> SearchBoPhan(SearchRequest request)
         {
 
             var result = new AppResponse<SearchBoPhanRespository>();
+
             try
             {
+
                 var query = BuildFilterExpression(request.Filters);
                 var numOfRecords = _BoPhanRepository.CountRecordsByPredicate(query);
-
+                var levenshteinDistance = 10;
                 var users = _BoPhanRepository.FindByPredicate(query);
                 int pageIndex = request.PageIndex ?? 1;
                 int pageSize = request.PageSize ?? 1;
                 int startIndex = (pageIndex - 1) * (int)pageSize;
-                var UserList = users.Skip(startIndex).Take(pageSize).ToList();
-                var dtoList = _mapper.Map<List<BoPhanDto>>(UserList);
-                //if (dtoList != null && dtoList.Count > 0)
-                //{
-                //    for (int i = 0; i < UserList.Count; i++)
-                //    {
-                //        var dtouser = dtoList[i];
-                //        var identityUser = UserList[i];
-                //        dtouser.Role = (await _userManager.GetRolesAsync(identityUser)).First();
-                //    }
-                //}
+
+                if (request.Filters == null || request.Filters.Count == 0)
+                {
+                    // Trả về một kết quả rỗng
+                    return result.BuildResult(new SearchBoPhanRespository());
+                }
+                //var UserList = users.Skip(startIndex).Take(pageSize).ToList();
+                //var dtoList = _mapper.Map<List<BoPhanDto>>(UserList);
+             // Khoảng cách Levenshtein tối đa được chấp nhận
+               
+                // Tìm kiếm gần đúng TenBoPhan
+                var nearTenBoPhanList = new List<BoPhan>();
+                foreach (var user in users)
+                {
+                    var distance = LevenshteinDistance(request.Filters.First(f => f.FieldName == "TenBoPhan").Value, user.TenBoPhan);
+                    if (distance <= levenshteinDistance)
+                    {
+                        nearTenBoPhanList.Add(user);
+                    }
+                }
+
+                // Sắp xếp danh sách kết quả theo khoảng cách Levenshtein
+                nearTenBoPhanList.Sort((x, y) => LevenshteinDistance(request.Filters.First(f => f.FieldName == "TenBoPhan").Value, x.TenBoPhan).CompareTo(LevenshteinDistance(request.Filters.First(f => f.FieldName == "TenBoPhan").Value, y.TenBoPhan)));
+
+                // Trả về kết quả
                 var searchUserResult = new SearchBoPhanRespository
                 {
-                    TotalRows = numOfRecords,
-                    TotalPages = SearchHelper.CalculateNumOfPages(numOfRecords, pageSize),
+                    TotalRows = nearTenBoPhanList.Count,
+                    TotalPages = SearchHelper.CalculateNumOfPages(nearTenBoPhanList.Count, pageSize),
                     CurrentPage = pageIndex,
-                    Data = dtoList,
+                    Data = _mapper.Map<List<BoPhanDto>>(nearTenBoPhanList),
                 };
 
                 return result.BuildResult(searchUserResult);

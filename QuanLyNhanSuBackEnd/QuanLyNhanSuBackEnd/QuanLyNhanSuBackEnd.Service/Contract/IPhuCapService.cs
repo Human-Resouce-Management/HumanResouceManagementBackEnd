@@ -1,5 +1,7 @@
-﻿using MayNghien.Models.Response.Base;
+﻿using MayNghien.Models.Request.Base;
+using MayNghien.Models.Response.Base;
 using QuanLyNhanSuBackEnd.Model.Dto;
+using QuanLyNhanSuBackEnd.Model.Response.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +17,6 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
         AppResponse<PhuCapDto> CreatePhuCap(PhuCapDto request);
         AppResponse<PhuCapDto> EditPhuCap(PhuCapDto request);
         AppResponse<string> DeletePhuCap(Guid Id);
+        Task<AppResponse<SearchPhuCapRespository>> SearchPhuCap(SearchRequest request);
     }
 }

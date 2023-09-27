@@ -1,4 +1,5 @@
 ﻿using Maynghien.Common.Repository;
+using MayNghien.Models.Request.Base;
 using Microsoft.AspNetCore.Identity;
 using QuanLyNhanSuBackEnd.DAL.Models.Context;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
@@ -15,6 +16,9 @@ namespace QuanLyNhanSuBackEnd.DAL.Contract
     {
         public int CountRecordsByPredicate(Expression<Func<BoPhan, bool>> predicate);
         public IQueryable<BoPhan> FindByPredicate(Expression<Func<BoPhan, bool>> predicate);
+        public IQueryable<BoPhan> FindByPredicate2(Expression<Func<BoPhan, bool>> predicate, int levenshteinDistance);
+
+
     }
 
 }

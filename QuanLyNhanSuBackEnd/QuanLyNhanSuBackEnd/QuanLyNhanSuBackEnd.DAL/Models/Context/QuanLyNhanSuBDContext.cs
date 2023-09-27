@@ -29,7 +29,7 @@ namespace QuanLyNhanSuBackEnd.DAL.Models.Context
         public DbSet<PhuCap> PhuCap { get; set; }
         public DbSet<TangCa> TangCa { get; set; }
         public DbSet<TangLuong> TangLuong { get; set; }
-        public DbSet<ThoiViec> ThoiViecs { get; set; }
+        public DbSet<ThoiViec> ThoiViec { get; set; }
         public DbSet<TinhLuong> TinhLuong { get; set; }
         public DbSet<TuyenDung> tuyenDung { get; set; }
 

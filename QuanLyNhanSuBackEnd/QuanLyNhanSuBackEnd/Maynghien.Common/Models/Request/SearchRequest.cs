@@ -5,7 +5,7 @@ namespace MayNghien.Models.Request.Base
     public class SearchRequest
     {
         public List<Filter>? Filters { get; set; }
-
+     
         public SortByInfo? SortBy { get; set; }
         [Required]
         [Range(0, int.MaxValue)]

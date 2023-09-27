@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using MayNghien.Models.Request.Base;
+using Microsoft.AspNetCore.Identity;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Implementation;
 using QuanLyNhanSuBackEnd.Model.Dto;
@@ -49,6 +50,9 @@ namespace QuanLyNhanSuBackEnd.API.StartUp
 
             builder.Services.AddScoped<ITinhLuongService, TinhLuongService>();
             builder.Services.AddScoped(typeof(ITinhLuongRespository), typeof(TinhLuongRespository));
+
+             builder.Services.AddScoped(typeof(SearchRequest));
+
             #endregion Service Mapping
             #region Repository Mapping
             builder.Services.AddScoped<ITuyenDungService, TuyenDungService>();

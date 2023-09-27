@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MayNghien.Models.Request.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyNhanSuBackEnd.Model.Dto;
 using QuanLyNhanSuBackEnd.Service.Contract;
@@ -51,6 +52,14 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 
             return Ok(result);
 
+        }
+        [HttpPost]
+        [Route("search")]
+        public async Task<IActionResult> SearchUser([FromBody] SearchRequest request)
+        {
+            var result = await _NhanVienTangCaService.SearchNhanVienTangCa(request);
+
+            return Ok(result);
         }
     }
 

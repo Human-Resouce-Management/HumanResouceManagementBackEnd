@@ -8,6 +8,8 @@ using System.Text.Json.Serialization;
 using System.Text;
 using QuanLyNhanSuBackEnd.API.StartUp;
 using QuanLyNhanSuBackEnd.Service.Mapper;
+using MayNghien.Models.Request.Base;
+using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,6 +60,7 @@ builder.Services.AddAuthentication(opt =>
     opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 })
+
 .AddJwtBearer(options =>
 {
     options.RequireHttpsMetadata = false;
