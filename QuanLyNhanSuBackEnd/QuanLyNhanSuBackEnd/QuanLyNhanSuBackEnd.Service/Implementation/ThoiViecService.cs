@@ -178,7 +178,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var query =  BuildFilterExpression(request.Filters) ;
                 var numOfRecords = _ThoiViecRepository.CountRecordsByPredicate(query);
 
-                var users =  _ThoiViecRepository.FindByPredicate(query).Include(m => m.NhanVien).Select(x => x.NhanVien.Ten).First();
+                var users = _ThoiViecRepository.FindByPredicate(query).Include(x => x.NhanVien).Select(x => new ThoiViecDto
+                {
+                    Id = x.Id,
+                    Ten = x.NhanVien.Ten,
+                    NhanVienId = x.NhanVienId,
+                    NgayNghi = x.NgayNghi,
+                    DaThoiViec = x.DaThoiViec,
+
+                }).ToList();
                 int pageIndex = request.PageIndex ?? 1;
                 int pageSize = request.PageSize ?? 1;
                 int startIndex = (pageIndex - 1) * (int)pageSize;
@@ -230,7 +238,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 {
                     switch (filter.FieldName)
                     {
-                        case "TenChucVu":
+                        case "ThoiViec":
                         
                             predicate = predicate.And(m => m.NhanVien.Ten.Contains(filter.Value));
                            

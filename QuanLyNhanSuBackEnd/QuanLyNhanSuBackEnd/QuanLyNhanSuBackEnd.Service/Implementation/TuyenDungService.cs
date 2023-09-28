@@ -211,7 +211,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 {
                     switch (filter.FieldName)
                     {
-                        case "TenChucVu":
+                        case "LienHe":
                             predicate = predicate.And(m => m.LienHe.Contains(filter.Value));
                             break;
 

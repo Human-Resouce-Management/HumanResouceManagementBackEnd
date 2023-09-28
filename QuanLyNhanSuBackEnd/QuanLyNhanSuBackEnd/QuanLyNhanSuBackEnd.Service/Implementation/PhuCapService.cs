@@ -175,7 +175,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var query = BuildFilterExpression(request.Filters);
                 var numOfRecords = _PhuCapRepository.CountRecordsByPredicate(query);
 
-                var users = _PhuCapRepository.FindByPredicate(query);
+                var users = _PhuCapRepository.FindByPredicate(query).Include(x => x.NhanVien).Select(x => new PhuCapDto
+                {
+                    Id = x.Id,
+                    ten = x.NhanVien.Ten,
+                   ThuongCoDinh = x.ThuongCoDinh,
+                    NhanVienId = x.NhanVienId,
+                    SoTien = x.SoTien,
+
+                }).ToList(); ;
                 int pageIndex = request.PageIndex ?? 1;
                 int pageSize = request.PageSize ?? 1;
                 int startIndex = (pageIndex - 1) * (int)pageSize;

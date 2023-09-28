@@ -175,7 +175,14 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var query = BuildFilterExpression(request.Filters);
                 var numOfRecords = _NhanVienTangCaRepository.CountRecordsByPredicate(query);
 
-                var users = _NhanVienTangCaRepository.FindByPredicate(query);
+                var users = _NhanVienTangCaRepository.FindByPredicate(query).Include(x => x.NhanVien) .Include(x => x.TangCa).Select(x => new NhanVienTangCaDto
+                {
+                    Id = x.Id,
+                    Ten = x.NhanVien.Ten,
+                    TangCaId = x.TangCaId,
+                    NhanVienId = x.NhanVienId,
+
+                }).ToList(); ;
                 int pageIndex = request.PageIndex ?? 1;
                 int pageSize = request.PageSize ?? 1;
                 int startIndex = (pageIndex - 1) * (int)pageSize;

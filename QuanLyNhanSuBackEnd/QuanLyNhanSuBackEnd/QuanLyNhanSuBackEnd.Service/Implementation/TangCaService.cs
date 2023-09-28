@@ -4,6 +4,7 @@ using MayNghien.Common.Helpers;
 using MayNghien.Models.Request.Base;
 using MayNghien.Models.Response.Base;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using QuanLyNhanSuBackEnd.DAL.Contract;
 using QuanLyNhanSuBackEnd.DAL.Implementation;
 using QuanLyNhanSuBackEnd.DAL.Models.Entity;
@@ -163,7 +164,17 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var query = BuildFilterExpression(request.Filters);
                 var numOfRecords = _TangCaRepository.CountRecordsByPredicate(query);
 
-                var users = _TangCaRepository.FindByPredicate(query);
+                var users = _TangCaRepository.FindByPredicate(query).Include(x => x.NguoiXacNhanId).Select(x => new TangCaDto
+                {
+                    Id = x.Id,
+                   SoGio = x.SoGio,
+                   Ngay = x.Ngay,
+                   GioBatDau = x.GioBatDau,
+                   GioKetThuc = x.GioKetThuc,
+                   NguoiXacNhanId = x.NguoiXacNhanId,
+                   HeSoCa = x.HeSoCa,
+
+                }).ToList(); ; ;
                 int pageIndex = request.PageIndex ?? 1;
                 int pageSize = request.PageSize ?? 1;
                 int startIndex = (pageIndex - 1) * (int)pageSize;
@@ -208,7 +219,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 {
                     switch (filter.FieldName)
                     {
-                        case "TenChucVu":
+                        case "TangCa":
                             predicate = predicate.And(m => m.GioBatDau.Contains(filter.Value));
                             break;
 
