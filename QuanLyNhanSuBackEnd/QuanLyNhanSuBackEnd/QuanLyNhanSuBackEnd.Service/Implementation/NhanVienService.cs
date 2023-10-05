@@ -200,7 +200,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     TenChucVu = x.ChucVu.TenChucVu,
                     TenBoPhan = x.BoPhan.TenBoPhan,
 
-                }).ToList(); ;
+                }).ToList(); 
                 int pageIndex = request.PageIndex ?? 1;
                 int pageSize = request.PageSize ?? 1;
                 int startIndex = (pageIndex - 1) * (int)pageSize;
