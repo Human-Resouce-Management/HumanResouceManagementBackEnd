@@ -25,7 +25,7 @@ namespace QuanLyNhanSuBackEnd.DAL.Models.Context
         public DbSet<ChucVu> ChucVu { get; set; }
         public DbSet<NghiPhep> NghiPhep { get; set; }
         public DbSet<NhanVien> NhanVien { get; set; }
-        public DbSet<NhanVienTangCa> NhanVienTangCa { get; set; }
+
         public DbSet<PhuCap> PhuCap { get; set; }
         public DbSet<TangCa> TangCa { get; set; }
         public DbSet<TangLuong> TangLuong { get; set; }

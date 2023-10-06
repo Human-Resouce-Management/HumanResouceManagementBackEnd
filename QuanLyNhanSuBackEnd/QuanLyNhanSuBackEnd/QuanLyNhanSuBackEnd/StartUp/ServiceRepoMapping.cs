@@ -39,8 +39,6 @@ namespace QuanLyNhanSuBackEnd.API.StartUp
             builder.Services.AddScoped<INghiPhepService, NghiPhepService>();
             builder.Services.AddScoped(typeof(INghiPhepRespository), typeof(NghiPhepRespository));
 
-            builder.Services.AddScoped<INhanVienTangCaService, NhanVienTangCaService>();
-            builder.Services.AddScoped(typeof(INhanVienTangCaRespository), typeof(NhanVienTangCaRespository));
 
             builder.Services.AddScoped<ITangLuongService, TangLuongService>();
             builder.Services.AddScoped(typeof(ITangLuongRespository), typeof(TangLuongRespository));
