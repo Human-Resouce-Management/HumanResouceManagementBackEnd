@@ -1,8 +1,0 @@
-D:\Doan2\HumanResouceManagementBackEnd\Sapxep\Sapxep\bin\Debug\Sapxep.exe.config
-D:\Doan2\HumanResouceManagementBackEnd\Sapxep\Sapxep\bin\Debug\Sapxep.exe
-D:\Doan2\HumanResouceManagementBackEnd\Sapxep\Sapxep\bin\Debug\Sapxep.pdb
-D:\Doan2\HumanResouceManagementBackEnd\Sapxep\Sapxep\obj\Debug\Sapxep.csproj.AssemblyReference.cache
-D:\Doan2\HumanResouceManagementBackEnd\Sapxep\Sapxep\obj\Debug\Sapxep.csproj.SuggestedBindingRedirects.cache
-D:\Doan2\HumanResouceManagementBackEnd\Sapxep\Sapxep\obj\Debug\Sapxep.csproj.CoreCompileInputs.cache
-D:\Doan2\HumanResouceManagementBackEnd\Sapxep\Sapxep\obj\Debug\Sapxep.exe
-D:\Doan2\HumanResouceManagementBackEnd\Sapxep\Sapxep\obj\Debug\Sapxep.pdb
