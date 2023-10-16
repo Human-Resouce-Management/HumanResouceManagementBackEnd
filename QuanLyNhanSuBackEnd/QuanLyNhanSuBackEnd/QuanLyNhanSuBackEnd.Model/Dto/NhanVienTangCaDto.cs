@@ -16,7 +16,7 @@ namespace QuanLyNhanSuBackEnd.Model.Dto
         public string Ten { get; set; }
       
         public Guid TangCaId { get; set; }
-    
+       public List<NhanVienDto> NhanVienList { get; set; }
        
 
     }

@@ -52,9 +52,8 @@ namespace Maynghien.Common.Repository
         {
             if (entity != null)
             {
-                _context.Attach(entity);
-                _context.Remove(entity);
-                _context.SaveChanges();
+               
+
             }
         }
 
@@ -81,6 +80,20 @@ namespace Maynghien.Common.Repository
                 throw ex;
             }
 
+        }
+
+        public async Task AddRangeAsync(List<TEntity> entities, bool isCommit = true)
+        {
+            try
+            {
+                await _context.AddRangeAsync(entities);
+                if (isCommit)
+                    await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void DeleteRange(List<TEntity> entities)

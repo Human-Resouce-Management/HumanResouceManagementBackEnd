@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,10 +43,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 {
                     return result.BuildError("Cannot find Account by this user");
                 }
+              
                 var nhanVienTangCa = new NhanVienTangCa();
                     nhanVienTangCa = _mapper.Map<NhanVienTangCa>(request);
                     nhanVienTangCa.Id = Guid.NewGuid();
                      nhanVienTangCa.CreatedBy = UserName;
+              
 
                 _NhanVienTangCaRepository.Add(nhanVienTangCa);
      

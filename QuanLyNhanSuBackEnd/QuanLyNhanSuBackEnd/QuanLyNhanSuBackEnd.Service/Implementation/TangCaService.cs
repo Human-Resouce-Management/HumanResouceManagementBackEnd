@@ -24,30 +24,61 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
         private readonly ITangCaRespository _TangCaRepository;
         private readonly IMapper _mapper;
         private IHttpContextAccessor _httpContextAccessor;
+        private readonly INhanVienTangCaRespository _NhanVienTangCaRespository;
+        //private readonly NhanVienTangCaService _nhanVienTangCaService;
 
-        public TangCaService(ITangCaRespository TangCaRepository, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public TangCaService(ITangCaRespository TangCaRepository, IMapper mapper, IHttpContextAccessor httpContextAccessor , INhanVienTangCaRespository NhanVienTangCaRespository )
         {
             _TangCaRepository = TangCaRepository;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
+            _NhanVienTangCaRespository = NhanVienTangCaRespository;
+            //    _nhanVienTangCaService = nhanVienService;
         }
 
-        public AppResponse<TangCaDto> CreateTangCa(TangCaDto request)
+        public  AppResponse<TangCaDto> CreateTangCa(TangCaDto request)
         {
             var result = new AppResponse<TangCaDto>();
             try
             {
-                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                var UserName =  ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
                 if (UserName == null)
                 {
                     return result.BuildError("Cannot find Account by this user");
                 }
+                var nhanVienTangCaList = new List<NhanVienTangCa>();
+                
                 var tangCa = new TangCa();
+              
+               var nhanVienlist = new List<NhanVien>();
+              
                 tangCa = _mapper.Map<TangCa>(request);
                 tangCa.Id = Guid.NewGuid();
                 tangCa.CreatedBy = UserName;
                 _TangCaRepository.Add(tangCa);
+                request.TangCaList.ForEach( item =>
+                {
+                    //var nv = new NhanVienDto();
+                    //var nhanvien = new NhanVien();
+                    //nhanvien = _mapper.Map<NhanVien>(nv);
+                    
 
+                    var nhanVienTangCa = new NhanVienTangCa()
+                    {
+                        Id = Guid.NewGuid(),
+                        TangCaId =  tangCa.Id,                 
+                        CreatedBy = UserName ,
+                        NhanVienId = item.NhanVienId,   
+                        CreatedOn = DateTime.Now,
+                        Modifiedby = null,
+                        ModifiedOn = null,
+                        IsDeleted = false,
+                       
+                    };
+                    nhanVienTangCaList.Add(nhanVienTangCa);
+                } );
+          
+               _NhanVienTangCaRespository.AddRange(nhanVienTangCaList);
                 request.Id = tangCa.Id;
                 result.IsSuccess = true;
                 result.Data = request;

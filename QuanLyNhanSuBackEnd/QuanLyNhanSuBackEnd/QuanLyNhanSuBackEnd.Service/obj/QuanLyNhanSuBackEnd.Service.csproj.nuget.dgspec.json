@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj": {}
+    "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
+    "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj",
+        "projectUniqueName": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj",
         "projectName": "Maynghien.Common",
-        "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj",
-        "packagesPath": "C:\\Users\\ANH KIET\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\obj\\",
+        "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj",
+        "packagesPath": "C:\\Users\\84856\\.nuget\\packages\\",
+        "outputPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ANH KIET\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\84856\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -77,24 +77,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj": {
+    "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj",
+        "projectUniqueName": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj",
         "projectName": "QuanLyNhanSuBackEnd.Common",
-        "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj",
-        "packagesPath": "C:\\Users\\ANH KIET\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\obj\\",
+        "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj",
+        "packagesPath": "C:\\Users\\84856\\.nuget\\packages\\",
+        "outputPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ANH KIET\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\84856\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -136,24 +136,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj": {
+    "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj",
+        "projectUniqueName": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj",
         "projectName": "QuanLyNhanSuBackEnd.DAL",
-        "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj",
-        "packagesPath": "C:\\Users\\ANH KIET\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\obj\\",
+        "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj",
+        "packagesPath": "C:\\Users\\84856\\.nuget\\packages\\",
+        "outputPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ANH KIET\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\84856\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -168,8 +168,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
-                "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj"
+              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
+                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj"
               }
             }
           }
@@ -233,24 +233,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj": {
+    "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj",
+        "projectUniqueName": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj",
         "projectName": "QuanLyNhanSuBackEnd.Model",
-        "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj",
-        "packagesPath": "C:\\Users\\ANH KIET\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\obj\\",
+        "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj",
+        "packagesPath": "C:\\Users\\84856\\.nuget\\packages\\",
+        "outputPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ANH KIET\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\84856\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -265,8 +265,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
-                "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj"
+              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
+                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj"
               }
             }
           }
@@ -296,24 +296,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj": {
+    "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj",
+        "projectUniqueName": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj",
         "projectName": "QuanLyNhanSuBackEnd.Service",
-        "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj",
-        "packagesPath": "C:\\Users\\ANH KIET\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\obj\\",
+        "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\QuanLyNhanSuBackEnd.Service.csproj",
+        "packagesPath": "C:\\Users\\84856\\.nuget\\packages\\",
+        "outputPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ANH KIET\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\84856\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -328,17 +328,17 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
-                "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj"
+              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj": {
+                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\Maynghien.Common\\Maynghien.Common.csproj"
               },
-              "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj": {
-                "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj"
+              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj": {
+                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Common\\QuanLyNhanSuBackEnd.Common.csproj"
               },
-              "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj": {
-                "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj"
+              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj": {
+                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.DAL\\QuanLyNhanSuBackEnd.DAL.csproj"
               },
-              "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj": {
-                "projectPath": "D:\\GitHub\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj"
+              "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj": {
+                "projectPath": "D:\\Doan2\\HumanResouceManagementBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd\\QuanLyNhanSuBackEnd.Model\\QuanLyNhanSuBackEnd.Model.csproj"
               }
             }
           }
@@ -386,7 +386,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -10,7 +10,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
     
         [Route("api/[controller]")]
         [ApiController]
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class TangCaController : Controller
     {
         private readonly ITangCaService _TangCaService;
@@ -34,7 +34,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         [HttpPost]
         public IActionResult CreateTangCa(TangCaDto request)
         {
-            var result = _TangCaService.CreateTangCa(request);
+            var result =  _TangCaService.CreateTangCa(request);
             return Ok(result);
         }
         [HttpPut]

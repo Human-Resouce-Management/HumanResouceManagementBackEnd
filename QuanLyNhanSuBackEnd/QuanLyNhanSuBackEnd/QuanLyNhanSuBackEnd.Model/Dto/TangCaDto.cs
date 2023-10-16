@@ -15,5 +15,6 @@ namespace QuanLyNhanSuBackEnd.Model.Dto
         public string? GioKetThuc { get; set; }
         public double? HeSoCa { get; set; }
         public Guid? NguoiXacNhanId { get; set; }
+        public List<NhanVienTangCaDto> TangCaList { get; set;}
     }
 }

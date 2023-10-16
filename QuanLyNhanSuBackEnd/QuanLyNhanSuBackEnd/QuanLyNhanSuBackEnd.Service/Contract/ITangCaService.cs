@@ -14,7 +14,7 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
     {
         AppResponse<List<TangCaDto>> GetAllTangCa();
         AppResponse<TangCaDto> GetTangCaId(Guid Id);
-        AppResponse<TangCaDto> CreateTangCa(TangCaDto request);
+       AppResponse<TangCaDto> CreateTangCa(TangCaDto request);
         AppResponse<TangCaDto> EditTangCa(TangCaDto request);
         AppResponse<string> DeleteTangCa(Guid Id);
         Task<AppResponse<SearchTangCaRespository>> SearchTangCa(SearchRequest request);

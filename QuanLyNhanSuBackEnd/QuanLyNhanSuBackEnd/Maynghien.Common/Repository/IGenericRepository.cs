@@ -17,7 +17,7 @@ namespace Maynghien.Common.Repository
         void Delete(T entity);
 
         void Edit(T entity);
-
+        Task AddRangeAsync(List<T> entities, bool isCommit = true);
         void AddRange(List<T> entities, bool isCommit = true);
 
         void DeleteRange(List<T> entities);

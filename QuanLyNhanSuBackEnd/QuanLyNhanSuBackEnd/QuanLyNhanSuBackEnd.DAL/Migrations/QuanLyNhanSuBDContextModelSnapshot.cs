@@ -226,9 +226,6 @@ namespace QuanLyNhanSuBackEnd.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("BoPhanChuQuanId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -251,8 +248,6 @@ namespace QuanLyNhanSuBackEnd.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BoPhanChuQuanId");
 
                     b.ToTable("BoPhan");
                 });
@@ -440,6 +435,12 @@ namespace QuanLyNhanSuBackEnd.DAL.Migrations
                     b.Property<Guid>("NhanVienId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<double?>("SoTien")
+                        .HasColumnType("float");
+
+                    b.Property<bool?>("ThuongCoDinh")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NhanVienId");
@@ -571,7 +572,7 @@ namespace QuanLyNhanSuBackEnd.DAL.Migrations
 
                     b.HasIndex("NhanVienId");
 
-                    b.ToTable("ThoiViecs");
+                    b.ToTable("ThoiViec");
                 });
 
             modelBuilder.Entity("QuanLyNhanSuBackEnd.DAL.Models.Entity.TinhLuong", b =>
@@ -704,16 +705,6 @@ namespace QuanLyNhanSuBackEnd.DAL.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("QuanLyNhanSuBackEnd.DAL.Models.Entity.BoPhan", b =>
-                {
-                    b.HasOne("QuanLyNhanSuBackEnd.DAL.Models.Entity.BoPhan", "BoPhanChuQuan")
-                        .WithMany()
-                        .HasForeignKey("BoPhanChuQuanId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("BoPhanChuQuan");
                 });
 
             modelBuilder.Entity("QuanLyNhanSuBackEnd.DAL.Models.Entity.NghiPhep", b =>

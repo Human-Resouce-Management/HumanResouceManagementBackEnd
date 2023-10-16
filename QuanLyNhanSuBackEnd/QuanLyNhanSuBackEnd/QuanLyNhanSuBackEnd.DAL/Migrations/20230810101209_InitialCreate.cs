@@ -296,35 +296,35 @@ namespace QuanLyNhanSuBackEnd.DAL.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "NhanVienTangCa",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NhanVienId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TangCaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Modifiedby = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_NhanVienTangCa", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_NhanVienTangCa_NhanVien_NhanVienId",
-                        column: x => x.NhanVienId,
-                        principalTable: "NhanVien",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_NhanVienTangCa_TangCa_TangCaId",
-                        column: x => x.TangCaId,
-                        principalTable: "TangCa",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "NhanVienTangCa",
+            //    columns: table => new
+            //    {
+            //        Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+            //        NhanVienId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+            //        TangCaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+            //        CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+            //        CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+            //        Modifiedby = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_NhanVienTangCa", x => x.Id);
+            //        table.ForeignKey(
+            //            name: "FK_NhanVienTangCa_NhanVien_NhanVienId",
+            //            column: x => x.NhanVienId,
+            //            principalTable: "NhanVien",
+            //            principalColumn: "Id",
+            //            onDelete: ReferentialAction.Restrict);
+            //        table.ForeignKey(
+            //            name: "FK_NhanVienTangCa_TangCa_TangCaId",
+            //            column: x => x.TangCaId,
+            //            principalTable: "TangCa",
+            //            principalColumn: "Id",
+            //            onDelete: ReferentialAction.Restrict);
+            //    });
 
             migrationBuilder.CreateTable(
                 name: "PhuCap",
@@ -493,10 +493,10 @@ namespace QuanLyNhanSuBackEnd.DAL.Migrations
                 table: "NhanVienTangCa",
                 column: "NhanVienId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_NhanVienTangCa_TangCaId",
-                table: "NhanVienTangCa",
-                column: "TangCaId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_NhanVienTangCa_TangCaId",
+            //    table: "NhanVienTangCa",
+            //    column: "TangCaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PhuCap_NhanVienId",
@@ -539,8 +539,8 @@ namespace QuanLyNhanSuBackEnd.DAL.Migrations
             migrationBuilder.DropTable(
                 name: "NghiPhep");
 
-            migrationBuilder.DropTable(
-                name: "NhanVienTangCa");
+            //migrationBuilder.DropTable(
+            //    name: "NhanVienTangCa");
 
             migrationBuilder.DropTable(
                 name: "PhuCap");
