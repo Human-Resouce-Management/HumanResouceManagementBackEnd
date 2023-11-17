@@ -37,7 +37,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpPut]
-        [Route("{Id}")]
+     
         public IActionResult EditTangLuong(TangLuongDto request)
         {
             var result = _TangLuongService.EditTangLuong(request);

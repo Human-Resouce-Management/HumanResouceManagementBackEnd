@@ -184,10 +184,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "EFCore.BulkExtensions": {
-              "target": "Package",
-              "version": "[6.7.12, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.20, )"
@@ -446,6 +442,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.1, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[6.2.10, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",

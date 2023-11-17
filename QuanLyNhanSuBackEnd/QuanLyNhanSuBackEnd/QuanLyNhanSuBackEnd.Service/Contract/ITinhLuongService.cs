@@ -18,5 +18,6 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
         AppResponse<TinhLuongDto> EditTinhLuong(TinhLuongDto request);
         AppResponse<string> DeleteTinhLuong(Guid Id);
         Task<AppResponse<SearchTinhLuongRespository>> SearchTinhLuong(SearchRequest request);
+        AppResponse<double> TinhLuongs(Guid id);
     }
 }

@@ -38,7 +38,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpPut]
-        [Route("{Id}")]
+   
         public IActionResult EditTangCa(TangCaDto request)
         {
             var result = _TangCaService.EditTangCa(request);

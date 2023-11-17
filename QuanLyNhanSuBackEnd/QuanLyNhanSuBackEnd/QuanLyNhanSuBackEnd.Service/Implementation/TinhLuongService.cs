@@ -254,5 +254,39 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 throw;
             }
         }
+
+        public double TinhLuong(TinhLuong thongKe)
+        {
+            // Lấy số lượng sản phẩm
+         
+
+            // Tính lương cơ bản
+            double luongCoBan =(double)(thongKe.MucLuong*thongKe.HeSoLuong);
+
+            // Tính tiền lương
+            double tienLuong = (double)(luongCoBan - thongKe.CacKhoangTru + thongKe.CacKhoangThem);
+
+            return tienLuong;
+        }
+        public AppResponse<double> TinhLuongs(Guid id)
+         {
+            var result = new AppResponse<double>();
+            try
+            {
+                var request = new TinhLuong();
+                request = _ThoiViecRepository.Get(id);
+                request.TongLuong = TinhLuong(request);
+                _ThoiViecRepository.Edit(request);
+                var sum = request.TongLuong;
+                result.IsSuccess = true;
+                result.Data = (double) sum;
+                return result;
+            }
+            catch(Exception ex) 
+            {
+                return result.BuildError(ex.ToString());
+            }
+        }
+
     }
 }

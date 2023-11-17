@@ -16,6 +16,7 @@ namespace QuanLyNhanSuBackEnd.Model.Dto
         public Guid NhanVienId { get; set; }
         public string? ten { get; set; }
         public int? CacKhoangThem { get; set; }
-
+        public double? HeSoLuong { get; set; }
+        public double? TongLuong { get; set; }
     }
 }

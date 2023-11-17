@@ -37,7 +37,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpPut]
-        [Route("{Id}")]
+    
         public IActionResult EditPhuCap(PhuCapDto request)
         {
             var result = _BoPhanService.EditPhuCap(request);

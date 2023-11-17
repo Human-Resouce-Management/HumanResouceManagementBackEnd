@@ -94,10 +94,10 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<BoPhanDto>();
             try
             {
-                var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
+                //var UserName = ClaimHelper.GetClainByName(_httpContextAccessor, "UserName");
                 var request = new BoPhan();
                 request = _mapper.Map<BoPhan>(tuyendung);
-                request.CreatedBy = UserName;
+                //request.CreatedBy = UserName;
                 _BoPhanRepository.Edit(request);
 
                 result.IsSuccess = true;
@@ -186,10 +186,10 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
-        public async Task<AppResponse<SearchBoPhanRespository>> SearchBoPhan(SearchRequest request)
+        public AppResponse<SearchResponse<BoPhanDto>> SearchBoPhan(SearchRequest request)
         {
 
-            var result = new AppResponse<SearchBoPhanRespository>();
+            var result = new AppResponse<SearchResponse<BoPhanDto>>();
             try
             {
                 var query = BuildFilterExpression(request.Filters);
@@ -210,7 +210,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 //        dtouser.Role = (await _userManager.GetRolesAsync(identityUser)).First();
                 //    }
                 //}
-                var searchUserResult = new SearchBoPhanRespository
+                var searchUserResult = new SearchResponse<BoPhanDto>
                 {
                     TotalRows = numOfRecords,
                     TotalPages = SearchHelper.CalculateNumOfPages(numOfRecords, pageSize),

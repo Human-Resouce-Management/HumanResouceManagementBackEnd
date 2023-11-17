@@ -43,50 +43,38 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             _userRepository = userRepository;
         }
 
-        public AppResponse<List<IdentityUser>> GetAllUser()
+        public async Task<AppResponse<List<UserModel>>> GetAllUser()
         {
-            //var result = new AppResponse<List<UserModel>>();
-            //try
-            //{
-
-            //var query = (from user in _context.Users
-            //             join userRole in _context.UserRoles on user.Id equals userRole.UserId
-            //             join role in _context.Roles on userRole.RoleId equals role.Id
-            //             select new UserModel
-            //             {
-            //                 //Id = user.Id,
-            //                 UserName = user.UserName,
-            //                 Password = user.PasswordHash,
-            //                 Role = role.Name,
-            //                 Email = user.Email,
-            //                 //LockoutEnabled = user.LockoutEnabled,
-            //             }).ToList();
-
-            //    result.IsSuccess = true;
-            //result.Data = query;
-            //return result;
-            //}catch (Exception ex)
-            //{
-            //    result.IsSuccess = false;
-            //    result.Message = ex.Message + " " + ex.StackTrace;
-            //    return result;
-            //}
-
-            var result = new AppResponse<List<IdentityUser>>();
+            var result = new AppResponse<List<UserModel>>();
             try
             {
-                var list = _userRepository.GetAll();
+                List<Filter> Filters = new List<Filter>();
+                var query = BuildFilterExpression(Filters);
+                var users = _userRepository.FindByPredicate(query);
+                var UserList = users.ToList();
+                var dtoList = _mapper.Map<List<UserModel>>(UserList);
 
-                result.IsSuccess = true;
-                result.Data = list;
-                return result;
+
+                if (dtoList != null && dtoList.Count > 0)
+                {
+                    for (int i = 0; i < UserList.Count; i++)
+                    {
+                        var dtouser = dtoList[i];
+
+                        var identityUser = UserList[i];
+                       
+                        dtouser.Role = (await _userManager.GetRolesAsync(identityUser)).First();
+
+                    }
+                }
+                return result.BuildResult(dtoList);
             }
             catch (Exception ex)
             {
-                result.IsSuccess = false;
-                result.Message = ex.Message + " " + ex.StackTrace;
-                return result;
+
+                return result.BuildError(ex.ToString());
             }
+
         }
         public async Task<AppResponse<string>>ResetPassWordUser(string Id)
         {
@@ -145,7 +133,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                
                 var createResult = await _userManager.CreateAsync(newIdentityUser);
                 await _userManager.AddPasswordAsync(newIdentityUser, user.Password);
-
+                if (!(await _roleManager.RoleExistsAsync(user.Role)))
+                {
+                    IdentityRole role = new IdentityRole { Name = user.Role };
+                    await _roleManager.CreateAsync(role);
+                }
+                await _userManager.AddToRoleAsync(newIdentityUser, user.Role);
                 newIdentityUser = await _userManager.FindByEmailAsync(user.Email);
                 return result.BuildResult(INFO_MSG_UserCreated);
             }
@@ -338,11 +331,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     CurrentPage = pageIndex,
                     Data = dtoList,
                 };
-
-                result.Data = searchUserResult;
-                result.IsSuccess = true;
-
-                return result;
+                return result.BuildResult(searchUserResult);
 
             }
             catch (Exception ex)
@@ -351,23 +340,26 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 return result.BuildError(ex.ToString());
             }
         }
-        private ExpressionStarter<IdentityUser> BuildFilterExpression(IList<Filter> Filters)
+        private ExpressionStarter<IdentityUser> BuildFilterExpression(IList<Filter>? Filters)
         {
             try
             {
                 var predicate = PredicateBuilder.New<IdentityUser>(true);
-
+                if(Filters != null)
+                {
+             
                 foreach (var filter in Filters)
                 {
                     switch (filter.FieldName)
                     {
-                        case "Email":
-                            predicate = predicate.And(m => m.Email.Contains(filter.Value));
+                        case "userName":
+                            predicate = predicate.And(m => m.UserName.Equals(filter.Value));
                             break;
 
                         default:
                             break;
                     }
+                }
                 }
                 return predicate;
             }

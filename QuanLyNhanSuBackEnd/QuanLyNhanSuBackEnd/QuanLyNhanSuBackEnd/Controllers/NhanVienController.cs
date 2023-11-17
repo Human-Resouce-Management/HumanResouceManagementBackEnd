@@ -37,7 +37,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpPut]
-        [Route("{Id}")]
+        
         public IActionResult EditBoPhan(NhanVienDto request)
         {
             var result = _NhanVienService.EditNhanVien(request);

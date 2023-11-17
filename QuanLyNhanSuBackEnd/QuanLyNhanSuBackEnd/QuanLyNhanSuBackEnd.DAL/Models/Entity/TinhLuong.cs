@@ -18,5 +18,8 @@ namespace QuanLyNhanSuBackEnd.DAL.Models.Entity
         [ForeignKey("NhanVienId")]
         public NhanVien? NhanVien { get; set; }
         public int? CacKhoangThem { get; set; }
+        public double? HeSoLuong { get; set; }
+        public double? TongLuong { get; set; }
+        
     }
 }

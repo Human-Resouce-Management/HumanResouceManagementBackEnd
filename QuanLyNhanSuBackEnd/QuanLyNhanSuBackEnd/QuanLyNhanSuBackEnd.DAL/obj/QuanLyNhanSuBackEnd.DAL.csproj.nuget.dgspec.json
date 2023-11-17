@@ -125,10 +125,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "EFCore.BulkExtensions": {
-              "target": "Package",
-              "version": "[6.7.12, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.20, )"

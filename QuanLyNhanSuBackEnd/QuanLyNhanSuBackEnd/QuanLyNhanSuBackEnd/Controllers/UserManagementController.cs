@@ -10,7 +10,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class UserManagementController:Controller
     {
         IUserManagementService _userManagementService;
@@ -19,9 +19,9 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             _userManagementService = userManagementService;
         }
         [HttpGet("GetAll")]
-        public IActionResult GetAll()
+        public async Task< IActionResult> GetAll()
         {
-            var result = _userManagementService.GetAllUser();
+            var result =await _userManagementService.GetAllUser();
             return Ok(result);
         }
         [HttpPut]
@@ -57,7 +57,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         //}
         [HttpPost]
         [Route("search")]
-        public async Task<IActionResult> Search([FromBody] SearchRequest request)
+        public async Task<IActionResult >Search([FromBody] SearchRequest request)
         {
             var result = await _userManagementService.Search(request);
 

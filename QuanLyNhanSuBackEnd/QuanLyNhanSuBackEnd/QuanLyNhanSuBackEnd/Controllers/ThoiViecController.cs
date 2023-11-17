@@ -37,7 +37,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpPut]
-        [Route("{Id}")]
+      
         public IActionResult EditChucVu(ThoiViecDto request)
         {
             var result = _ThoiViecService.EditThoiViec(request);

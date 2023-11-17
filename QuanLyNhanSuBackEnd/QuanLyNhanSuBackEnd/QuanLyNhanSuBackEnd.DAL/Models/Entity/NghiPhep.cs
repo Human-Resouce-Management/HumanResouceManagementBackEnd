@@ -17,7 +17,7 @@ namespace QuanLyNhanSuBackEnd.DAL.Models.Entity
         public Guid NhanVienId { get; set; }
         [ForeignKey("NhanVienId")]
         public NhanVien? NhanVien { get; set; }
-        public Guid NguoiXacNhanId { get; set; }
+        public Guid? NguoiXacNhanId { get; set; }
         public DateTime? NgayKetThuc { get; set; }
         public int? SoGioNghi { get; set; }
     }

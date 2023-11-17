@@ -10,7 +10,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
     
         [Route("api/[controller]")]
         [ApiController]
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    //[Authorize(AuthenticationSchemes = "Bearer")]
     public class NhanVienTangCaController : Controller
     {
         private readonly INhanVienTangCaService _NhanVienTangCaService;
@@ -38,7 +38,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpPut]
-        [Route("{Id}")]
+      
         public IActionResult EditTangCa(NhanVienTangCaDto request)
         {
             var result = _NhanVienTangCaService.EditNhanVienTangCa(request);

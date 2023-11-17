@@ -45,6 +45,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 nghiPhep.Id = Guid.NewGuid();
                 // tuyendung.BoPhanId = Guid.NewGuid();
                 //tuyendung.ChucVuId = Guid.NewGuid();
+                nghiPhep.NguoiXacNhanId = Guid.NewGuid();
                 nghiPhep.CreatedBy = UserName;
                 _NghiPhepRepository.Add(nghiPhep);
                 //request.ChucVuId = tuyendung.ChucVuId;

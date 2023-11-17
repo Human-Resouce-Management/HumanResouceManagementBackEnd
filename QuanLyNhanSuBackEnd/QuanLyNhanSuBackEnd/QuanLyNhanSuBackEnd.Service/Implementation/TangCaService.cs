@@ -50,8 +50,6 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 
                 var tangCa = new TangCa();
               
-               var nhanVienlist = new List<NhanVien>();
-              
                 tangCa = _mapper.Map<TangCa>(request);
                 tangCa.Id = Guid.NewGuid();
                 tangCa.CreatedBy = UserName;

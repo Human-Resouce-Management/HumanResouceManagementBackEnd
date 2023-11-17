@@ -17,6 +17,6 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
         AppResponse<BoPhanDto> CreateBoPhan(BoPhanDto request);
         AppResponse<BoPhanDto> EditBoPhan(BoPhanDto request);
         AppResponse<string> DeleteBoPhan(Guid Id);
-        Task<AppResponse<SearchBoPhanRespository>> SearchBoPhan(SearchRequest request);
+        AppResponse<SearchResponse<BoPhanDto>> SearchBoPhan(SearchRequest request);
     }
 }

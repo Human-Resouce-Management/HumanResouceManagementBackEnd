@@ -38,6 +38,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             public async Task<AppResponse<string>> AuthenticateUser(UserModel login)
             {
                 var result = new AppResponse<string>();
+          
                 try
                 {
                     UserModel user = null;
@@ -54,9 +55,13 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                         }
                         if (await _userManager.CheckPasswordAsync(identityUser, login.Password))
                         {
-                            user = new UserModel { UserName = identityUser.UserName, Email = identityUser.Email };
+                        var role = (await _userManager.GetRolesAsync(identityUser)).First();
+                        login.Role = role.ToString();
+           
+                        user = new UserModel { UserName = identityUser.UserName, Email = identityUser.Email ,Role =  role};
 
                         }
+
 
                     }
                     else if (login.UserName == "ble07983@gmail.com")
@@ -116,10 +121,14 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             };
                 var roles = await _userManager.GetRolesAsync(identityUser);
                 foreach (var role in roles)
-                {
-                    claims.Add(new Claim("Role", role));
-                }
-                return claims;
+               {
+                    claims.Add(new Claim("Roles", role));
+               }
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+            return claims;
 
             }
 
@@ -137,6 +146,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     {
                         return result.BuildError(ERR_MSG_UserExisted);
                     }
+
                     var newIdentityUser = new IdentityUser { Email = user.Email, UserName = user.Email };
                     var createResult = await _userManager.CreateAsync(newIdentityUser);
                     await _userManager.AddPasswordAsync(newIdentityUser, user.Password);             

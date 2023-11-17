@@ -9,7 +9,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class TinhLuongController : Controller
     {
         private readonly ITinhLuongService _BoPhanService;
@@ -58,6 +58,13 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         {
             var result = await _BoPhanService.SearchTinhLuong(request);
 
+            return Ok(result);
+        }
+        [HttpPut]
+        [Route("Sum")]
+        public IActionResult TinhLuong(Guid request)
+        {
+            var result = _BoPhanService.TinhLuongs(request);
             return Ok(result);
         }
     }

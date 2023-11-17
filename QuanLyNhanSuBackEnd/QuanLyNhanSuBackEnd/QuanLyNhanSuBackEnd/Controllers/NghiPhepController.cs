@@ -9,7 +9,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class NghiPhepController : Controller
     {
         private readonly INghiPhepService _NghiPhepService;
@@ -37,7 +37,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpPut]
-        [Route("{Id}")]
+
         public IActionResult EditNghiPhep(NghiPhepDto request)
         {
             var result = _NghiPhepService.EditNghiPhep(request);
