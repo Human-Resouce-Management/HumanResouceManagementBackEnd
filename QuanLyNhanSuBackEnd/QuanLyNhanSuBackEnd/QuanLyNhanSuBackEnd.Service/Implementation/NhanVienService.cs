@@ -42,6 +42,14 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 {
                     return result.BuildError("Cannot find Account by this user");
                 }
+                if (request.BoPhanId == null)
+                {
+                    return result.BuildError("Khong tim thay Bo Phan");
+                }
+                if (request.ChucVuId == null)
+                {
+                    return result.BuildError("Khong tim thay chuc vu");
+                }
                 var tuyendung = _mapper.Map<NhanVien>(request);
                 tuyendung.Id = Guid.NewGuid();
 
@@ -66,8 +74,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<string>();
             try
             {
-                var tuyendung = new NhanVien();
-                tuyendung = _NhanVienRepository.Get(Id);
+              
+              var  tuyendung = _NhanVienRepository.Get(Id);
                 tuyendung.IsDeleted = true;
 
                 _NhanVienRepository.Edit(tuyendung);
@@ -240,19 +248,22 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             try
             {
                 var predicate = PredicateBuilder.New<NhanVien>(true);
-
-                foreach (var filter in Filters)
+                if(Filters != null)
                 {
-                    switch (filter.FieldName)
+                    foreach (var filter in Filters)
                     {
-                        case "TenNhanVien":
-                            predicate = predicate.And(m => m.Ten.Contains(filter.Value));
-                            break;
+                        switch (filter.FieldName)
+                        {
+                            case "ten":
+                                predicate = predicate.And(m => m.Ten.Contains(filter.Value));
+                                break;
 
-                        default:
-                            break;
+                            default:
+                                break;
+                        }
                     }
                 }
+               
                 return predicate;
             }
             catch (Exception)

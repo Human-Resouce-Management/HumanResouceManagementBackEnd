@@ -18,14 +18,13 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         {
             _userManagementService = userManagementService;
         }
-        [HttpGet("GetAll")]
+        [HttpGet]
         public async Task< IActionResult> GetAll()
         {
             var result =await _userManagementService.GetAllUser();
             return Ok(result);
         }
         [HttpPut]
-        [Route("{Id}")]
         public async Task<IActionResult> RestPassWordUser(UserModel Id)
         {
             var result = await _userManagementService.Password(Id);

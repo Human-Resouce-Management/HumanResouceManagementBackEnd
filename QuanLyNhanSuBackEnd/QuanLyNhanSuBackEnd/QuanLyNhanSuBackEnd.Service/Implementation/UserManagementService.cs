@@ -353,7 +353,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     switch (filter.FieldName)
                     {
                         case "userName":
-                            predicate = predicate.And(m => m.UserName.Equals(filter.Value));
+                            predicate = predicate.And(m => m.UserName.Contains(filter.Value));
                             break;
 
                         default:

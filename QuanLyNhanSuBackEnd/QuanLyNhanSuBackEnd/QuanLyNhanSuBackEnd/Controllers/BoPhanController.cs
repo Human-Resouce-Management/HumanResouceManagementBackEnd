@@ -12,7 +12,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class BoPhanController : Controller
     {
         private readonly IBoPhanService _BoPhanService;
@@ -49,6 +49,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpDelete]
+        [Route("{Id}")]
         public IActionResult DeleteBoPhan(Guid id)
         {
 

@@ -9,7 +9,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class ChucVuController : Controller
     {
         private readonly IChucVuService _ChucVuService;
@@ -44,6 +44,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpDelete]
+        [Route("{Id}")]
         public IActionResult DeleteTangCa(Guid id)
         {
 

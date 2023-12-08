@@ -206,17 +206,19 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             try
             {
                 var predicate = PredicateBuilder.New<TuyenDung>(true);
-
-                foreach (var filter in Filters)
+                if (Filters != null)
                 {
-                    switch (filter.FieldName)
+                    foreach (var filter in Filters)
                     {
-                        case "LienHe":
-                            predicate = predicate.And(m => m.LienHe.Contains(filter.Value));
-                            break;
+                        switch (filter.FieldName)
+                        {
+                            case "lienHe":
+                                predicate = predicate.And(m => m.LienHe.Contains(filter.Value));
+                                break;
 
-                        default:
-                            break;
+                            default:
+                                break;
+                        }
                     }
                 }
                 return predicate;

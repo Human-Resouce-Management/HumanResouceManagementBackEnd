@@ -37,13 +37,14 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpPut]
-        [Route("{Id}")]
+
         public IActionResult EditBoPhan(TinhLuongDto request)
         {
             var result = _BoPhanService.EditTinhLuong(request);
             return Ok(result);
         }
         [HttpDelete]
+        [Route("{Id}")]
         public IActionResult DeleteBoPhan(Guid id)
         {
 

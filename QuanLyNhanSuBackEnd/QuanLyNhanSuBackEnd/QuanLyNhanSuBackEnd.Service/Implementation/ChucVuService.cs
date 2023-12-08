@@ -201,17 +201,20 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             try
             {
                 var predicate = PredicateBuilder.New<ChucVu>(true);
-
-                foreach (var filter in Filters)
+                if (Filters != null)
                 {
-                    switch (filter.FieldName)
-                    {
-                        case "TenChucVu":
-                            predicate = predicate.And(m => m.TenChucVu.Contains(filter.Value));
-                            break;
+                    foreach (var filter in Filters)
+                {
+              
+                        switch (filter.FieldName)
+                        {
+                            case "tenChucVu":
+                                predicate = predicate.And(m => m.TenChucVu.Contains(filter.Value));
+                                break;
 
-                        default:
-                            break;
+                            default:
+                                break;
+                        }
                     }
                 }
                 return predicate;

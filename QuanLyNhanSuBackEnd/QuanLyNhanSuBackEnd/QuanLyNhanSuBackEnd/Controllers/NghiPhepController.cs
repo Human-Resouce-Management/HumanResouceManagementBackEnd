@@ -44,6 +44,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpDelete]
+        [Route("{Id}")]
         public IActionResult DeleteNghiPhep(Guid id)
         {
 

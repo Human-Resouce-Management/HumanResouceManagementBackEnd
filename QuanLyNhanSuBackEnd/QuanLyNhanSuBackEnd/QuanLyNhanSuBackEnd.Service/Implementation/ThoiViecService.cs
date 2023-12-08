@@ -232,21 +232,23 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             try
             {
                 var predicate = PredicateBuilder.New<ThoiViec>(true);
-               
 
-                foreach (var filter in Filters)
+                if (Filters != null)
                 {
-                    switch (filter.FieldName)
+                    foreach (var filter in Filters)
                     {
-                        case "ThoiViec":
-                        
-                            predicate = predicate.And(m => m.NhanVien.Ten.Contains(filter.Value));
-                           
-                       
-                            break;
+                        switch (filter.FieldName)
+                        {
+                            case "ten":
 
-                        default:
-                            break;
+                                predicate = predicate.And(m => m.NhanVien.Ten.Contains(filter.Value));
+
+
+                                break;
+
+                            default:
+                                break;
+                        }
                     }
                 }
                 return predicate;

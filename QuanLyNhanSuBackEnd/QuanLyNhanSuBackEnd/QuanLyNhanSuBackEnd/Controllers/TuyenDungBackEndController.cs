@@ -45,7 +45,8 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
                 return Ok(result);
             }
             [HttpDelete]
-            public IActionResult DeleteTuyenDung(Guid id)
+            [Route("{Id}")]
+        public IActionResult DeleteTuyenDung(Guid id)
             {
 
                 var result = _warehouseService.DeleteTuyenDung(id);

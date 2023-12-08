@@ -45,6 +45,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var tuyendung = _mapper.Map<TinhLuong>(request);
                 tuyendung.Id = Guid.NewGuid();
                 tuyendung.CreatedBy = UserName;
+              
                 // tuyendung.BoPhanId = Guid.NewGuid();
                 //tuyendung.ChucVuId = Guid.NewGuid();
                 _ThoiViecRepository.Add(tuyendung);
@@ -117,7 +118,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             try
             {
                 var query = _ThoiViecRepository.GetAll()
-                   .Include(n=>n.NhanVien);
+                   .Include(m=>m.NhanVien);
 
                 var list = query.Select(m => new TinhLuongDto
                 {
@@ -128,6 +129,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                    CacKhoangThem = m.CacKhoangThem,
                    CacKhoangTru = m.CacKhoangTru,
                    NhanVienId = m.NhanVienId,
+                   HeSoLuong = m.HeSoLuong,
+                   TongLuong = TinhLuong(m)
                    
                 }).ToList();
                 result.IsSuccess = true;
@@ -158,7 +161,9 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     MucLuong = x.MucLuong,
                     NhanVienId=x.NhanVienId,
                     SoLuong = x.SoLuong,
-                    ten = x.NhanVien.Ten
+                    ten = x.NhanVien.Ten,
+                    HeSoLuong = x.HeSoLuong,
+                    TongLuong = TinhLuong(x)
                 }).First();
                 result.IsSuccess = true;
                 result.Data = data;
@@ -233,17 +238,23 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             try
             {
                 var predicate = PredicateBuilder.New<TinhLuong>(true);
-
-                foreach (var filter in Filters)
+                if (Filters != null)
                 {
-                    switch (filter.FieldName)
+                    if (Filters != null)
                     {
-                        case "TinhLuong":
-                            predicate = predicate.And(m => m.NhanVien.Ten.Contains(filter.Value));
-                            break;
 
-                        default:
-                            break;
+                        foreach (var filter in Filters)
+                        {
+                            switch (filter.FieldName)
+                            {
+                                case "ten":
+                                    predicate = predicate.And(m => m.NhanVien.Ten.Contains(filter.Value));
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
                     }
                 }
                 return predicate;
@@ -255,7 +266,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             }
         }
 
-        public double TinhLuong(TinhLuong thongKe)
+        public static double TinhLuong(TinhLuong thongKe)
         {
             // Lấy số lượng sản phẩm
          

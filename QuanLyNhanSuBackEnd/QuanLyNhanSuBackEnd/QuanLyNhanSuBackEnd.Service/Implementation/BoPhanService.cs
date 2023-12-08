@@ -164,17 +164,19 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             try
             {
                 var predicate = PredicateBuilder.New<BoPhan>(true);
-
-                foreach (var filter in Filters)
+                if (Filters != null)
                 {
-                    switch (filter.FieldName)
+                    foreach (var filter in Filters)
                     {
-                        case "TenBoPhan":
-                            predicate = predicate.And(m => m.TenBoPhan.Contains(filter.Value));
-                            break;
+                        switch (filter.FieldName)
+                        {
+                            case "tenBoPhan":
+                                predicate = predicate.And(m => m.TenBoPhan.Contains(filter.Value));
+                                break;
 
-                        default:
-                            break;
+                            default:
+                                break;
+                        }
                     }
                 }
                 return predicate;
