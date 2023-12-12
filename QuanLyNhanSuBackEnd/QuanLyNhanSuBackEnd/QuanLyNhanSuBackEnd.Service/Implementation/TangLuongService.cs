@@ -24,12 +24,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
         private readonly ITangLuongRespository _TangLuongRepository;
         private readonly IMapper _mapper;
         private IHttpContextAccessor _httpContextAccessor;
+        private readonly ITinhLuongRespository _TinhLuongRepository;
 
-        public TangLuongService(ITangLuongRespository TangLuongRespository, IMapper mapper ,  IHttpContextAccessor httpContextAccessor)
+        public TangLuongService(ITangLuongRespository TangLuongRespository, IMapper mapper , 
+            IHttpContextAccessor httpContextAccessor , ITinhLuongRespository tinhLuongRespository)
         {
             _TangLuongRepository = TangLuongRespository;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
+            _TinhLuongRepository = tinhLuongRespository;
         }
 
         public AppResponse<TangLuongDto> CreateTangLuong(TangLuongDto request)
@@ -44,12 +47,13 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 }
                 var tangLuong = _mapper.Map<TangLuong>(request);
                 tangLuong.Id = Guid.NewGuid();
-                // tuyendung.BoPhanId = Guid.NewGuid();
-                //tuyendung.ChucVuId = Guid.NewGuid();
+                var nhanvien = _TinhLuongRepository.FindByPredicate(x => x.NhanVienId == request.NhanVienId).First();
+                tangLuong.HeSoCu = nhanvien.HeSoLuong.Value;
                 tangLuong.CreatedBy = UserName;
-                _TangLuongRepository.Add(tangLuong);
-                //request.ChucVuId = tuyendung.ChucVuId;
-                //request.BoPhanId = tuyendung.BoPhanId;
+                tangLuong.NgayCapNhat = DateTime.Now;
+                nhanvien.HeSoLuong = request.HeSoMoi;
+                _TinhLuongRepository.Edit(nhanvien);
+                _TangLuongRepository.Add(tangLuong);     
                 request.Id = tangLuong.Id;
                 result.IsSuccess = true;
                 result.Data = request;
@@ -95,9 +99,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             try
             {
                 var tangLuong = new TangLuong();
-                tangLuong = _mapper.Map<TangLuong>(tangLuong);
+                tangLuong = _mapper.Map<TangLuong>(request);
+                var nhanvien = _TinhLuongRepository.FindByPredicate(x => x.NhanVienId == request.NhanVienId).First();
+                tangLuong.HeSoCu = nhanvien.HeSoLuong.Value;
+                nhanvien.HeSoLuong = request.HeSoMoi;
+                _TinhLuongRepository.Edit(nhanvien);
                 _TangLuongRepository.Edit(tangLuong);
-
                 result.IsSuccess = true;
                 result.Data = request;
                 return result;

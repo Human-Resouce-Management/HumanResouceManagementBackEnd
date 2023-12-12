@@ -45,10 +45,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var tuyendung = _mapper.Map<TinhLuong>(request);
                 tuyendung.Id = Guid.NewGuid();
                 tuyendung.CreatedBy = UserName;
-              
+
                 // tuyendung.BoPhanId = Guid.NewGuid();
                 //tuyendung.ChucVuId = Guid.NewGuid();
+                tuyendung.TongLuong = TinhLuong2(request);
                 _ThoiViecRepository.Add(tuyendung);
+              
                 //request.ChucVuId = tuyendung.ChucVuId;
                 //request.BoPhanId = tuyendung.BoPhanId;
                 request.Id = tuyendung.Id;
@@ -196,7 +198,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     CacKhoangTru = x.CacKhoangTru,
                     MucLuong = x.MucLuong,
                     SoLuong = x.SoLuong,
-                    
+                    HeSoLuong = x.HeSoLuong,
+                    TongLuong = x.TongLuong,
 
                 }).ToList(); ; ;
                 int pageIndex = request.PageIndex ?? 1;
@@ -273,6 +276,21 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
 
             // Tính lương cơ bản
             double luongCoBan =(double)(thongKe.MucLuong*thongKe.HeSoLuong);
+
+            // Tính tiền lương
+            double tienLuong = (double)(luongCoBan - thongKe.CacKhoangTru + thongKe.CacKhoangThem);
+
+            return tienLuong;
+        }
+
+
+        public static double TinhLuong2(TinhLuongDto thongKe)
+        {
+            // Lấy số lượng sản phẩm
+
+
+            // Tính lương cơ bản
+            double luongCoBan = (double)(thongKe.MucLuong * thongKe.HeSoLuong);
 
             // Tính tiền lương
             double tienLuong = (double)(luongCoBan - thongKe.CacKhoangTru + thongKe.CacKhoangThem);

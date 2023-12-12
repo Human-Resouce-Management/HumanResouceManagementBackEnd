@@ -14,9 +14,9 @@ namespace QuanLyNhanSuBackEnd.Model.Dto
         public Guid NhanVienId { get; set; }
         public string? ten { get; set; }
         public DateTime? NgayCapNhat { get; set; }
-        public double SoTien { get; set; }
-        public double HeSoCu { get; set; }
-        public double HeSoMoi { get; set; }
+        public double? SoTien { get; set; }
+        public double? HeSoCu { get; set; }
+        public double? HeSoMoi { get; set; }
         public DateTime? NgayKetThuc { get; set; }
 
     }
