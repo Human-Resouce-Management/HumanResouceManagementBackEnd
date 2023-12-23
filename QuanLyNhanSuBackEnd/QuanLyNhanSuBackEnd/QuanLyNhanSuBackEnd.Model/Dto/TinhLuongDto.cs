@@ -10,7 +10,7 @@ namespace QuanLyNhanSuBackEnd.Model.Dto
 {
    public class TinhLuongDto : BaseDto
     {
-        public double? SoLuong { get; set; }
+        //public double? SoLuong { get; set; }
         public double? MucLuong { get; set; }
         public int? CacKhoangTru { get; set; }
         public Guid NhanVienId { get; set; }

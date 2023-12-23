@@ -18,5 +18,6 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
         AppResponse<TangCaDto> EditTangCa(TangCaDto request);
         AppResponse<string> DeleteTangCa(Guid Id);
         Task<AppResponse<SearchTangCaRespository>> SearchTangCa(SearchRequest request);
+        Task<byte[]> ExportToExcel(SearchRequest request);
     }
 }

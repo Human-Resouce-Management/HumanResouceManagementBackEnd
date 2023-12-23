@@ -118,8 +118,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             //string userId = "";
             try
             {
-                var query = _BoPhanRepository.GetAll();
-                var list = query.Select(m => new BoPhanDto
+                var query = _BoPhanRepository.GetAll().Where(x => x.IsDeleted == false);
+                var list = query.Where(x => x.IsDeleted == false).Select(m => new BoPhanDto
                 {
                     Id = m.Id,
                     TenBoPhan = m.TenBoPhan,
@@ -179,6 +179,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                         }
                     }
                 }
+                predicate = predicate.And(m => m.IsDeleted == false);
                 return predicate;
             }
             catch (Exception)

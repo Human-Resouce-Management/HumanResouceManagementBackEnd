@@ -10,7 +10,7 @@ namespace QuanLyNhanSuBackEnd.DAL.Models.Entity
 {
     public class TinhLuong :BaseEntity
     {
-        public double? SoLuong { get; set; }
+        //public double? SoLuong { get; set; }
         public double? MucLuong { get; set; }
         public int? CacKhoangTru { get; set; }
         [ForeignKey("NhanVien")]

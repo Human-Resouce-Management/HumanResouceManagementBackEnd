@@ -34,6 +34,19 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             _httpContextAccessor = httpContextAccessor;
             _TinhLuongRepository = tinhLuongRespository;
         }
+        public static double TinhLuong2(TinhLuong thongKe)
+        {
+            // Lấy số lượng sản phẩm
+
+
+            // Tính lương cơ bản
+            double luongCoBan = (double)(thongKe.MucLuong * thongKe.HeSoLuong);
+
+            // Tính tiền lương
+            double tienLuong = (double)(luongCoBan - thongKe.CacKhoangTru + thongKe.CacKhoangThem);
+
+            return tienLuong;
+        }
 
         public AppResponse<TangLuongDto> CreateTangLuong(TangLuongDto request)
         {
@@ -47,12 +60,48 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 }
                 var tangLuong = _mapper.Map<TangLuong>(request);
                 tangLuong.Id = Guid.NewGuid();
-                var nhanvien = _TinhLuongRepository.FindByPredicate(x => x.NhanVienId == request.NhanVienId).First();
+                var nhanvien = _TinhLuongRepository.FindByPredicate(x => x.NhanVienId == request.NhanVienId).FirstOrDefault(x => x.IsDeleted == false);
+                var nhanvientangluong = _TangLuongRepository.FindByPredicate(x => x.NhanVienId == request.NhanVienId).FirstOrDefault();
+                if (nhanvientangluong != null)
+                {
+                    if (nhanvientangluong.IsDeleted == true)
+                    {
+                        goto TiepTheo;
+                    }
+                    else
+                    {
+                        return result.BuildError("Nhan Vien da ton tai");
+                    }
+
+                }
+                TiepTheo:
+
+                var getall = _TangLuongRepository.GetAll().ToList();
+                for(int i = 0; i < getall.Count() ; i++)
+                {
+                    
+                    if(request.NhanVienId == getall[i].NhanVienId && getall[i].IsDeleted == false)
+                    {
+                        return result.BuildError("Nhan Vien Khong co trong Bang Luong");
+                    }
+                }
+
                 tangLuong.HeSoCu = nhanvien.HeSoLuong.Value;
                 tangLuong.CreatedBy = UserName;
                 tangLuong.NgayCapNhat = DateTime.Now;
+                tangLuong.NgayKetThuc = DateTime.UtcNow.AddDays(30);
+                double Luongcu =(double) nhanvien.TongLuong;
                 nhanvien.HeSoLuong = request.HeSoMoi;
+                nhanvien.TongLuong = TinhLuong2(nhanvien);
                 _TinhLuongRepository.Edit(nhanvien);
+                if(nhanvien.TongLuong > Luongcu)
+                {
+                    tangLuong.SoTien =(double) nhanvien.TongLuong - Luongcu;
+                }
+                else
+                {
+                    tangLuong.SoTien = Luongcu - (double)nhanvien.TongLuong;
+                }
                 _TangLuongRepository.Add(tangLuong);     
                 request.Id = tangLuong.Id;
                 result.IsSuccess = true;
@@ -72,23 +121,19 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<string>();
             try
             {
-                var tangLuong = new TangLuong();
-                tangLuong = _TangLuongRepository.Get(Id);
+                
+              var tangLuong = _TangLuongRepository.Get(Id);
                 tangLuong.IsDeleted = true;
 
                 _TangLuongRepository.Edit(tangLuong);
-
-                result.IsSuccess = true;
-                result.Data = "Delete Sucessfuly";
-                return result;
+                result.BuildResult("Delete Sucessfuly");
             }
             catch (Exception ex)
             {
-                result.IsSuccess = false;
-                result.Message = ex.Message + ":" + ex.StackTrace;
-                return result;
+                result.BuildResult("Delete Sucessfuly");
 
             }
+            return result;
         }
 
 
@@ -100,9 +145,19 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             {
                 var tangLuong = new TangLuong();
                 tangLuong = _mapper.Map<TangLuong>(request);
-                var nhanvien = _TinhLuongRepository.FindByPredicate(x => x.NhanVienId == request.NhanVienId).First();
+                var nhanvien = _TinhLuongRepository.FindByPredicate(x => x.NhanVienId == request.NhanVienId).Where(x => x.IsDeleted == false).First();
                 tangLuong.HeSoCu = nhanvien.HeSoLuong.Value;
                 nhanvien.HeSoLuong = request.HeSoMoi;
+                double Luongcu = (double)nhanvien.TongLuong;
+                nhanvien.TongLuong = TinhLuong2(nhanvien);
+                if (nhanvien.TongLuong > Luongcu)
+                {
+                    tangLuong.SoTien = (double)nhanvien.TongLuong - Luongcu;
+                }
+                else
+                {
+                    tangLuong.SoTien = Luongcu - (double)nhanvien.TongLuong;
+                }
                 _TinhLuongRepository.Edit(nhanvien);
                 _TangLuongRepository.Edit(tangLuong);
                 result.IsSuccess = true;
@@ -259,6 +314,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                         }
                     }
                 }
+                predicate = predicate.And(m => m.IsDeleted == false);
                 return predicate;
             }
             catch (Exception)

@@ -32,9 +32,11 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpPost]
-        public IActionResult CreateTangCa(NhanVienTangCaDto request)
+
+        public IActionResult CreateTangCa([FromBody]NhanVienTangCaDto request  )
         {
-            var result = _NhanVienTangCaService.CreateNhanVienTangCa(request);
+       
+            var result = _NhanVienTangCaService.CreateNhanVienTangCa(request );
             return Ok(result);
         }
         [HttpPut]
@@ -45,6 +47,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
             return Ok(result);
         }
         [HttpDelete]
+        [Route("{Id}")]
         public IActionResult DeleteNhanVienTangCa(Guid id)
         {
 

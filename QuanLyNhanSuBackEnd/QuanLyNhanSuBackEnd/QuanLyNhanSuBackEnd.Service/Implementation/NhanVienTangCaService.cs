@@ -26,14 +26,20 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             private readonly INhanVienTangCaRespository _NhanVienTangCaRepository;
             private readonly IMapper _mapper;
             private IHttpContextAccessor _httpContextAccessor;
-        public NhanVienTangCaService(INhanVienTangCaRespository NhanVienTangCaRepository, IMapper mapper,   IHttpContextAccessor httpContextAccessor)
+        private ITinhLuongRespository _tinhLuongRespository;
+        private readonly ITangCaRespository _tangCaRespository;
+        public NhanVienTangCaService(INhanVienTangCaRespository NhanVienTangCaRepository, IMapper mapper,   IHttpContextAccessor httpContextAccessor,
+            ITinhLuongRespository tinhLuongRespository , ITangCaRespository tangCaRespository
+            )
             {
             _NhanVienTangCaRepository = NhanVienTangCaRepository;
                 _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
+            _tinhLuongRespository = tinhLuongRespository;
+            _tangCaRespository = tangCaRespository;
             }
 
-            public AppResponse<NhanVienTangCaDto> CreateNhanVienTangCa(NhanVienTangCaDto request)
+            public AppResponse<NhanVienTangCaDto> CreateNhanVienTangCa(NhanVienTangCaDto request  )
             {
                 var result = new AppResponse<NhanVienTangCaDto>();
                 try
@@ -45,13 +51,40 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 }
               
                 var nhanVienTangCa = new NhanVienTangCa();
-                    nhanVienTangCa = _mapper.Map<NhanVienTangCa>(request);
-                    nhanVienTangCa.Id = Guid.NewGuid();
-                     nhanVienTangCa.CreatedBy = UserName;
-              
+                nhanVienTangCa = _mapper.Map<NhanVienTangCa>(request);
+        
+                     nhanVienTangCa.Id = Guid.NewGuid();
+             
+                    nhanVienTangCa.CreatedBy = UserName;
+                //nhanVienTangCa.TangCaId = 
+                var gettinhluong = _tinhLuongRespository.FindByPredicate(x => x.NhanVienId == request.NhanVienId).FirstOrDefault( x=> x.IsDeleted == false);
+               if(gettinhluong != null)
+                {
+                    double tongLuong = 0.0;
+                    if (gettinhluong != null && gettinhluong.TongLuong.HasValue)
+                    {
+                        tongLuong = gettinhluong.TongLuong.Value;
+                    }
 
+                    double heSoCa = 0.0;
+               var tangca =     _tangCaRespository.FindByPredicate(x => x.Id == request.TangCaId).FirstOrDefault(x => x.IsDeleted == false);
+
+                        heSoCa = tangca.HeSoCa.Value;
+                
+
+                    double soGio = 0.0;
+                  
+                        soGio = tangca.SoGio.Value;
+
+
+                    double tongLuongMoi = tongLuong + (soGio * heSoCa);
+                    gettinhluong.TongLuong = tongLuongMoi;
+                    _tinhLuongRespository.Edit(gettinhluong);
+                }
+          
+               
                 _NhanVienTangCaRepository.Add(nhanVienTangCa);
-     
+               
                     request.Id = nhanVienTangCa.Id;
                     result.IsSuccess = true;
                     result.Data = request;
@@ -73,9 +106,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     var nhanVienTangCa = new NhanVienTangCa();
                     nhanVienTangCa = _NhanVienTangCaRepository.Get(Id);
                     nhanVienTangCa.IsDeleted = true;
-
+                var tinhluong = _tinhLuongRespository.FindByPredicate(x => x.NhanVienId == nhanVienTangCa.NhanVienId).FirstOrDefault(x => x.IsDeleted == false);
+                var Tangca = _tangCaRespository.FindByPredicate(x => x.Id == nhanVienTangCa.TangCaId).FirstOrDefault(x => x.IsDeleted == false);
+               double gettinhluong = tinhluong.TongLuong.Value - Tangca.SoGio.Value * Tangca.HeSoCa.Value;
+                tinhluong.TongLuong = gettinhluong;
                 _NhanVienTangCaRepository.Edit(nhanVienTangCa);
-
+                _tinhLuongRespository.Edit(tinhluong);
                     result.IsSuccess = true;
                     result.Data = "Delete Sucessfuly";
                     return result;
@@ -122,14 +158,15 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     .Include(n => n.NhanVien)
                     .Include(n => n.TangCa)
                     ;
-                    var list = query.Select(m => new NhanVienTangCaDto
-                    {
-                        Id = m.Id,
-                        Ten = m.NhanVien.Ten,
-                        NhanVienId = m.NhanVienId,
-                        TangCaId = m.TangCaId,
-                      
-                    }).ToList();
+                var list = query.Select(m => new NhanVienTangCaDto
+                {
+                    Id = m.Id,
+                    Ten = m.NhanVien.Ten,
+                    NhanVienId = m.NhanVienId,
+                    TangCaId = m.TangCaId,
+                    HeSoCa = m.TangCa.HeSoCa,
+
+                }).ToList();
                     result.IsSuccess = true;
                     result.Data = list;
                     return result;
@@ -149,13 +186,14 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var result = new AppResponse<NhanVienTangCaDto>();
                 try
                 {
-                    var query = _NhanVienTangCaRepository.FindBy(x => x.Id == Id).Include(x=>x.NhanVien);
+                    var query = _NhanVienTangCaRepository.FindBy(x => x.Id == Id).Include(x=>x.NhanVien).Include(x => x.TangCa);
                     var data = query.Select(x => new NhanVienTangCaDto
                     {
                         Id = x.Id,
                         NhanVienId = x.NhanVienId,
                         TangCaId = x.TangCaId,
-                        Ten = x.NhanVien.Ten
+                        Ten = x.NhanVien.Ten,
+                        HeSoCa = x.TangCa.HeSoCa,
                     }).First();
                     result.IsSuccess = true;
                     result.Data = data;
@@ -175,7 +213,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             var result = new AppResponse<SearchNhanVienTangCaRespository>();
             try
             {
-                var query = BuildFilterExpression(request.Filters);
+              
+                var query = BuildFilterExpression(request.Filters );
                 var numOfRecords = _NhanVienTangCaRepository.CountRecordsByPredicate(query);
 
                 var users = _NhanVienTangCaRepository.FindByPredicate(query).Include(x => x.NhanVien) .Include(x => x.TangCa).Select(x => new NhanVienTangCaDto
@@ -184,6 +223,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     Ten = x.NhanVien.Ten,
                     TangCaId = x.TangCaId,
                     NhanVienId = x.NhanVienId,
+                    HeSoCa = x.TangCa.HeSoCa,
 
                 }).ToList(); ;
                 int pageIndex = request.PageIndex ?? 1;
@@ -220,13 +260,13 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 return result.BuildError(ex.ToString());
             }
         }
-        private ExpressionStarter<NhanVienTangCa> BuildFilterExpression(IList<Filter> Filters)
+        private ExpressionStarter<NhanVienTangCa> BuildFilterExpression(IList<Filter> Filters )
         {
             try
             {
                 var predicate = PredicateBuilder.New<NhanVienTangCa>(true);
                 if (Filters != null)
-                {
+                
                     foreach (var filter in Filters)
                     {
                         switch (filter.FieldName)
@@ -234,12 +274,16 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                             case "ten":
                                 predicate = predicate.And(m => m.NhanVien.Ten.Contains(filter.Value));
                                 break;
-
+                            case "TangCaId":
+                                predicate = predicate.And(m => m.TangCa.Id.Equals(Guid.Parse(filter.Value)));
+                                break;
                             default:
                                 break;
                         }
-                    }
+                    
                 }
+           
+                predicate = predicate.And(m => m.IsDeleted == false);
                 return predicate;
             }
             catch (Exception)

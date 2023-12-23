@@ -114,8 +114,8 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             //string userId = "";
             try
             {
-                var query = _ChucVuRespository.GetAll();
-                var list = query.Select(m => new ChucVuDto
+                var query = _ChucVuRespository.GetAll().Where(x => x.IsDeleted == false);
+                var list = query.Where(x => x.IsDeleted == false).Select(m => new ChucVuDto
                 {
                     Id = m.Id,
                    TenChucVu = m.TenChucVu,
@@ -217,6 +217,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                         }
                     }
                 }
+                predicate = predicate.And(m => m.IsDeleted == false);
                 return predicate;
             }
             catch (Exception)

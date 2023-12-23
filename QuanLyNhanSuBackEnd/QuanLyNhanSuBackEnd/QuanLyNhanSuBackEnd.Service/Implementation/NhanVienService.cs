@@ -122,11 +122,11 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
             //string userId = "";
             try
             {
-                var query = _NhanVienRepository.GetAll()
+                var query = _NhanVienRepository.GetAll().Where(x => x.IsDeleted == false)
                     .Include(n=>n.BoPhan)
                     .Include(n=>n.ChucVu);
                
-                var list = query.Select(m => new NhanVienDto
+                var list = query.Where(x => x.IsDeleted == false).Select(m => new NhanVienDto
                 {
                     Id = m.Id,
                    Ten = m.Ten,
@@ -263,7 +263,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                         }
                     }
                 }
-               
+                predicate = predicate.And(m => m.IsDeleted == false);
                 return predicate;
             }
             catch (Exception)

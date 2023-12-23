@@ -25,12 +25,21 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
         private readonly IThoiViecRespository _ThoiViecRepository;
         private readonly IMapper _mapper;
         private IHttpContextAccessor _httpContextAccessor;
+        private readonly INhanVienRespository _nhanVienRespository;
+        private readonly ITinhLuongRespository _tinhLuongRespository;
+        private readonly INhanVienTangCaRespository _nhanVienTangCaRespository;
+        private readonly ITangLuongRespository _tangLuongRespository;
 
-        public ThoiViecService(IThoiViecRespository ThoiViecRespository, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public ThoiViecService(IThoiViecRespository ThoiViecRespository, IMapper mapper, IHttpContextAccessor httpContextAccessor ,
+            INhanVienRespository nhanVienRespository, ITinhLuongRespository tinhLuongRespository, INhanVienTangCaRespository nhanVienTangCaRespository, ITangLuongRespository tangLuongRespository)
         {
             _ThoiViecRepository = ThoiViecRespository;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
+            _nhanVienRespository = nhanVienRespository;
+            _tinhLuongRespository = tinhLuongRespository;
+            _nhanVienTangCaRespository = nhanVienTangCaRespository;
+            _tangLuongRespository = tangLuongRespository;
         }
 
         public AppResponse<ThoiViecDto> CreateThoiViec(ThoiViecDto request)
@@ -47,6 +56,39 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 var tuyendung = _mapper.Map<ThoiViec>(request);
                 tuyendung.Id = Guid.NewGuid();
                 tuyendung.CreatedBy = UserName;
+                tuyendung.DaThoiViec = true;
+                tuyendung.NgayNghi = DateTime.Now;
+               
+                var nhanvien = _nhanVienRespository.FindByPredicate(x => x.Id == tuyendung.NhanVienId).FirstOrDefault(x => x.IsDeleted == false);
+                if (nhanvien != null)
+                {
+                    nhanvien.IsDeleted = true;
+                    _nhanVienRespository.Edit(nhanvien);
+                    var nhanvientangca = _nhanVienTangCaRespository.FindByPredicate(x => x.NhanVienId == nhanvien.Id).Where(m => m.IsDeleted == false).ToList();
+                    if (nhanvientangca.Count != 0)
+                    {
+                        foreach (var i in nhanvientangca)
+                        {
+                            i.IsDeleted = true;
+                            _nhanVienTangCaRespository.Edit(i);
+                        }
+                    }
+                   
+                    var tinhluong = _tinhLuongRespository.FindByPredicate(x => x.NhanVienId == nhanvien.Id).FirstOrDefault(x => x.IsDeleted == false);
+                    if ( tinhluong != null)
+                    {
+                        tinhluong.IsDeleted = true;
+                        _tinhLuongRespository.Edit(tinhluong);
+                    }
+                    var Tangluong = _tangLuongRespository.FindByPredicate(x => x.NhanVienId == nhanvien.Id).FirstOrDefault(x => x.IsDeleted == false);
+                    if(Tangluong != null)
+                    {
+                        Tangluong.IsDeleted = true;
+                        _tangLuongRespository.Edit(Tangluong);
+                    }
+                }
+               
+              
                 _ThoiViecRepository.Add(tuyendung);
                 request.Id = tuyendung.Id;
                 result.IsSuccess = true;
@@ -251,6 +293,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                         }
                     }
                 }
+                predicate = predicate.And(m => m.IsDeleted == false);
                 return predicate;
             }
             catch (Exception)

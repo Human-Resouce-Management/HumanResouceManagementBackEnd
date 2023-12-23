@@ -14,7 +14,7 @@ namespace QuanLyNhanSuBackEnd.DAL.Models.Entity
         public string? GioBatDau { get; set; }
         public string? GioKetThuc { get; set; }
         public double? HeSoCa {  get; set; }
-        public Guid? NguoiXacNhanId { get; set; }
+
 
     }
 }

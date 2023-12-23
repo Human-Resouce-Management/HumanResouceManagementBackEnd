@@ -14,8 +14,8 @@ namespace QuanLyNhanSuBackEnd.Service.Contract
     {
         AppResponse<List<NhanVienTangCaDto>> GetAllNhanVienTangCa();
         AppResponse<NhanVienTangCaDto> GetNhanVienTangCaId(Guid Id);
-        AppResponse<NhanVienTangCaDto> CreateNhanVienTangCa(NhanVienTangCaDto request);
-        AppResponse<NhanVienTangCaDto> EditNhanVienTangCa(NhanVienTangCaDto request);
+        AppResponse<NhanVienTangCaDto> CreateNhanVienTangCa(NhanVienTangCaDto request) ;
+        AppResponse<NhanVienTangCaDto> EditNhanVienTangCa(NhanVienTangCaDto request );
         AppResponse<string> DeleteNhanVienTangCa(Guid Id);
         Task<AppResponse<SearchNhanVienTangCaRespository>> SearchNhanVienTangCa(SearchRequest request);
     }

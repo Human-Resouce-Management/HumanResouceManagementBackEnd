@@ -12,10 +12,11 @@ namespace QuanLyNhanSuBackEnd.Model.Dto
     public class NhanVienTangCaDto : BaseDto
     {
       
-        public Guid NhanVienId { get; set; }
-        public string Ten { get; set; }
+        public Guid? NhanVienId { get; set; }
+        public string? Ten { get; set; }
       
-        public Guid TangCaId { get; set; }
+        public Guid? TangCaId { get; set; }
+        public double? HeSoCa { get; set; }
       
        
 

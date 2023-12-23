@@ -48,7 +48,7 @@ namespace QuanLyNhanSuBackEnd.API.Controllers
         public IActionResult DeleteTangLuong(Guid id)
         {
 
-            var result = _TangLuongService.GetTangLuongId(id);
+            var result = _TangLuongService.DeleteTangLuong(id);
 
             return Ok(result);
 

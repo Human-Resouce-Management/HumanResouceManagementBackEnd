@@ -361,6 +361,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     }
                 }
                 }
+
                 return predicate;
             }
             catch (Exception)
