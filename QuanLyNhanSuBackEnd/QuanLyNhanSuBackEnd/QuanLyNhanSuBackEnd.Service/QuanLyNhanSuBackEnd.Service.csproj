@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="EPPlus" Version="6.2.10" />
     <PackageReference Include="Intercom.Dotnet.Client" Version="2.1.1" />
     <PackageReference Include="LinqKit" Version="1.2.4" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />

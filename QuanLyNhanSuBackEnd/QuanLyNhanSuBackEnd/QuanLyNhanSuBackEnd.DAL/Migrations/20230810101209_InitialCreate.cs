@@ -100,7 +100,7 @@ namespace QuanLyNhanSuBackEnd.DAL.Migrations
                     GioBatDau = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GioKetThuc = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HeSoCa = table.Column<double>(type: "float", nullable: true),
-                    NguoiXacNhanId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    //NguoiXacNhanId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),

@@ -86,7 +86,7 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                     }
                 }
 
-                tangLuong.HeSoCu = nhanvien.HeSoLuong.Value;
+                tangLuong.HeSoCu =(double) nhanvien.HeSoLuong;
                 tangLuong.CreatedBy = UserName;
                 tangLuong.NgayCapNhat = DateTime.Now;
                 tangLuong.NgayKetThuc = DateTime.UtcNow.AddDays(30);

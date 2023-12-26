@@ -1493,6 +1493,7 @@
       "QuanLyNhanSuBackEnd.Service/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
+          "EPPlus": "6.2.10",
           "Intercom.Dotnet.Client": "2.1.1",
           "LinqKit": "1.2.4",
           "Maynghien.Common": "1.0.0",
