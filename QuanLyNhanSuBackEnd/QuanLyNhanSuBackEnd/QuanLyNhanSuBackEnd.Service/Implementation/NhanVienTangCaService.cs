@@ -49,6 +49,12 @@ namespace QuanLyNhanSuBackEnd.Service.Implementation
                 {
                     return result.BuildError("Cannot find Account by this user");
                 }
+                var nhanviencu = _NhanVienTangCaRepository.FindByPredicate(x => x.NhanVienId == request.NhanVienId).FirstOrDefault(x => x.IsDeleted == false);
+                if (nhanviencu != null)
+                {
+                    return result.BuildError("Nhan Vien Tang Ca da ton tai ");
+                }
+
               
                 var nhanVienTangCa = new NhanVienTangCa();
                 nhanVienTangCa = _mapper.Map<NhanVienTangCa>(request);
